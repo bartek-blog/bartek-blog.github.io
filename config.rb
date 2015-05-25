@@ -28,12 +28,7 @@ activate :blog do |blog|
   # blog.per_page = 10
   # blog.page_link = "page/{num}"
 
-  deploy.method = :git
-  deploy.branch = 'master'
-  deploy.build_before = true
 end
-
-activate :directory_indexes
 
 page "/feed.xml", layout: false
 
@@ -107,3 +102,12 @@ configure :build do
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
 end
+
+
+activate :deploy do |deploy|
+  deploy.method = :git
+  deploy.branch = 'master'
+  deploy.build_before = true
+end
+ 
+activate :directory_indexes
