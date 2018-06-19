@@ -1,12 +1,16 @@
 ---
 layout: post
-title:  "Using RVM"
+comments: true
+title:  "How to use RVM"
 date:   2018-06-16 18:00:00 +0200
 categories: ruby
 ---
 
 Ruby Version Manager ([RVM](https://rvm.io/)) is a way to mange multiple version of ruby on the 
-same computer. 
+same computer. It is somehow similar to python's virtualenvs, but has much more features, like:
+* list, download and install desired ruby version
+* automatically switch to proper version when one enters a project's directory
+* etc.
 
 ## Installation
 
