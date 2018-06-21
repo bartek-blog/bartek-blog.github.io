@@ -7,7 +7,7 @@ categories: ruby
 ---
 
 Ruby Version Manager ([RVM](https://rvm.io/)) is a way to mange multiple version of ruby on the 
-same computer. It is somehow similar to python's virtualenvs, but has much more features, like:
+same computer. It is somehow similar to python's virtualenvs, but has more features, like:
 * list, download and install desired ruby version
 * automatically switch to proper version when one enters a project's directory
 * etc.
@@ -44,6 +44,26 @@ If you want to come back to the system version type:
 {% highlight shell %}
 rvm system
 {% endhighlight %}
+
+## ruby-version
+
+One can make use rvm to automatically switch between ruby version. Let's say we have created a 
+project called `bartek-blog`. 
+{% highlight shell %}
+mkdir bartek-blog
+{% endhighlight %}
+Then we have to enter the directory of the project.
+{% highlight shell %}
+cd bartek-blog
+{% endhighlight %}
+And run the following lines:
+{% highlight shell %}
+rvm ruby-2.6.0-preview2 do rvm gemset create bartek_blog
+rvm --ruby-version use ruby-2.6.0-preview2@bartek_blog
+{% endhighlight %}
+This will create files `.ruby-gemset` and `.ruby-version`. Now each time ones enter the directory 
+`rvm` with switch to the desired version of ruby automatically.
+
 
 ## Screencast
 

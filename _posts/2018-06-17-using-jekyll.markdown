@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Using Jekyll"
+title:  "How to install and use Jekyll"
 date:   2018-06-17 10:00:00 +0200
 categories: ruby
 ---
