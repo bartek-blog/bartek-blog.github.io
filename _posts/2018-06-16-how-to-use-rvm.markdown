@@ -64,7 +64,3 @@ rvm --ruby-version use ruby-2.6.0-preview2@bartek_blog
 This will create files `.ruby-gemset` and `.ruby-version`. Now each time ones enter the directory 
 `rvm` with switch to the desired version of ruby automatically.
 
-
-## Screencast
-
-https://www.youtube.com/watch?v=cQVb7fHFjSM
