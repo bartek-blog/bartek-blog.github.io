@@ -18,6 +18,14 @@ Is quite easy: see <https://rvm.io/>. For Mac additionally we have to install `g
 {% highlight shell %}
 brew install gnupg
 {% endhighlight %}
+and add the following lines to `.bash_profile`:
+
+``` shell
+export PATH="$PATH:$HOME/.rvm/bin"
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+```
+
 
 ## Usage
 
