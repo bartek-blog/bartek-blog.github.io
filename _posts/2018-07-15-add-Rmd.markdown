@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "How to add Rmd files to jekyll"
-date:   2018-06-16 18:00:00 +0200
+date:   2018-07-15 20:00:00 +0200
 categories: R jekyll
 ---
 
