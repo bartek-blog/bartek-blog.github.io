@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "How to run csharp from command line"
 date:   2018-07-17 18:00:00 +0200
-categories: ruby
+categories: csharp
 ---
 
 ## Installing compiler
