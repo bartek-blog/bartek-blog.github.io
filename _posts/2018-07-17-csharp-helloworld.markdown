@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "How to run csharp from command line"
+title:  "How to run C# from command line"
 date:   2018-07-17 18:00:00 +0200
 categories: csharp
 ---
@@ -43,4 +43,5 @@ mono Hello.exe
 
 ## Links
 
-* <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program>
+* Hello World: <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program>
+* Documentation: <https://msdn.microsoft.com/>
