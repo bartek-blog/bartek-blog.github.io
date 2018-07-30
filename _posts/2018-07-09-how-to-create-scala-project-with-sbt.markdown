@@ -24,6 +24,24 @@ $ sbt
 
 Package is located in `target/scala-X.XX/`.
 
+## Setting up sbt version
+
+In `project/build.properties` change line into, for example,
+``` scala
+sbt.version=1.1.6
+```
+
+## Setting up scala version
+
+In `build.sbt` set up 
+
+``` scala
+scalaVersion := "2.12.6"
+```
+
 ## Links
 
 * <https://docs.scala-lang.org/getting-started-sbt-track/testing-scala-with-sbt-on-the-command-line.html>
+
+
+_Updated: 2018-07-22_
