@@ -13,7 +13,11 @@ The library `rmarkdown`
 
 
 ``` r
-library(rmarkdown)
-render("input.Rmd", md_document())
-render("input.Rmd", md_document(variant = "markdown_github"))
+
+rmarkdown::render("input.Rmd", md_document())
+rmarkdown::render("input.Rmd", md_document(variant = "markdown_github"))
+```
+
+``` shell
+R -e rmarkdown::render("input.Rmd", md_document(variant = "markdown_github"))
 ```
