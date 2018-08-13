@@ -33,7 +33,8 @@ plugins:
 # to override the default setting.
 exclude:
   - notes
-  - R
+  - Rmd
+  - Makefile
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -41,3 +42,4 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
