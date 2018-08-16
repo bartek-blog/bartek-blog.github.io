@@ -26,7 +26,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 ```
 
-
 ## Usage
 
 {% highlight shell %}
@@ -46,7 +45,7 @@ rvm install 2.5
 
 In order to use it, type:
 {% highlight shell %}
-rvm use 2.6
+rvm use 2.5
 {% endhighlight %}
 If you want to come back to the system version type:
 {% highlight shell %}
