@@ -6,7 +6,5 @@ _site
 **/.\#*
 **/\#*
 
-Makefile
-
 # R specific
 **/metastore_db/*

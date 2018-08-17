@@ -1,0 +1,34 @@
+From <https://lucacerone.net/2018/install-and-configure-jupyterhub-in-an-amazon-ec2-instance/>
+
+### EC2
+
+<https://aws.amazon.com/ec2/>
+
+Choose `Ubuntu 16.04`
+
+save `jupyterhub.pem` to `~/.ssh/`
+
+press <Connect>
+
+``` shell
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo reboot now
+```
+
+Update to latest Ubuntu:
+
+``` shell
+tmux
+sudo do-release-upgrade
+```
+
+
+``` shell
+jupyter notebook --generate-config
+emacs ~/.jupyter/jupyter_notebook_config.py
+```
+
