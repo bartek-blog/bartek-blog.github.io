@@ -9,9 +9,9 @@ categories: sparkR
 ## Requirements
 
 First, you must have R and java installed. This is a bit 
-out the scope of this note, but let me cover few things.
+out the scope of this note, but let me cover it a bit.
 
-### Java on Ubuntu:
+### Installing Java on Ubuntu:
 ```
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt update
@@ -37,7 +37,7 @@ echo $JAVA_HOME
 java -version
 ```
 
-### R
+### Installing R on Ubuntu
 
 https://launchpad.net/~marutter/+archive/ubuntu/c2d4u
 
@@ -47,7 +47,7 @@ sudo apt update
 sudo apt install r-base r-base-dev
 ```
 
-### Rstudio
+### Installing Rstudio on Ubuntu
 
 ```
 sudo apt-get install gdebi-core
@@ -57,7 +57,7 @@ sudo gdebi rstudio-xenial-1.1.453-amd64.deb
 rm rstudio-xenial-1.1.453-amd64.deb
 ```
 
-### rJava
+### Installing rJava
 
 Next, you have to see if you can install R interface to java. This can
 be done by calling
@@ -65,7 +65,7 @@ be done by calling
 sudo R CMD javareconf
 ```
 
-Now you can install in R it:
+Now you can install `rJava` in R :
 ```
 install.packages("rJava")
 ```
@@ -85,7 +85,7 @@ d
 
 ### R and rJava on Mac
 
-https://github.com/snowflakedb/dplyr-snowflakedb/wiki/Configuring-R-rJava-RJDBC-on-Mac-OS-X
+<https://github.com/snowflakedb/dplyr-snowflakedb/wiki/Configuring-R-rJava-RJDBC-on-Mac-OS-X>
 
 ### Other packages
 
@@ -101,16 +101,11 @@ install.packages(c("rmarkdown", "ggplot2", "magrittr", "whisker", "data.table"))
 * `whisker`: it's Movember
 * `data.table`, `reshape2`: an alternative for "data.frame"
 
-## Downloading Spark
+## Download Spark
 
 The easiest way to downloading spark is getting pre-bulid version from
 [http://spark.apache.org/downloads.html]. 
 
-<center>
-
-<img src="pic3.png" height="200px"/> 
-
-</center>
 
 ### Mac
 https://www.r-bloggers.com/six-lines-to-install-and-start-sparkr-on-mac-os-x-yosemite/
@@ -125,7 +120,7 @@ for test drive.
 
 Lets say you have downloaded and uncompress it to the folder
 
-`/home/bartek/programs/spark-2.3.0-bin-hadoop2.7`
+`/Users/bartek/programs/spark-2.3.0-bin-hadoop2.7`
 
 So every time you see this path please change it to the one you have
 (windows users have to probably change also slashes `/` to backslashes `\` and add something like `/C/`)
@@ -200,3 +195,5 @@ sparkR.session(master = "local[*]", sparkConfig = list(spark.driver.memory = "2g
 ## Contact
 
 bartekskorulski@gmail.com
+
+_Updated 2018-08-19_
