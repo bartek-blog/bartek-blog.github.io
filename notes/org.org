@@ -10,3 +10,7 @@ or Shift with arrows
 
 ** Links
 *** Basic ToDo lists: https://orgmode.org/worg/org-tutorials/org4beginners.html
+
+** Insert code
+https://orgmode.org/manual/Easy-templates.html#Easy-templates
+=<s <TAB>= then add language for highlighting. 
