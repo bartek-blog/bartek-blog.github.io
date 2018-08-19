@@ -1,0 +1,12 @@
+* Org mode
+
+**** Rotate the states =(unmarked) -> TODO -> DONE= and back:
+
+=C-c C-t  (org-todo)=  
+or Shift with arrows
+
+**** Add timestamp =C-c . (org-time-stamp)=
+
+
+** Links
+*** Basic ToDo lists: https://orgmode.org/worg/org-tutorials/org4beginners.html
