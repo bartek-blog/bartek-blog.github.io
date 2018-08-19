@@ -9,11 +9,11 @@ categories: sparkR
 ## Requirements
 
 First, you must have R and java installed. This is a bit 
-out the scope of this note, but Let me cover few things.
+out the scope of this note, but let me cover few things.
 
-On Ubuntu:
+### Java on Ubuntu:
 ```
-sudo add-apt-repository ppa:webupd8team/jav
+sudo add-apt-repository ppa:webupd8team/java
 sudo apt update
 sudo apt install oracle-java8-installer
 ```

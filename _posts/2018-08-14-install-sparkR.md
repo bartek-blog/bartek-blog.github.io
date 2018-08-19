@@ -9,11 +9,11 @@ categories: sparkR
 ## Requirements
 
 First, you must have R and java installed. This is a bit out the scope
-of this note, but Let me cover few things.
+of this note, but let me cover few things.
 
-On Ubuntu:
+### Java on Ubuntu:
 
-    sudo add-apt-repository ppa:webupd8team/jav
+    sudo add-apt-repository ppa:webupd8team/java
     sudo apt update
     sudo apt install oracle-java8-installer
 
@@ -155,7 +155,7 @@ sparkR.session(master = "local[*]", sparkConfig = list(spark.driver.memory = "2g
 
     ## Spark package found in SPARK_HOME: /Users/bartek/programs/spark-2.3.0-bin-hadoop2.7
 
-    ## Launching java with spark-submit command /Users/bartek/programs/spark-2.3.0-bin-hadoop2.7/bin/spark-submit   --driver-memory "2g" sparkr-shell /var/folders/w1/mtb5t1yd28l4kwz656bvhtmw0000gn/T//RtmpVc8jYO/backend_port4a184cc90022
+    ## Launching java with spark-submit command /Users/bartek/programs/spark-2.3.0-bin-hadoop2.7/bin/spark-submit   --driver-memory "2g" sparkr-shell /var/folders/w1/mtb5t1yd28l4kwz656bvhtmw0000gn/T//RtmpJAQZl5/backend_port60cc1c270c04
 
     ## Java ref type org.apache.spark.sql.SparkSession id 1
 

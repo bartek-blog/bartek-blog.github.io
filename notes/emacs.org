@@ -1,0 +1,33 @@
+* Emacs
+
+** Scrolling
+
+==C-l= redraw the screen, centering 
+
+
+** Undo 
+
+==C-_= or =C-x u=
+
+*** only in region (cool)
+
+highlight the region and undo
+
+** spelling
+
+=M-$= x
+
+** Completing
+
+=M-/=
+
+
+** Keyboard Macros
+
+=C-x (= starting macro definition
+=C-x )= finishing definiton
+=C-x e= execution macro
+
+** Compiling
+
+=M-x compile= (=C-c C-v= ??? not working always)

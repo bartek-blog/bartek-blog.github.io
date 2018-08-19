@@ -7,7 +7,7 @@ categories: python virtualenv
 ---
 
 Program `pyenv` together with `virtualenvwrapper` is possibly the coolest, most practical and
-probably easiest way of installing and dealing with different versions of python and its
+easiest way of installing and dealing with different versions of python and its
 configurations on the same machine.
 
 ## Installation of pyenv
@@ -15,8 +15,8 @@ configurations on the same machine.
 ### Ubuntu
 
 ``` shell
-sudo apt install make build-essential zlib1g-dev libffi-dev libssl-dev libbz2-dev\
-    libreadline-dev libsqlite3-dev
+sudo apt install make build-essential zlib1g-dev libffi-dev libssl-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev
 ```
 
 ``` shell
@@ -137,6 +137,6 @@ deactivate
 
 * pyenv: <https://github.com/pyenv/pyenv>
 * pyenv-virtualenvwrapper: <https://github.com/pyenv/pyenv-virtualenvwrapper>
-* virtualenvwrapper: https://virtualenvwrapper.readthedocs.io/en/latest/
+* virtualenvwrapper: <https://virtualenvwrapper.readthedocs.io/en/latest/>
 * <https://opencafe.readthedocs.io/en/latest/getting_started/pyenv/>
 
