@@ -1,4 +1,27 @@
 * Emacs
+  
+** Installing 
+*** Mac
+**** ispell/aspell/hunspell
+#+BEGIN_SRC shell
+brew install aspell --with-all-langs
+brew install hunspell
+#+END_SRC
+
+
+From hunspell's installation:
+
+Dictionary files (*.aff and *.dic) should be placed in
+~/Library/Spelling/ or /Library/Spelling/.  Homebrew itself
+provides no dictionaries for Hunspell, but you can download
+compatible dictionaries from other sources, such as
+https://wiki.openoffice.org/wiki/Dictionaries .
+
+Download dictionaries from http://wordlist.aspell.net/dicts/ and put them to /Library/Spelling/.
+
+#+BEGIN_SRC elisp
+(setq ispell-program-name "/usr/local/bin/aspell")
+#+END_SRC
 
 ** Scrolling
 
@@ -31,3 +54,10 @@ highlight the region and undo
 ** Compiling
 
 =M-x compile= (=C-c C-v= ??? not working always)
+
+
+** Links
+*** http://emacsrocks.com/
+*** With Unity 
+    https://bbbscarter.wordpress.com/2012/09/13/emacs-bits-and-bobs/
+    https://bbbscarter.wordpress.com/2014/04/21/compiling-unity-projects-from-within-emacs/
