@@ -8,3 +8,9 @@ _site
 
 # R specific
 **/metastore_db/*
+
+# data
+**/data/*
+
+# python
+**/.ipynb_checkpoints/*
