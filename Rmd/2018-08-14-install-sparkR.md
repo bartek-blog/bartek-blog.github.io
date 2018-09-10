@@ -149,7 +149,7 @@ sparkR.session(master = "local[*]", sparkConfig = list(spark.driver.memory = "2g
 
     ## Spark package found in SPARK_HOME: /Users/bartek/programs/spark-2.3.0-bin-hadoop2.7
 
-    ## Launching java with spark-submit command /Users/bartek/programs/spark-2.3.0-bin-hadoop2.7/bin/spark-submit   --driver-memory "2g" sparkr-shell /var/folders/w1/mtb5t1yd28l4kwz656bvhtmw0000gn/T//RtmpcsnUzw/backend_port7115ccd51ed
+    ## Launching java with spark-submit command /Users/bartek/programs/spark-2.3.0-bin-hadoop2.7/bin/spark-submit   --driver-memory "2g" sparkr-shell /var/folders/w1/mtb5t1yd28l4kwz656bvhtmw0000gn/T//RtmpecBSLg/backend_port59ea6ee936dd
 
     ## Java ref type org.apache.spark.sql.SparkSession id 1
 
