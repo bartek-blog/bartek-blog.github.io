@@ -310,7 +310,9 @@ list(s3.buckets.all())
 
 
 
-    [s3.Bucket(name='barteks'), s3.Bucket(name='barteks-toxic-comments')]
+    [s3.Bucket(name='barteks'),
+     s3.Bucket(name='barteks-toxic-comments'),
+     s3.Bucket(name='barteks-toxic-comments-stats')]
 
 
 
@@ -320,21 +322,9 @@ __Warning__ As before, bucket's namespace is shared, so the following command ma
 
 
 ```python
-s3.create_bucket(
-    ACL='public-read',
-    Bucket="barteks-toxic-comments-stats")
-```
-
-
-
-
-    s3.Bucket(name='barteks-toxic-comments-stats')
-
-
-
-
-```python
-?s3.create_bucket
+#s3.create_bucket(
+#    ACL='public-read',
+#    Bucket="barteks-toxic-comments-stats")
 ```
 
 And you have the followng Access Control List (ACL) options while creating it: 
@@ -402,11 +392,6 @@ objs[0].Bucket(), objs[0].bucket_name, objs[0].key
 
 
 
-
-```python
-?bucket.objects.filter
-```
-
 ### Download file
 
 
@@ -421,6 +406,7 @@ One way to do this is to download the file and open it with `pandas.read_csv` me
 
 
 ```python
+import io
 obj = s3.Object('barteks-toxic-comments', 'sample/train_sample100.csv').get()
 comments100 = pd.read_csv(io.BytesIO(obj['Body'].read()))
 comments100.head()
@@ -705,7 +691,11 @@ list(bucket.objects.all())
 
 
 
-    [s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample100stat.csv')]
+    [s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample10.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample100.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample1000.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample10000.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='train.csv')]
 
 
 
@@ -727,8 +717,11 @@ list(bucket.objects.all())
 
 
 
-    [s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample100stat.csv'),
-     s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample100stat_copy.csv')]
+    [s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample10.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample100.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample1000.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample10000.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='train.csv')]
 
 
 
@@ -747,13 +740,13 @@ obj.delete()
 
 
 
-    {'ResponseMetadata': {'HTTPHeaders': {'date': 'Mon, 10 Sep 2018 14:22:03 GMT',
+    {'ResponseMetadata': {'HTTPHeaders': {'date': 'Tue, 25 Sep 2018 11:00:23 GMT',
        'server': 'AmazonS3',
-       'x-amz-id-2': '5vr3JmaIssMCIfvXKFmG6qfPcwEi9GVHdvUk8pxyjLx+R+Hx7kMREtUNhZTnU4jYPeRHWt/kttI=',
-       'x-amz-request-id': '08E204FE63A6F40B'},
+       'x-amz-id-2': 'VoerQ0slw+3oTYWRuHSTE9AuPAWFoef+kUDGXDx6s0bMJP09x3tiuZnigI3rDK9ZvrN3oWdiU9g=',
+       'x-amz-request-id': '6BEE9C81CF67B5DA'},
       'HTTPStatusCode': 204,
-      'HostId': '5vr3JmaIssMCIfvXKFmG6qfPcwEi9GVHdvUk8pxyjLx+R+Hx7kMREtUNhZTnU4jYPeRHWt/kttI=',
-      'RequestId': '08E204FE63A6F40B',
+      'HostId': 'VoerQ0slw+3oTYWRuHSTE9AuPAWFoef+kUDGXDx6s0bMJP09x3tiuZnigI3rDK9ZvrN3oWdiU9g=',
+      'RequestId': '6BEE9C81CF67B5DA',
       'RetryAttempts': 0}}
 
 
@@ -779,13 +772,13 @@ obj.Acl().put(ACL='public-read')
 
 
     {'ResponseMetadata': {'HTTPHeaders': {'content-length': '0',
-       'date': 'Mon, 10 Sep 2018 22:50:02 GMT',
+       'date': 'Tue, 25 Sep 2018 11:00:44 GMT',
        'server': 'AmazonS3',
-       'x-amz-id-2': 'mYqTIq+o9y7ITje0fPgiInbYTlxScdCKOHVpIJKjakKUryQmSBbRZBzX5gg7TP4gj8pYMJ7AzjM=',
-       'x-amz-request-id': 'CB3FECD1BC4CA115'},
+       'x-amz-id-2': 'xM/qmpWHIkS5OJYU/7tnbnhBa+PkyEpEQXby7T+7JK2PQdDxWtPaEYs5of2wtQnyi8mmv14mjac=',
+       'x-amz-request-id': 'E454DDBB96A66468'},
       'HTTPStatusCode': 200,
-      'HostId': 'mYqTIq+o9y7ITje0fPgiInbYTlxScdCKOHVpIJKjakKUryQmSBbRZBzX5gg7TP4gj8pYMJ7AzjM=',
-      'RequestId': 'CB3FECD1BC4CA115',
+      'HostId': 'xM/qmpWHIkS5OJYU/7tnbnhBa+PkyEpEQXby7T+7JK2PQdDxWtPaEYs5of2wtQnyi8mmv14mjac=',
+      'RequestId': 'E454DDBB96A66468',
       'RetryAttempts': 0}}
 
 

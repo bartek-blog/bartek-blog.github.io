@@ -14,3 +14,4 @@ _site
 
 # python
 **/.ipynb_checkpoints/*
+jupyter/pickles/*
