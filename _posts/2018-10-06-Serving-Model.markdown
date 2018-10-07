@@ -96,8 +96,9 @@ comments_df.head(2)
 ```python
 from sklearn.model_selection import train_test_split
 
-X_train, X_val, y_train, y_val = train_test_split(comments_df[['comment_text']], comments_df['toxic'], random_state=10)
-X_train.head()
+X_train, X_val, y_train, y_val = \
+    train_test_split(comments_df[['comment_text']], comments_df['toxic'], random_state=10)
+X_train.head(2)
 ```
 
 
@@ -132,18 +133,6 @@ X_train.head()
     <tr>
       <th>17133</th>
       <td>ARC Gritt, the fucking cunt of all cunts, ruin...</td>
-    </tr>
-    <tr>
-      <th>124232</th>
-      <td>a whole week; couldn't you have said something...</td>
-    </tr>
-    <tr>
-      <th>52766</th>
-      <td>NIGHTSTALLION  IS A CUNT</td>
-    </tr>
-    <tr>
-      <th>45760</th>
-      <td>Welcome!\n\nHello, , and welcome to Wikipedia!...</td>
     </tr>
   </tbody>
 </table>
@@ -392,10 +381,13 @@ tfidf_model2.predict_message(message=message)
 ```python
 import asyncio
 asyncio.get_event_loop().close()
-asyncio.get_event_loop().is_closed()
+print(asyncio.get_event_loop().is_closed())
 loop = asyncio.new_event_loop()
 asyncio.set_event_loop(asyncio.new_event_loop())
 ```
+
+    True
+
 
 
 ```python
@@ -430,4 +422,4 @@ Maybe one day you'll realise the damage you did to a noble project.  201.215.187
 
 ## Thanks
 
-I would like to thank Luca Cerone (<http://lucacerone.net/>) for helpfull conversation and suggesting usage of `aiohttp` instead of `flask`.
+I would like to thank Luca Cerone (<http://www.lucacerone.net/>) for helpfull conversation and suggesting usage of `aiohttp` instead of `flask`.
