@@ -216,7 +216,7 @@ class Vectorizer:
 import pickle
 from sklearn.linear_model import LogisticRegression
     
-class MessagingModel:
+class Model:
     
     def __init__(self):
         self.model = LogisticRegression(class_weight='balanced')
@@ -256,13 +256,13 @@ def scores(y, predicted):
 
 
 ```python
-class TfidfMessagingModelAll:
+class TfidfModelAll:
     
     def __init__(self, colname="text"):
         self.colname = colname
         self.preprocessor = TextPreprocessor()
         self.vectorizer = Vectorizer()
-        self.model = MessagingModel()
+        self.model = Model()
            
     def fit_predict(self, X, y):
         print("preprocessor...")
@@ -297,7 +297,7 @@ class TfidfMessagingModelAll:
 
 
 ```python
-tfidf_model = TfidfMessagingModelAll("comment_text")
+tfidf_model = TfidfModelAll("comment_text")
 y_train_hat = tfidf_model.fit_predict(X_train, y_train)
 scores(y_train, y_train_hat)
 ```
@@ -348,7 +348,7 @@ tfidf_model.dumps()
 
 
 ```python
-tfidf_model2 = TfidfMessagingModelAll("comment_text")
+tfidf_model2 = TfidfModelAll("comment_text")
 tfidf_model2.load()
 ```
 
@@ -426,3 +426,8 @@ Cunts like you who revert good edits because you're too stupid to understand how
 and then revert other edits just because you've decided to bear a playground grudge, are the problem.
 Maybe one day you'll realise the damage you did to a noble project.  201.215.187.159"
 ```
+
+
+## Thanks
+
+I would like to thank Luca Cerone (<http://lucacerone.net/>) for helpfull conversation and suggesting usage of `aiohttp` instead of `flask`.
