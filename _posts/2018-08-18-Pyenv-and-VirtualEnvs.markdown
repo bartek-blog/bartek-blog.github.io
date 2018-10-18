@@ -72,7 +72,7 @@ git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git\
 Now you should be able to execute:
 
 ``` shell
-pyenv global 3.7.0
+pyenv virtualenvwrapper
 ```
 
 This will make sure that packages like `virtualenvwrapper` are installed on your system.
@@ -88,7 +88,7 @@ echo "pyenv global 3.7.0" >> ~/.bashrc
 
 
 ``` shell
-cd $(pyenv root)/plugins/pyenv-virtual
+cd $(pyenv root)/plugins/pyenv-virtualenvwrapper
 git pull
 ```
 
