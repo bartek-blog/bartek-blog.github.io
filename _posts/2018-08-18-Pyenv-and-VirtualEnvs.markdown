@@ -75,7 +75,7 @@ Now you should be able to execute:
 pyenv virtualenvwrapper
 ```
 
-This will make sure that packages like `virtualenvwrapper` are installed on your system.
+This will make sure that packages like `virtualenv` are installed on your system.
 
 In order to have access to commands of `virtualenvwrapper` every time we run sell, we could add
 this line to `.bashrc` (`.bash_profile`) by
