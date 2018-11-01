@@ -15,3 +15,4 @@ _site
 # python
 **/.ipynb_checkpoints/*
 jupyter/pickles/*
+**/.DS_Store
