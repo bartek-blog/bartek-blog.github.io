@@ -300,6 +300,17 @@ session = boto3.Session(profile_name='myaws')
 s3 = session.resource('s3')
 ```
 
+#### From evironment variables
+
+If your credentials are stored as evirionment variables `AWS_SECRET_KEY_ID` and `AWS_SECRET_ACCESS_KEY` then you can do the following:
+
+```
+import os
+aws_access_key_id = os.environ.get('AWS_SECRET_KEY_ID')
+aws_secret_access_key = s.environ.get('AWS_SECRET_ACCESS_KEY')
+session = boto3.Session(aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
+```
+
 ### List buckets
 
 
@@ -312,7 +323,8 @@ list(s3.buckets.all())
 
     [s3.Bucket(name='barteks'),
      s3.Bucket(name='barteks-toxic-comments'),
-     s3.Bucket(name='barteks-toxic-comments-stats')]
+     s3.Bucket(name='barteks-toxic-comments-stats'),
+     s3.Bucket(name='edreams2018')]
 
 
 
@@ -361,6 +373,21 @@ objs
 
 
 
+
+```python
+[obj.key for obj in bucket.objects.filter(Prefix="sample/")]
+```
+
+
+
+
+    ['sample/train_sample10.csv',
+     'sample/train_sample100.csv',
+     'sample/train_sample1000.csv',
+     'sample/train_sample10000.csv']
+
+
+
 The object of class `ObjectSummary` has to properties `Bucket` (that returns Bucket object), `bucket_name` and `key` that return strings. 
 
 
@@ -377,18 +404,22 @@ objs[0].Bucket(), objs[0].bucket_name, objs[0].key
 
 
 
+#### Filter keys and sort them 
+
 
 ```python
-[obj for obj in bucket.objects.filter(Prefix="sample/train")]
+objects = [obj for obj in bucket.objects.filter(Prefix="sample/")]
+objects.sort(key=lambda obj: obj.key, reverse=True)
+objects
 ```
 
 
 
 
-    [s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample10.csv'),
-     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample100.csv'),
+    [s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample10000.csv'),
      s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample1000.csv'),
-     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample10000.csv')]
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample100.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments', key='sample/train_sample10.csv')]
 
 
 
@@ -740,13 +771,13 @@ obj.delete()
 
 
 
-    {'ResponseMetadata': {'HTTPHeaders': {'date': 'Tue, 25 Sep 2018 11:00:23 GMT',
+    {'ResponseMetadata': {'HTTPHeaders': {'date': 'Fri, 02 Nov 2018 15:39:39 GMT',
        'server': 'AmazonS3',
-       'x-amz-id-2': 'VoerQ0slw+3oTYWRuHSTE9AuPAWFoef+kUDGXDx6s0bMJP09x3tiuZnigI3rDK9ZvrN3oWdiU9g=',
-       'x-amz-request-id': '6BEE9C81CF67B5DA'},
+       'x-amz-id-2': 'CSAuR7e4fWUqg2YuQ8i3gkca1/wGN56Fv3Mt7//D1VmwVm7M2a94FHrJhS0ks4yRFxuPyCB6B8U=',
+       'x-amz-request-id': '80F7365FBF37C732'},
       'HTTPStatusCode': 204,
-      'HostId': 'VoerQ0slw+3oTYWRuHSTE9AuPAWFoef+kUDGXDx6s0bMJP09x3tiuZnigI3rDK9ZvrN3oWdiU9g=',
-      'RequestId': '6BEE9C81CF67B5DA',
+      'HostId': 'CSAuR7e4fWUqg2YuQ8i3gkca1/wGN56Fv3Mt7//D1VmwVm7M2a94FHrJhS0ks4yRFxuPyCB6B8U=',
+      'RequestId': '80F7365FBF37C732',
       'RetryAttempts': 0}}
 
 
@@ -772,13 +803,13 @@ obj.Acl().put(ACL='public-read')
 
 
     {'ResponseMetadata': {'HTTPHeaders': {'content-length': '0',
-       'date': 'Tue, 25 Sep 2018 11:00:44 GMT',
+       'date': 'Fri, 02 Nov 2018 15:39:39 GMT',
        'server': 'AmazonS3',
-       'x-amz-id-2': 'xM/qmpWHIkS5OJYU/7tnbnhBa+PkyEpEQXby7T+7JK2PQdDxWtPaEYs5of2wtQnyi8mmv14mjac=',
-       'x-amz-request-id': 'E454DDBB96A66468'},
+       'x-amz-id-2': 'n/UeTtw/7MUHgi1tBDFBeJ7mVoyjcenZekIC+qgNQ9izGyTeEAY+PZ9IAJ77g/39EOFSHgI46rY=',
+       'x-amz-request-id': '76736BA5657E239C'},
       'HTTPStatusCode': 200,
-      'HostId': 'xM/qmpWHIkS5OJYU/7tnbnhBa+PkyEpEQXby7T+7JK2PQdDxWtPaEYs5of2wtQnyi8mmv14mjac=',
-      'RequestId': 'E454DDBB96A66468',
+      'HostId': 'n/UeTtw/7MUHgi1tBDFBeJ7mVoyjcenZekIC+qgNQ9izGyTeEAY+PZ9IAJ77g/39EOFSHgI46rY=',
+      'RequestId': '76736BA5657E239C',
       'RetryAttempts': 0}}
 
 
@@ -815,11 +846,311 @@ comments1000 = \
 comments1000_stat =\
     comments1000.groupby(["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"])\
     .count().reset_index()
+comments1000_stat.head()
 ```
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>toxic</th>
+      <th>severe_toxic</th>
+      <th>obscene</th>
+      <th>threat</th>
+      <th>insult</th>
+      <th>identity_hate</th>
+      <th>id</th>
+      <th>comment_text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>894</td>
+      <td>894</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+#### Passing session
+
+
 ```python
-with smart_open('s3://barteks-toxic-comments-stats/sample/train_sample1000stat.csv', 'wb', 
+pd.read_csv(smart_open(
+    's3://barteks-toxic-comments/sample/train_sample100.csv', 'rb', 
+    s3_session=session)
+).head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>comment_text</th>
+      <th>toxic</th>
+      <th>severe_toxic</th>
+      <th>obscene</th>
+      <th>threat</th>
+      <th>insult</th>
+      <th>identity_hate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2e9c4b5d271ed9e2</td>
+      <td>From McCrillis Nsiah=\n\nI'm welcome again aft...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>717f6930af943c80</td>
+      <td>"\n\n Invitation \n  I'd like to invite you to...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6fbf60373657a531</td>
+      <td>"=Tropical Cyclone George=====\nNamed George, ...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9deaefedc0fcb51f</td>
+      <td>No. I agree with BenBuff91 statement. The AFDI...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>345bedef916b9f9e</td>
+      <td>. It seems the typical paranoid and prejudiced...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+It is smart enough to recognize from where it has to read
+
+
+```python
+pd.read_csv(smart_open(
+    'data/train_sample100.csv', 'rb', 
+    s3_session=session)
+).head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>comment_text</th>
+      <th>toxic</th>
+      <th>severe_toxic</th>
+      <th>obscene</th>
+      <th>threat</th>
+      <th>insult</th>
+      <th>identity_hate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2e9c4b5d271ed9e2</td>
+      <td>From McCrillis Nsiah=\n\nI'm welcome again aft...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>717f6930af943c80</td>
+      <td>"\n\n Invitation \n  I'd like to invite you to...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6fbf60373657a531</td>
+      <td>"=Tropical Cyclone George=====\nNamed George, ...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9deaefedc0fcb51f</td>
+      <td>No. I agree with BenBuff91 statement. The AFDI...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>345bedef916b9f9e</td>
+      <td>. It seems the typical paranoid and prejudiced...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+with smart_open('s3://barteks-toxic-comments-stats/sample/train_sample1000stat.csv.gzip', 'w', 
                profile_name='myaws') as fout:
     comments1000_stat.to_csv(fout, index=False)
 ```
@@ -833,6 +1164,7 @@ list(stat_bucket.objects.all())
 
 
     [s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample1000stat.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample1000stat2.csv.gzip'),
      s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample100stat.csv'),
      s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample100stat_copy.csv')]
 
@@ -843,3 +1175,5 @@ list(stat_bucket.objects.all())
 * https://github.com/boto/boto3
 * https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
 * https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge
+
+_Last update:_ `2018-11-03`
