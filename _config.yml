@@ -43,4 +43,4 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-
+  - _posts/2018-11-12-install-pytorch-with-conda_files/
