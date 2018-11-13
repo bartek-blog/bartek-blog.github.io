@@ -12,7 +12,7 @@ _posts/2018-08-14-install-sparkR.markdown: Rmd/2018-08-14-install-sparkR.Rmd
 	scripts/processRmds.R Rmd/2018-08-14-install-sparkR.Rmd
 	cp Rmd/2018-08-14-install-sparkR.md _posts/2018-08-14-install-sparkR.markdown
 
-build_jupyter: _post/2018-09-11-AWS-CLI-And-S3.markdown _post/2018-10-06-Serving-Model.markdown
+build_jupyter: _post/2018-09-11-AWS-CLI-And-S3.markdown _post/2018-10-06-Serving-Model.markdown _post/2018-11-12-install-pytorch-with-conda.markdown
 
 _post/2018-09-11-AWS-CLI-And-S3.markdown:
 	jupyter nbconvert --to markdown jupyter/2018-09-11-AWS-CLI-And-S3.ipynb
@@ -23,6 +23,12 @@ _post/2018-10-06-Serving-Model.markdown:
 	jupyter nbconvert --to markdown jupyter/2018-10-06-Serving-Model.ipynb
 	cp jupyter/2018-10-06-Serving-Model.header _posts/2018-10-06-Serving-Model.markdown
 	cat jupyter/2018-10-06-Serving-Model.md >> _posts/2018-10-06-Serving-Model.markdown
+
+_post/2018-11-12-install-pytorch-with-conda.markdown:
+	jupyter nbconvert --to markdown jupyter/2018-11-12-install-pytorch-with-conda.ipynb
+	cp jupyter/2018-11-12-install-pytorch-with-conda.header _posts/2018-11-12-install-pytorch-with-conda.markdown
+	cat jupyter/2018-11-12-install-pytorch-with-conda.md >> _posts/2018-11-12-install-pytorch-with-conda.markdown
+	cp -R jupyter/2018-11-12-install-pytorch-with-conda_files _posts/2018-11-12-install-pytorch-with-conda_files
 
 clean: clean_rmd clean_jupyter
 

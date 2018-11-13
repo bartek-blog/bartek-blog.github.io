@@ -322,6 +322,7 @@ list(s3.buckets.all())
 
 
     [s3.Bucket(name='barteks'),
+     s3.Bucket(name='barteks-mess-nlp'),
      s3.Bucket(name='barteks-toxic-comments'),
      s3.Bucket(name='barteks-toxic-comments-stats'),
      s3.Bucket(name='edreams2018')]
@@ -843,6 +844,7 @@ comments1000 = \
         smart_open(
             's3://barteks-toxic-comments/sample/train_sample1000.csv', 'rb', 
             profile_name='myaws'))
+    
 comments1000_stat =\
     comments1000.groupby(["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"])\
     .count().reset_index()
@@ -948,7 +950,7 @@ comments1000_stat.head()
 ```python
 pd.read_csv(smart_open(
     's3://barteks-toxic-comments/sample/train_sample100.csv', 'rb', 
-    s3_session=session)
+        s3_session=session)
 ).head()
 ```
 
@@ -1148,11 +1150,29 @@ pd.read_csv(smart_open(
 
 
 
+#### Writing
+
 
 ```python
-with smart_open('s3://barteks-toxic-comments-stats/sample/train_sample1000stat.csv.gzip', 'w', 
+with smart_open('s3://barteks-toxic-comments-stats/sample/train_sample1000stat123.csv', 'w', 
                profile_name='myaws') as fout:
     comments1000_stat.to_csv(fout, index=False)
+```
+
+
+```python
+import pickle
+class Model:
+
+    def __init__(self):
+        self.attr = 123
+        
+model = Model()
+
+with smart_open("s3://barteks-toxic-comments-stats/models/model.pickle", 'wb', 
+               profile_name='myaws') as f:
+    pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
+    
 ```
 
 
@@ -1164,10 +1184,23 @@ list(stat_bucket.objects.all())
 
 
     [s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample1000stat.csv'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample1000stat.csv.gzip'),
+     s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample1000stat123.csv'),
      s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample1000stat2.csv.gzip'),
      s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample100stat.csv'),
      s3.ObjectSummary(bucket_name='barteks-toxic-comments-stats', key='sample/train_sample100stat_copy.csv')]
 
+
+
+
+```python
+with smart_open("s3://barteks-toxic-comments-stats/models/model.pickle", 'rb', 
+               profile_name='myaws') as f:
+    model = pickle.load(f)
+print(model.attr)
+```
+
+    123
 
 
 ## Links:
