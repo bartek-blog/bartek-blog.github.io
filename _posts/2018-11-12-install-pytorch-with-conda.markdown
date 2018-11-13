@@ -16,11 +16,12 @@ Here we will explain how to install pytorch with conda.
 In terminal execute the following line:
 
 ```
-wget https://repo.continuum.io/miniconda/Miniconda3-3.7.0-MacOSX-x86_64.sh -O ~/miniconda.sh
+wget https://repo.continuum.io/miniconda/Miniconda3-3.7.0-MacOSX-x86_64.sh\
+    -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/miniconda
 ```
 
-You can get choose the version `Miniconda3-3.7.0-MacOSX-x86_64` right version or newer following <https://conda.io/docs/user-guide/install/index.html>
+You can get choose new or right version for your system following <https://conda.io/docs/user-guide/install/index.html>. Just change the string: `Miniconda3-3.7.0-MacOSX-x86_64`.
 
 ## Adding conda to PATH
 
@@ -80,7 +81,7 @@ import cv2
 bgr_img = cv2.imread('img/shelf.JPG')
 gray_img = cv2.cvtColor(bgr_img, cv2.COLOR_BGR2GRAY).astype("float32")/255
 
-plt.imshow(gray_img, cmap='gray')
+#plt.imshow(gray_img, cmap='gray')
 #plt.show()
 ```
 
