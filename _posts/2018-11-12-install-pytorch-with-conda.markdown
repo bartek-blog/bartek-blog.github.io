@@ -21,7 +21,7 @@ wget https://repo.continuum.io/miniconda/Miniconda3-3.7.0-MacOSX-x86_64.sh\
 bash ~/miniconda.sh -b -p $HOME/miniconda
 ```
 
-You can get choose new or right version for your system following <https://conda.io/docs/user-guide/install/index.html>. Just change the string: `Miniconda3-3.7.0-MacOSX-x86_64`.
+You can choose right version for your system following <https://conda.io/docs/user-guide/install/index.html>. Just change the string: `Miniconda3-3.7.0-MacOSX-x86_64`.
 
 ## Adding conda to PATH
 
@@ -38,7 +38,7 @@ If you do not want to run it each time you start the system you can add this lin
 conda update conda
 ```
 
-## Creating environment 
+## Creating and activating environment 
 
 
 ```
@@ -81,18 +81,6 @@ import cv2
 bgr_img = cv2.imread('img/shelf.JPG')
 gray_img = cv2.cvtColor(bgr_img, cv2.COLOR_BGR2GRAY).astype("float32")/255
 
-plt.imshow(gray_img, cmap='gray')
-plt.show()
-```
-
-
-![png](2018-11-12-install-pytorch-with-conda_files/2018-11-12-install-pytorch-with-conda_8_0.png)
-
-
-
-```python
-import numpy as np
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
+#plt.imshow(gray_img, cmap='gray')
+#plt.show()
 ```
