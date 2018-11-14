@@ -81,9 +81,13 @@ import cv2
 bgr_img = cv2.imread('img/shelf.JPG')
 gray_img = cv2.cvtColor(bgr_img, cv2.COLOR_BGR2GRAY).astype("float32")/255
 
-#plt.imshow(gray_img, cmap='gray')
-#plt.show()
+plt.imshow(gray_img, cmap='gray')
+plt.show()
 ```
+
+
+![png](2018-11-12-install-pytorch-with-conda_files/2018-11-12-install-pytorch-with-conda_8_0.png)
+
 
 
 ```python
