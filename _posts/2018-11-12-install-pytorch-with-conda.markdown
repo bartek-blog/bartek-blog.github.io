@@ -52,7 +52,8 @@ You can deactivate it with `source deactive`. More info on <https://conda.io/doc
 
 ```
 conda install mkl
-conda install numpy pandas jupyter ipython scikit-learn pytorch plotly
+conda install numpy pandas jupyter ipython scikit-learn plotly
+conda install pytorch torchvision -c pytorch
 conda install -c conda-forge matplotlib opencv
 ```
 
