@@ -35,6 +35,7 @@ exclude:
   - notes
   - Rmd
   - jupyter
+  - jupyter/assets
   - Makefile
   - Gemfile
   - Gemfile.lock
