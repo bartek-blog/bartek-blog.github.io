@@ -1,6 +1,6 @@
 .PHONY: build build_rmd build_jupyter clean clean_rmd clean_jupyter
 
-build: build_rmd clean_rmd build_jupyter clean_jupyter
+build: build_rmd build_jupyter 
 	bundle exec jekyll build
 
 serve:
@@ -26,9 +26,7 @@ _post/2018-10-06-Serving-Model.markdown:
 
 _post/2018-11-12-install-pytorch-with-conda.markdown:
 	jupyter nbconvert --to markdown jupyter/2018-11-12-install-pytorch-with-conda.ipynb
-	cp jupyter/2018-11-12-install-pytorch-with-conda.header _posts/2018-11-12-install-pytorch-with-conda.markdown
-	cat jupyter/2018-11-12-install-pytorch-with-conda.md >> _posts/2018-11-12-install-pytorch-with-conda.markdown
-	cp -R jupyter/2018-11-12-install-pytorch-with-conda_files _posts/2018-11-12-install-pytorch-with-conda_files
+	python scripts/move_jupyter_md_to_posts.py 2018-11-12-install-pytorch-with-conda
 
 clean: clean_rmd clean_jupyter
 
