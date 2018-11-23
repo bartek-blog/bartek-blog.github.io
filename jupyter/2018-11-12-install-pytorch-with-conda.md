@@ -49,7 +49,7 @@ conda install pytorch torchvision -c pytorch
 conda install -c conda-forge matplotlib opencv
 ```
 
-## Run jupyter
+## Run jupyter and test it
 
 After activating environment run
 
@@ -57,9 +57,11 @@ After activating environment run
 jupyter notebook
 ```
 
-## Test it
+When the web page opens, click on button "New", choose "Python 3".
 
-In the following change `imgs/shelf.JPG` to any image of your coice.
+![jupyter](jupyter_imgs/image2018-11-16_10-14-59.png)
+
+Then copy the following into the cell and press Control+Enter. Change `imgs/shelf.JPG` to any image of your coice.
 
 
 ```python

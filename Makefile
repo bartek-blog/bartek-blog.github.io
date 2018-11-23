@@ -1,6 +1,6 @@
-.PHONY: build build_rmd build_jupyter clean clean_rmd clean_jupyter
+.PHONY: sync_jupyter_imgs build build_rmd build_jupyter clean clean_rmd clean_jupyter
 
-build: build_rmd build_jupyter 
+build: build_rmd sync_jupyter_imgs build_jupyter 
 	bundle exec jekyll build
 
 serve:
@@ -11,6 +11,9 @@ build_rmd: _posts/2018-08-14-install-sparkR.markdown
 _posts/2018-08-14-install-sparkR.markdown: Rmd/2018-08-14-install-sparkR.Rmd
 	scripts/processRmds.R Rmd/2018-08-14-install-sparkR.Rmd
 	cp Rmd/2018-08-14-install-sparkR.md _posts/2018-08-14-install-sparkR.markdown
+
+sync_jupyter_imgs:
+	rsync -avu --delete "jupyter/jupyter_imgs/" "assets/jupyter_imgs/"
 
 build_jupyter: _post/2018-09-11-AWS-CLI-And-S3.markdown _post/2018-10-06-Serving-Model.markdown _post/2018-11-12-install-pytorch-with-conda.markdown
 
