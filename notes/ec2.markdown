@@ -1,8 +1,5 @@
 From <https://lucacerone.net/2018/install-and-configure-jupyterhub-in-an-amazon-ec2-instance/>
 
-### EC2
-
-<https://aws.amazon.com/ec2/>
 
 Choose `Ubuntu 16.04`
 
