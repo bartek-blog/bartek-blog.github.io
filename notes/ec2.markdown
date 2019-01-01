@@ -1,6 +1,5 @@
 From <https://lucacerone.net/2018/install-and-configure-jupyterhub-in-an-amazon-ec2-instance/>
 
-
 Choose `Ubuntu 16.04`
 
 save `jupyterhub.pem` to `~/.ssh/`

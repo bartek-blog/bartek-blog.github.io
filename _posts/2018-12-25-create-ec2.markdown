@@ -1,55 +1,74 @@
 ---
 layout: post
 comments: true
-title:  "C++ Hello World"
-date:   2018-12-24 18:00:00 +0200
-categories: c++ helloworld
+title:  "How to launch EC2 instance"
+date:   2018-12-25 23:00:00 +0200
+categories: ec2
 ---
 
+# EC2
 
-## Code
+Amazon EC2 (Elastic Compute Cloud) is Amazon service that allows rent virtual computers (see
+<https://aws.amazon.com/ec2/>). Here we explain how to launch EC2 instance with Ubuntu.
 
-Open your favorite editor and create file `helloworld.cpp`.
+## Launch EC2
 
-``` c++
-#include <iostream>
+### Launch
 
-int main() {
-  std::cout << "Hello World!\n";
-  return 0;
-}
-```
+Go to <https://console.aws.amazon.com/ec2> and choose `Launch Instance`.
 
-## Compile
+![png](/assets/imgs/ec2/launch.png)
 
-In order to compile it in a console run:
+### Choose Amazon Machine Image (AMI)
+
+Here we choose `Ubuntu Server 18.04 LTS`.
+
+![png](/assets/imgs/ec2/select_ami.png)
+
+### Choose Type
+
+Here we choose `t2.micro` 
+
+
+![png](/assets/imgs/ec2/choose_instance.png)
+
+
+and the press `Launch`.
+
+![png](/assets/imgs/ec2/launch_final.png)
+
+### Key pair
+
+#### Create key pair 
+
+Create key pair, if you do not have one or want to use different.
+
+![png](/assets/imgs/ec2/create_key_pair.png)
+
+![png](/assets/imgs/ec2/create_key_pair2.png)
+
+After downloading move it to `.ssh`.
 ``` shell
-g++ helloworld.cpp -o helloworld
+mv bartek-aws.pem ~/.ssh
 ```
 
-Then run it with:
+And set required permissions.
+``` shell
+cd ~/.ssh
+chmod 400 bartek-aws.pem
+```
+
+#### Select key pair
+
+
+![png](/assets/imgs/ec2/select_key_pair.png)
+
+### View Instances and connect
+
+Now you should be able to connect through `ssh`.
+
+![png](/assets/imgs/ec2/connect_to_instance.png)
 
 ``` shell
-./helloworld
+ssh -i "bartek-aws.pem" ubuntu@xx.xxx.xxx.xxx
 ```
-
-## Makefile
-
-You can also create a `makefile` in the same directory as `helloworld.cpp` 
-(<https://www.gnu.org/software/make/manual/html_node/index.html>).
-
-``` makefile
-helloworld:
-	g++ helloworld.cpp -o helloworld
-
-.PHONY: clean
-clean:
-	rm helloworld
-```
-
-Then, in order to compile it, just run
-
-``` shell
-make
-```
-
