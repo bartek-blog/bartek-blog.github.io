@@ -62,12 +62,3 @@ where `XX.XX.XX.XX` is master's ip address.
 ![png](/assets/imgs/emr/connect_to_master.png)
 
 
-### Add security group
-
-
-
-<https://aws.amazon.com/emr/pricing/>
-
-
-
-
