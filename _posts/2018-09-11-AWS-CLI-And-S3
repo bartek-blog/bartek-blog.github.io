@@ -18,13 +18,15 @@ __Amazon S3__ (Simple Storage Service) is a Amazon's service for storing files. 
 
 ### Sign up
 First go to 
-https://s3.console.aws.amazon.com/s3
+<https://s3.console.aws.amazon.com/s3>
 
 and sign up for S3. You can also try to create a bucket, upload files etc. Here we will explain how to use it porogramatically. 
 
 ## Data 
 
-But first let's get data we are going to use here. We take the dataset `train.csv` from https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge. We locally store in `data` directory.
+But first let's get data we are going to use here. We take the dataset `train.csv` from
+<https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge>.
+We locally store in `data` directory.
 
 ### Sampling data
 
