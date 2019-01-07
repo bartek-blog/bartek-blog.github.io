@@ -10,8 +10,11 @@ def main():
     old_md = os.path.join(JUPYTER_DIR, file_name) + ".md"
     md_header = os.path.join(JUPYTER_DIR, file_name) + ".header"
     new_md = os.path.join(POST_DIR, file_name) + ".markdown"
-    with open(md_header, 'r') as f:
-        header = f.read()
+    if os.path.isfile(md_header):
+        with open(md_header, 'r') as f:
+            header = f.read()
+    else:
+        header = ""
     with open(old_md, 'r') as f:
         text = f.read()
     new_text = re.sub(r"(\!\[[A-Za-z0-9]+\])\((.+)\)", r'\1(/assets/\2)', text)

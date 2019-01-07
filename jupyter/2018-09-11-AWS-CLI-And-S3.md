@@ -10,13 +10,14 @@ __Amazon S3__ (Simple Storage Service) is a Amazon's service for storing files. 
 
 ### Sign up
 First go to 
-https://s3.console.aws.amazon.com/s3
+<https://s3.console.aws.amazon.com/s3>
 
 and sign up for S3. You can also try to create a bucket, upload files etc. Here we will explain how to use it porogramatically. 
 
 ## Data 
 
-But first let's get data we are going to use here. We take the dataset `train.csv` from https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge. We locally store in `data` directory.
+But first let's get data we are going to use here. We take the dataset `train.csv` from <https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge>. 
+We locally store in `data` directory.
 
 ### Sampling data
 
@@ -29,9 +30,12 @@ import pandas as pd
 np.random.seed(10)
 comments = pd.read_csv("data/train.csv")
 nrows = comments.shape[0]
-comments.iloc[np.random.choice(range(nrows), 10000, replace=False)].to_csv("data/train_sample10000.csv", index=False)
-comments.iloc[np.random.choice(range(nrows), 1000, replace=False)].to_csv("data/train_sample1000.csv", index=False)
-comments.iloc[np.random.choice(range(nrows), 100, replace=False)].to_csv("data/train_sample100.csv", index=False)
+comments.iloc[np.random.choice(range(nrows), 10000, replace=False)]\
+    .to_csv("data/train_sample10000.csv", index=False)
+comments.iloc[np.random.choice(range(nrows), 1000, replace=False)]\
+    .to_csv("data/train_sample1000.csv", index=False)
+comments.iloc[np.random.choice(range(nrows), 100, replace=False)]\
+    .to_csv("data/train_sample100.csv", index=False)
 comments10 = comments.iloc[np.random.choice(range(nrows), 10, replace=False)]
 comments10.to_csv("data/train_sample10.csv", index=False)
 comments10
@@ -300,7 +304,9 @@ If your credentials are stored as evirionment variables `AWS_SECRET_KEY_ID` and 
 import os
 aws_access_key_id = os.environ.get('AWS_SECRET_KEY_ID')
 aws_secret_access_key = s.environ.get('AWS_SECRET_ACCESS_KEY')
-session = boto3.Session(aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
+session = boto3.Session(
+    aws_access_key_id=aws_access_key_id, 
+    aws_secret_access_key=aws_secret_access_key)
 ```
 
 ### List buckets

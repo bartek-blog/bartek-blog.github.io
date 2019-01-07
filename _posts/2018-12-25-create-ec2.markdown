@@ -11,6 +11,13 @@ categories: ec2
 Amazon EC2 (Elastic Compute Cloud) is Amazon service that allows rent virtual computers (see
 <https://aws.amazon.com/ec2/>). Here we explain how to launch EC2 instance with Ubuntu.
 
+In order to create EC2 instance we need to configure the following
+* Amazon Machine Image (AMI)
+* Instance Type
+* Security Groups
+* Storage
+* Key pairs
+
 ## Launch EC2
 
 ### Launch
@@ -25,7 +32,7 @@ Here we choose `Ubuntu Server 18.04 LTS`.
 
 ![png](/assets/imgs/ec2/select_ami.png)
 
-### Choose Type
+### Choose Instance Type
 
 Here we choose `t2.micro` 
 
