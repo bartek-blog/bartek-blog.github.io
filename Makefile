@@ -18,7 +18,7 @@ sync_jupyter_imgs:
 build_jupyter: _post/2018-09-11-AWS-CLI-And-S3.markdown\
 	_post/2018-10-06-Serving-Model.markdown\
 	_post/2018-11-12-install-pytorch-with-conda.markdown\
-	_post/2018-01-07-Linear-Regression.markdown
+	_post/2019-01-07-Linear-Regression.markdown
 
 _post/2018-09-11-AWS-CLI-And-S3.markdown:
 	jupyter nbconvert --to markdown jupyter/2018-09-11-AWS-CLI-And-S3.ipynb
@@ -34,9 +34,9 @@ _post/2018-11-12-install-pytorch-with-conda.markdown:
 	jupyter nbconvert --to markdown jupyter/2018-11-12-install-pytorch-with-conda.ipynb
 	python scripts/move_jupyter_md_to_posts.py 2018-11-12-install-pytorch-with-conda
 
-_post/2018-01-07-Linear-Regression.markdown:
-	jupyter nbconvert --to markdown jupyter/2018-01-07-Linear-Regression.ipynb
-	python scripts/move_jupyter_md_to_posts.py 2018-01-07-Linear-Regression
+_post/2019-01-07-Linear-Regression.markdown:
+	jupyter nbconvert --to markdown jupyter/2019-01-07-Linear-Regression.ipynb
+	python scripts/move_jupyter_md_to_posts.py 2019-01-07-Linear-Regression
 
 clean: clean_rmd clean_jupyter
 

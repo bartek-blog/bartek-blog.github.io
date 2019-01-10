@@ -5,11 +5,18 @@ title:  "Linear Regression"
 date:   2019-01-07 18:00:00 +0200
 categories: ml python sklearn
 ---
-# Linear Regression
+# Simple Linear Regression: how to train and test a model
 
 In this note we would like to explain two concepts.
-* What it means to train a model.
+* What it means to build and train a model.
 * What __Linear Regression__ is. 
+
+For now, let us tell you that in order to __build and train a model__ we will do the following five steps:
+1. Prepare data.
+2. Split data into train and test.
+3. Build a model.
+4. Fit model to train data.
+5. Evaluate model on test data.
 
 But first let's look at our dataset.
 
@@ -19,19 +26,24 @@ But first let's look at our dataset.
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
+
 from sklearn import datasets, linear_model
-from sklearn.metrics import mean_squared_error, r2_score
 
 diabetes = datasets.load_diabetes()
-diabetes.keys()
 ```
 
+This dataset contains:
+1. __Objective__ or __respond__: a quantitative measure of disease progression one year after baseline. 
+2. __Features__ that are used to predict. Those are 10 variables: 
+    * age, 
+    * sex, 
+    * body mass index, 
+    * average blood pressure, 
+    * six blood serum measurements.
+    
+__Warning__ Features are normalized, that is they are rescaled to have mean equal to zero and standard variation equal to 1. Thats, for example, why `body mass index` can be negative.
 
-
-
-    dict_keys(['data', 'target', 'DESCR', 'feature_names'])
-
-
+You can get more info by calling the following function.
 
 
 ```python
@@ -84,16 +96,11 @@ print(diabetes.DESCR)
 
 __Main Question__ Can we predict disease progression based on body mass index?
 
-This we will try to answer in this note. For that we need to build and train model. What does it mean? Here we will simplify it a bit and reduce it to the following steps:
-1. Prepare data.
-2. Split data into train and test.
-3. Build a model.
-4. Fit model to train data.
-5. Evaluate model on test data.
+This we will try to answer in this note. For that we need to build and train model.
 
 
 ## Prepare data
-So let's start with preparing daata. In order to answer Main Question, we will consider only the third column of this dataset, that is `Body mass index`. Let's save this column as `X` dataset. Variables in dataset $X$ are often called __features__ or __exploratory variables__.
+So let's start with preparing data. In order to answer Main Question, we will consider only the third column of this dataset, that is `Body mass index`. Let's save this column as `X` dataset. Variables in dataset $X$ are often called __features__ or __exploratory variables__.
 
 
 ```python
@@ -124,7 +131,7 @@ plt.ylabel("Disease progression")
 
 
 
-![png](/assets/2018-01-07-Linear-Regression_files/2018-01-07-Linear-Regression_10_1.png)
+![png](/assets/2019-01-07-Linear-Regression_files/2019-01-07-Linear-Regression_11_1.png)
 
 
 __Note__ It is common in python to call the value that we want to predict by `y`. On the other hand, the dataset of features used to predict `y` is usually called `X`. It is kind on bad to use a name that start by capital letter as a name of variable not classes. However, since in `sklearn` package, this dataset needs to have dimension equal to 2 (like matrix) it became very popular to use capital letter for it.
@@ -192,7 +199,7 @@ plt.ylabel("Disease progression")
 
 
 
-![png](/assets/2018-01-07-Linear-Regression_files/2018-01-07-Linear-Regression_18_1.png)
+![png](/assets/2019-01-07-Linear-Regression_files/2019-01-07-Linear-Regression_19_1.png)
 
 
 ### Mean Squared Error and R2 score
@@ -212,7 +219,7 @@ for i in range(N_SAMPLES):
 ```
 
 
-![png](/assets/2018-01-07-Linear-Regression_files/2018-01-07-Linear-Regression_20_0.png)
+![png](/assets/2019-01-07-Linear-Regression_files/2019-01-07-Linear-Regression_21_0.png)
 
 
 We can take an average of these pointwise errors:
@@ -444,10 +451,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y)
 from sklearn.linear_model import LinearRegression
 reg = LinearRegression()
 
-# 3. Fit model to train data.
+# 4. Fit model to train data.
 reg.fit(X_train, y_train)
 
-# 4. Evaluate model on test data.
+# 5. Evaluate model on test data.
 from sklearn.metrics import mean_squared_error, r2_score
 y_test_hat = reg.predict(X_test)
 np.sqrt(mean_squared_error(y_test, y_test_hat)), r2_score(y_test, y_test_hat)
