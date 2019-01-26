@@ -1,6 +1,6 @@
 .PHONY: sync_jupyter_imgs build build_rmd build_jupyter clean clean_rmd clean_jupyter
 
-build: build_rmd sync_jupyter_imgs build_jupyter 
+build: build_rmd sync_jupyter_imgs markdowns_from_jupyter
 	bundle exec jekyll build
 
 serve:
@@ -15,10 +15,11 @@ _posts/2018-08-14-install-sparkR.markdown: Rmd/2018-08-14-install-sparkR.Rmd
 sync_jupyter_imgs:
 	rsync -avu --delete "jupyter/jupyter_imgs/" "assets/jupyter_imgs/"
 
-build_jupyter: _post/2018-09-11-AWS-CLI-And-S3.markdown\
+markdowns_from_jupyter: _post/2018-09-11-AWS-CLI-And-S3.markdown\
 	_post/2018-10-06-Serving-Model.markdown\
 	_post/2018-11-12-install-pytorch-with-conda.markdown\
-	_post/2019-01-07-Linear-Regression.markdown
+	_post/2019-01-07-Train-Test-Model.markdown\
+	_post/2019-01-26-How-to-choose-best-model.markdown
 
 _post/2018-09-11-AWS-CLI-And-S3.markdown:
 	jupyter nbconvert --to markdown jupyter/2018-09-11-AWS-CLI-And-S3.ipynb
@@ -34,9 +35,13 @@ _post/2018-11-12-install-pytorch-with-conda.markdown:
 	jupyter nbconvert --to markdown jupyter/2018-11-12-install-pytorch-with-conda.ipynb
 	python scripts/move_jupyter_md_to_posts.py 2018-11-12-install-pytorch-with-conda
 
-_post/2019-01-07-Linear-Regression.markdown:
-	jupyter nbconvert --to markdown jupyter/2019-01-07-Linear-Regression.ipynb
-	python scripts/move_jupyter_md_to_posts.py 2019-01-07-Linear-Regression
+_post/2019-01-07-Train-Test-Model.markdown:
+	jupyter nbconvert --to markdown jupyter/2019-01-07-Train-Test-Model.ipynb
+	python scripts/move_jupyter_md_to_posts.py 2019-01-07-Train-Test-Model
+
+_post/2019-01-26-How-to-choose-best-model.markdown:
+	jupyter nbconvert --to markdown jupyter/2019-01-26-How-to-choose-best-model.ipynb
+	python scripts/move_jupyter_md_to_posts.py 2019-01-26-How-to-choose-best-model
 
 clean: clean_rmd clean_jupyter
 

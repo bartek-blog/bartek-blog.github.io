@@ -1,10 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "How to train and test a model, Simple Linear Regression"
+title:  "How to train a model and then test its performance: linear regression"
 date:   2019-01-07 18:00:00 +0200
 categories: ml python sklearn
 ---
+## Introduction
+
 In this note we would like to explain two concepts.
 * What it means to build and train a model.
 * What __Linear Regression__ is. 
@@ -13,7 +15,7 @@ For now, let us tell you that in order to __build and train a model__ we will do
 1. Prepare data.
 2. Split data into train and test.
 3. Build a model.
-4. Fit model to train data.
+4. Fit the model to train data.
 5. Evaluate model on test data.
 
 But first let's look at our dataset.
@@ -22,11 +24,21 @@ But first let's look at our dataset.
 
 
 ```python
-import matplotlib.pyplot as plt
 import numpy as np
 
-from sklearn import datasets, linear_model
+import matplotlib.pyplot as plt
+import matplotlib
 
+from sklearn import datasets, linear_model
+```
+
+
+```python
+matplotlib.rcParams['figure.figsize'] = [20, 10]
+```
+
+
+```python
 diabetes = datasets.load_diabetes()
 ```
 
@@ -39,9 +51,9 @@ This dataset contains:
     * average blood pressure, 
     * six blood serum measurements.
     
-__Warning__ Features are normalized, that is they are rescaled to have mean equal to zero and standard variation equal to 1. Thats, for example, why `body mass index` can be negative.
+__Warning__ Features are _standarized_. We will explain what exactly it means another time. Shortly it means that they are rescaled to have mean equal to zero and standard variation equal to 1. That is why, for example, `body mass index` can be negative.
 
-You can get more info by calling the following function.
+You can get more info about data by calling `diabetes.DESCR`.
 
 
 ```python
@@ -94,11 +106,12 @@ print(diabetes.DESCR)
 
 __Main Question__ Can we predict disease progression based on body mass index?
 
-This we will try to answer in this note. For that we need to build and train model.
+Wwe will try to answer this in here. For that we need to build a model the will do this for us.
 
 
 ## Prepare data
-So let's start with preparing data. In order to answer Main Question, we will consider only the third column of this dataset, that is `Body mass index`. Let's save this column as `X` dataset. Variables in dataset $X$ are often called __features__ or __exploratory variables__.
+
+So let's start with preparing data. In order to answer __Main Question__, we will consider only the third column of this dataset, that is `Body mass index`. Let's save this column as `X` dataset. Variables in dataset $X$ are often called __features__ or __exploratory variables__.
 
 
 ```python
@@ -129,7 +142,7 @@ plt.ylabel("Disease progression")
 
 
 
-![png](2019-01-07-Linear-Regression_files/2019-01-07-Linear-Regression_10_1.png)
+![png](/assets/2019-01-07-Train-Test-Model_files/2019-01-07-Train-Test-Model_12_1.png)
 
 
 __Note__ It is common in python to call the value that we want to predict by `y`. On the other hand, the dataset of features used to predict `y` is usually called `X`. It is kind on bad to use a name that start by capital letter as a name of variable not classes. However, since in `sklearn` package, this dataset needs to have dimension equal to 2 (like matrix) it became very popular to use capital letter for it.
@@ -195,7 +208,7 @@ plt.ylabel("Disease progression")
 
 
 
-![png](2019-01-07-Linear-Regression_files/2019-01-07-Linear-Regression_18_1.png)
+![png](/assets/2019-01-07-Train-Test-Model_files/2019-01-07-Train-Test-Model_20_1.png)
 
 
 ### Mean Squared Error and R2 score
@@ -216,7 +229,7 @@ for i in range(N_SAMPLES):
 ```
 
 
-![png](2019-01-07-Linear-Regression_files/2019-01-07-Linear-Regression_20_0.png)
+![png](/assets/2019-01-07-Train-Test-Model_files/2019-01-07-Train-Test-Model_22_0.png)
 
 
 We can take an average of these pointwise errors:
@@ -510,3 +523,5 @@ __Step 3__ Exectute 5 steps we have disscussed here. Is this model performs bett
 __Step 4__ Plot real values vs. predicted one.
 
 __Step 5__ Try repeat it with other variables. Are there other variables that performs better than `percentage of lower status of the population`. 
+
+_Updated: 2019-01-26_
