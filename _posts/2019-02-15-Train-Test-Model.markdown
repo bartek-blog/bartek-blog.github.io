@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title:  "How to train a model and then test its performance: linear regression"
-date:   2019-01-07 18:00:00 +0200
+title:  "Machine Learning Part 2: How to train linear model and then test its performance"
+date:   2019-02-15 12:00:00 +0200
 categories: ml python sklearn
 ---
 ## Introduction
@@ -60,18 +60,17 @@ You can get more info about data by calling `diabetes.DESCR`.
 print(diabetes.DESCR)
 ```
 
-    Diabetes dataset
-    ================
+    .. _diabetes_dataset:
     
-    Notes
-    -----
+    Diabetes dataset
+    ----------------
     
     Ten baseline variables, age, sex, body mass index, average blood
     pressure, and six blood serum measurements were obtained for each of n =
     442 diabetes patients, as well as the response of interest, a
     quantitative measure of disease progression one year after baseline.
     
-    Data Set Characteristics:
+    **Data Set Characteristics:**
     
       :Number of Instances: 442
     
@@ -79,17 +78,17 @@ print(diabetes.DESCR)
     
       :Target: Column 11 is a quantitative measure of disease progression one year after baseline
     
-      :Attributes:
-        :Age:
-        :Sex:
-        :Body mass index:
-        :Average blood pressure:
-        :S1:
-        :S2:
-        :S3:
-        :S4:
-        :S5:
-        :S6:
+      :Attribute Information:
+          - Age
+          - Sex
+          - Body mass index
+          - Average blood pressure
+          - S1
+          - S2
+          - S3
+          - S4
+          - S5
+          - S6
     
     Note: Each of these 10 feature variables have been mean centered and scaled by the standard deviation times `n_samples` (i.e. the sum of squares of each column totals 1).
     
@@ -99,7 +98,6 @@ print(diabetes.DESCR)
     For more information see:
     Bradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) "Least Angle Regression," Annals of Statistics (with discussion), 407-499.
     (http://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf)
-    
 
 
 ## Problem
@@ -137,12 +135,12 @@ plt.ylabel("Disease progression")
 
 
 
-    Text(0,0.5,'Disease progression')
+    Text(0, 0.5, 'Disease progression')
 
 
 
 
-![png](2019-01-07-Train-Test-Model_files/2019-01-07-Train-Test-Model_12_1.png)
+![png](/assets/2019-02-15-Train-Test-Model_files/2019-02-15-Train-Test-Model_12_1.png)
 
 
 __Note__ It is common in python to call the value that we want to predict by `y`. On the other hand, the dataset of features used to predict `y` is usually called `X`. It is kind on bad to use a name that start by capital letter as a name of variable not classes. However, since in `sklearn` package, this dataset needs to have dimension equal to 2 (like matrix) it became very popular to use capital letter for it.
@@ -179,7 +177,8 @@ reg.fit(X, y)
 
 
 
-    LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+    LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+             normalize=False)
 
 
 
@@ -203,12 +202,12 @@ plt.ylabel("Disease progression")
 
 
 
-    Text(0,0.5,'Disease progression')
+    Text(0, 0.5, 'Disease progression')
 
 
 
 
-![png](2019-01-07-Train-Test-Model_files/2019-01-07-Train-Test-Model_20_1.png)
+![png](/assets/2019-02-15-Train-Test-Model_files/2019-02-15-Train-Test-Model_20_1.png)
 
 
 ### Mean Squared Error and R2 score
@@ -229,7 +228,7 @@ for i in range(N_SAMPLES):
 ```
 
 
-![png](2019-01-07-Train-Test-Model_files/2019-01-07-Train-Test-Model_22_0.png)
+![png](/assets/2019-02-15-Train-Test-Model_files/2019-02-15-Train-Test-Model_22_0.png)
 
 
 We can take an average of these pointwise errors:
@@ -510,7 +509,7 @@ boston.keys()
 
 
 
-    dict_keys(['data', 'target', 'feature_names', 'DESCR'])
+    dict_keys(['data', 'target', 'feature_names', 'DESCR', 'filename'])
 
 
 
@@ -524,4 +523,4 @@ __Step 4__ Plot real values vs. predicted one.
 
 __Step 5__ Try repeat it with other variables. Are there other variables that performs better than `percentage of lower status of the population`. 
 
-_Updated: 2019-01-26_
+_Updated: 2019-02-14_

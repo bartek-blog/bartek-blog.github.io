@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "What Is Machine Learing?"
+title:  "Machine Learning Part 1: What Is Machine Learing?"
 date:   2019-02-13 18:00:00 +0200
 categories: ml introduction
 ---
@@ -20,9 +20,12 @@ store. Or detect a disease of a patient.
 
 In classical science we are observing reality and we are trying to find rules or formulas that model
 it. For example, you may try to observe an object that moves with constant speed. By comparing
-different distances $S$ and times $t$ you should get to a conclusion that $S = C \cdot t$, where $C$
-is some constant (which is of course the speed). This formula allows you to tell how much time it
-takes for an object to move on distances that you have not seen before.
+different distances $S$ and times $t$ you should get to a conclusion that 
+
+$$S = C \cdot t$$, 
+
+where $C$ is some constant (which is of course the speed). This formula allows you to tell how much
+time it takes for an object to move on distances that you have not seen before.
 
 In machine learning we do something similar. We start with a formula, often with many unknown
 parameters. Then we fit those parameters to given data and then on new data we test how well we have
@@ -99,4 +102,6 @@ pieces on the board is the __state__. The objective of one of a reinforcement al
 train the model was to win as many games as possible (the __reward__ is 1 if the agent win the game
 and -1 if lose).
 
-
+__Next__ In the second part we will explain what Linear Regression is, how to train this kind of
+model and then test its performance.
+See [Machine Learning Part 2: How to train linear model and then test its performance]({% post_url 2019-02-15-Train-Test-Model %})

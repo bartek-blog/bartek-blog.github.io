@@ -14,12 +14,18 @@ same computer. It is somehow similar to python's virtualenvs, but has more featu
 
 ## Installation
 
-Is quite easy: see <https://rvm.io/>. For Mac additionally we have to install `gnupg` by calling:
+Is quite easy: see <https://rvm.io/>. 
+
+For Mac additionally we have to install `gnupg` by calling:
 {% highlight shell %}
 brew install gnupg
 {% endhighlight %}
-and add the following lines to `.bash_profile`:
+and for Ubuntu:
+{% highlight shell %}
+sudo apt install gnupg2
+{% endhighlight %}
 
+Then add the following lines to `.bash_profile` (or `.bashrc`):
 ``` shell
 export PATH="$PATH:$HOME/.rvm/bin"
 # Load RVM into a shell session *as a function*
@@ -32,6 +38,11 @@ export PATH="$PATH:$HOME/.rvm/bin"
 rvm get head && rvm reload
 rvm list known
 {% endhighlight %}
+
+If you get, __Warning! PATH is not properly set up, ...__ you can try to run:
+```shell
+rvm reset
+```
 
 In order to install a MRI version (Matz’s Ruby Interpreter, 
 the original version used by most people) you can type, for example,
@@ -65,8 +76,8 @@ cd bartek-blog
 {% endhighlight %}
 And run the following lines:
 {% highlight shell %}
-rvm ruby-2.6.0-preview2 do rvm gemset create bartek_blog
-rvm --ruby-version use ruby-2.6.0-preview2@bartek_blog
+rvm  ruby-2.6.1 do rvm gemset create bartek_blog
+rvm --ruby-version use  ruby-2.6.1@bartek_blog
 {% endhighlight %}
 This will create files `.ruby-gemset` and `.ruby-version`. Now each time ones enter the directory 
 `rvm` with switch to the desired version of ruby automatically.

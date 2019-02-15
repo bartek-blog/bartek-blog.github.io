@@ -1,15 +1,22 @@
 ---
 layout: post
 comments: true
-title:  "Linear Regression"
-date:   2019-01-07 18:00:00 +0200
+title:  "Machine Learning Part 2: How to train linear model and then test its performance"
+date:   2019-02-15 12:00:00 +0200
 categories: ml python sklearn
 ---
-# Linear Regression
+## Introduction
 
 In this note we would like to explain two concepts.
-* What it means to train a model.
+* What it means to build and train a model.
 * What __Linear Regression__ is. 
+
+For now, let us tell you that in order to __build and train a model__ we will do the following five steps:
+1. Prepare data.
+2. Split data into train and test.
+3. Build a model.
+4. Fit the model to train data.
+5. Evaluate model on test data.
 
 But first let's look at our dataset.
 
@@ -17,39 +24,53 @@ But first let's look at our dataset.
 
 
 ```python
-import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import datasets, linear_model
-from sklearn.metrics import mean_squared_error, r2_score
 
-diabetes = datasets.load_diabetes()
-diabetes.keys()
+import matplotlib.pyplot as plt
+import matplotlib
+
+from sklearn import datasets, linear_model
 ```
 
 
+```python
+matplotlib.rcParams['figure.figsize'] = [20, 10]
+```
 
 
-    dict_keys(['data', 'target', 'DESCR', 'feature_names'])
+```python
+diabetes = datasets.load_diabetes()
+```
 
+This dataset contains:
+1. __Objective__ or __respond__: a quantitative measure of disease progression one year after baseline. 
+2. __Features__ that are used to predict. Those are 10 variables: 
+    * age, 
+    * sex, 
+    * body mass index, 
+    * average blood pressure, 
+    * six blood serum measurements.
+    
+__Warning__ Features are _standarized_. We will explain what exactly it means another time. Shortly it means that they are rescaled to have mean equal to zero and standard variation equal to 1. That is why, for example, `body mass index` can be negative.
 
+You can get more info about data by calling `diabetes.DESCR`.
 
 
 ```python
 print(diabetes.DESCR)
 ```
 
-    Diabetes dataset
-    ================
+    .. _diabetes_dataset:
     
-    Notes
-    -----
+    Diabetes dataset
+    ----------------
     
     Ten baseline variables, age, sex, body mass index, average blood
     pressure, and six blood serum measurements were obtained for each of n =
     442 diabetes patients, as well as the response of interest, a
     quantitative measure of disease progression one year after baseline.
     
-    Data Set Characteristics:
+    **Data Set Characteristics:**
     
       :Number of Instances: 442
     
@@ -57,17 +78,17 @@ print(diabetes.DESCR)
     
       :Target: Column 11 is a quantitative measure of disease progression one year after baseline
     
-      :Attributes:
-        :Age:
-        :Sex:
-        :Body mass index:
-        :Average blood pressure:
-        :S1:
-        :S2:
-        :S3:
-        :S4:
-        :S5:
-        :S6:
+      :Attribute Information:
+          - Age
+          - Sex
+          - Body mass index
+          - Average blood pressure
+          - S1
+          - S2
+          - S3
+          - S4
+          - S5
+          - S6
     
     Note: Each of these 10 feature variables have been mean centered and scaled by the standard deviation times `n_samples` (i.e. the sum of squares of each column totals 1).
     
@@ -77,23 +98,18 @@ print(diabetes.DESCR)
     For more information see:
     Bradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) "Least Angle Regression," Annals of Statistics (with discussion), 407-499.
     (http://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf)
-    
 
 
 ## Problem
 
 __Main Question__ Can we predict disease progression based on body mass index?
 
-This we will try to answer in this note. For that we need to build and train model. What does it mean? Here we will simplify it a bit and reduce it to the following steps:
-1. Prepare data.
-2. Split data into train and test.
-3. Build a model.
-4. Fit model to train data.
-5. Evaluate model on test data.
+Wwe will try to answer this in here. For that we need to build a model the will do this for us.
 
 
 ## Prepare data
-So let's start with preparing daata. In order to answer Main Question, we will consider only the third column of this dataset, that is `Body mass index`. Let's save this column as `X` dataset. Variables in dataset $X$ are often called __features__ or __exploratory variables__.
+
+So let's start with preparing data. In order to answer __Main Question__, we will consider only the third column of this dataset, that is `Body mass index`. Let's save this column as `X` dataset. Variables in dataset $X$ are often called __features__ or __exploratory variables__.
 
 
 ```python
@@ -119,12 +135,12 @@ plt.ylabel("Disease progression")
 
 
 
-    Text(0,0.5,'Disease progression')
+    Text(0, 0.5, 'Disease progression')
 
 
 
 
-![png](2018-01-07-Linear-Regression_files/2018-01-07-Linear-Regression_10_1.png)
+![png](2019-02-15-Train-Test-Model_files/2019-02-15-Train-Test-Model_12_1.png)
 
 
 __Note__ It is common in python to call the value that we want to predict by `y`. On the other hand, the dataset of features used to predict `y` is usually called `X`. It is kind on bad to use a name that start by capital letter as a name of variable not classes. However, since in `sklearn` package, this dataset needs to have dimension equal to 2 (like matrix) it became very popular to use capital letter for it.
@@ -140,7 +156,9 @@ reg = LinearRegression()
 ```
 
 __Linear Regression__ is a method that try to find a linear function that best approximate data. This means that we try to find $a$ and $b$ such that $\hat{Y}$ given by the formula
+
 $$\hat{Y} = a X + b$$
+
 is as close to our objecitve $Y$ as possible.
 
 Later we will explain what it means to __be close__, but now we will train it.
@@ -156,14 +174,11 @@ With `sklearn` it is done by calling `fit` method.
 reg.fit(X, y)
 ```
 
-    /Users/bartek.skorulski/Envs/py3.6/lib/python3.6/site-packages/scipy/linalg/basic.py:1226: RuntimeWarning: internal gelsd driver lwork query error, required iwork dimension not returned. This is likely the result of LAPACK bug 0038, fixed in LAPACK 3.2.2 (released July 21, 2010). Falling back to 'gelss' driver.
-      warnings.warn(mesg, RuntimeWarning)
 
 
 
-
-
-    LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+    LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+             normalize=False)
 
 
 
@@ -187,17 +202,18 @@ plt.ylabel("Disease progression")
 
 
 
-    Text(0,0.5,'Disease progression')
+    Text(0, 0.5, 'Disease progression')
 
 
 
 
-![png](2018-01-07-Linear-Regression_files/2018-01-07-Linear-Regression_18_1.png)
+![png](2019-02-15-Train-Test-Model_files/2019-02-15-Train-Test-Model_20_1.png)
 
 
 ### Mean Squared Error and R2 score
 
 For every real value $y_i$ we have predicted one $\hat{y}_i$. The the absoulut value of the difference is the error for data point $i$. This is denoted by $e_i$ and given by formula
+
 $$e_i = \left|y_i - \hat{y}_i\right|.$$
 
 Let's plot those errors for first 30 samples.
@@ -212,16 +228,21 @@ for i in range(N_SAMPLES):
 ```
 
 
-![png](2018-01-07-Linear-Regression_files/2018-01-07-Linear-Regression_20_0.png)
+![png](2019-02-15-Train-Test-Model_files/2019-02-15-Train-Test-Model_22_0.png)
 
 
 We can take an average of these pointwise errors:
+
 $$\frac{1}{N}\sum_i^N \left| y - \hat{y}_i\right|.$$
+
 This error is called __Mean Absolute Error__.
 
 However, for various reasons in many situations we prefer to square the distance before taking the sum. This is called __Mean Squared Error__ and we denote it by $MSE$. So
+
 $$MSE(\hat{Y}) = \frac{1}{N}\sum_i^N \left(y_i - \hat{y}_i\right)^2$$
+
 Now if we square we have something called __Root Mean Square Error__. This is something that could be interpratate as "average error" the same way we interpratate __standard deviation__ as average deviation.
+
 $$RMSE(\hat{Y}) = \sqrt{\frac{1}{N}\sum_i^N \left(y_i - \hat{y}_i\right)^2}$$
 
 __Why we prefer MSE?__ It depends on situtation. These are few important arguments for using MSE:
@@ -247,7 +268,7 @@ MSE, RMSE
 
 
 
-    (3890.456585461274, 62.3735247157099)
+    (3890.456585461273, 62.37352471570989)
 
 
 
@@ -256,17 +277,27 @@ MSE, RMSE
 So we could say that we sort of have average error of 62, which seems to OK since the outcome has mean around 150.
 
 But, we should consider here how much data are spreaded. So the idea is to consider the mean of $Y$ as the simplest possible solution. Let's denote this mean by $\mu_Y$. That is
+
 $$\mu_y = \frac{1}{N}\sum y_i.$$
+
 Note then that for this prediction $\tilde{Y}$ ($\tilde{y_i} = \mu_Y$) Mean Square Error is equal to:
+
 $$MSE(\tilde{Y})=\frac{1}{N}\sum ( y_i - \mu_Y)^2.$$
+
 And this is simply the variance of $Y$, denoted by $D^2Y$. So we will compare $MSE$ with variance of $Y$ given by
+
 $$D^2Y = \frac{1}{N}\sum ( y_i - \mu_Y)^2).$$
 
 In order to compare $MSE(\hat{Y})$ and $D^2Y$ we take their difference and divide by the variance $D^2Y$. This is called $R^2$ score. This is then
+
 $$R^2 = \frac{D^2Y - MSE(\hat{Y})}{D^2Y} = 1- \frac{MSE(\hat{Y})}{D^2Y}.$$
+
 Note that if $\hat{y}$ is nothing better than $\mu_Y$ (that is $MSE(\hat{Y}) = D^2Y$) then 
+
 $$R^2= 0.$$
+
 On the other side, if $MSE(\hat{Y}) = 0$ (perfect prediction), then 
+
 $$R^2=1$$
 
 #### Python code
@@ -284,7 +315,7 @@ R2
 
 
 
-    0.34392376022538007
+    0.3439237602253802
 
 
 
@@ -402,7 +433,7 @@ print("On test: RMSE={}, R2={}".format(
     r2_score(y_test, y_test_hat)))
 ```
 
-    On test: RMSE=63.423019803292796, R2=0.33001184974053155
+    On test: RMSE=63.423019803292796, R2=0.33001184974053166
 
 
 Let's compare it to performance on train.
@@ -444,10 +475,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y)
 from sklearn.linear_model import LinearRegression
 reg = LinearRegression()
 
-# 3. Fit model to train data.
+# 4. Fit model to train data.
 reg.fit(X_train, y_train)
 
-# 4. Evaluate model on test data.
+# 5. Evaluate model on test data.
 from sklearn.metrics import mean_squared_error, r2_score
 y_test_hat = reg.predict(X_test)
 np.sqrt(mean_squared_error(y_test, y_test_hat)), r2_score(y_test, y_test_hat)
@@ -478,7 +509,7 @@ boston.keys()
 
 
 
-    dict_keys(['data', 'target', 'feature_names', 'DESCR'])
+    dict_keys(['data', 'target', 'feature_names', 'DESCR', 'filename'])
 
 
 
@@ -491,3 +522,5 @@ __Step 3__ Exectute 5 steps we have disscussed here. Is this model performs bett
 __Step 4__ Plot real values vs. predicted one.
 
 __Step 5__ Try repeat it with other variables. Are there other variables that performs better than `percentage of lower status of the population`. 
+
+_Updated: 2019-02-14_
