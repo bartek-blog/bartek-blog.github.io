@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title:  "How to choose best model: multiple linear regression"
-date:   2019-01-26 18:00:00 +0200
+title:  "Machine Learning Part 3: How to choose best multiple linear model"
+date:   2019-02-16 08:00:00 +0200
 categories: ml python sklearn
 ---
 ## Introduction
@@ -49,15 +49,15 @@ __Multiple Linear Regression__ is a model that have $n+1$ parameters $a_0$, $a_1
 $$\hat{y} = a_0x_0 + a_1x_1 + \ldots + a_nx_n + b$$
 
 Recall that, in our case, we have the following 10 variables:
-    * $x_0$: age, 
-    * $x_1$: sex, 
-    * $x_2$: body mass index, 
-    * $x_3$: average blood pressure, 
-    * $x_4$, $x_5$, $x_6$, $x_7$, $x_8$, $x_9$: six blood serum measurements.
+* $x_0$: age, 
+* $x_1$: sex, 
+* $x_2$: body mass index, 
+* $x_3$: average blood pressure, 
+* $x_4$, $x_5$, $x_6$, $x_7$, $x_8$, $x_9$: six blood serum measurements.
     
 So we have 11 parameters $a_0$, $a_1$, $a_2$, $a_3$, $a_4$, $a_5$, $a_6$, $a_7$, $a_8$, $a_9$ and $b$. So the model has a form:
 
-$$\hat{y} = a_0x_0 + a_1x_1 + a_2x_3 + a_3x_3 + a_6x_6 + a_8x_8 + a_9x_9 + b$$
+$$\hat{y} = a_0x_0 + a_1x_1 + a_2x_2 + a_3x_3 + a_4x_4 + a_5x_5 + a_6x_6 + + a_7x_7 + a_8x_8 + a_9x_9 + b$$
 
 ## Building and testing models
 
@@ -107,7 +107,8 @@ reg2.fit(X_train, y_train) # here we take all possible variables
 
 
 
-    LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+    LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+             normalize=False)
 
 
 
@@ -224,17 +225,20 @@ print("Total number of non-empty combination is {}.".format(len(performance)))
 
 ```python
 plt.scatter(performance["n_columns"], performance["RMSE"], alpha = 0.3)
+plt.xlabel("Number of columns")
+plt.ylabel("Root of Mean Square Error")
+plt.title("How model's performance depends on number of columns")
 ```
 
 
 
 
-    <matplotlib.collections.PathCollection at 0x1247aad68>
+    Text(0.5, 1.0, "How model's performance depends on number of columns")
 
 
 
 
-![png](/assets/2019-01-26-How-to-choose-best-model_files/2019-01-26-How-to-choose-best-model_21_1.png)
+![png](2019-02-16-How-to-choose-best-model_files/2019-02-16-How-to-choose-best-model_21_1.png)
 
 
 
@@ -265,41 +269,41 @@ performance.sort_values("RMSE").head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>n_columns</th>
-      <th>columns</th>
       <th>RMSE</th>
+      <th>columns</th>
+      <th>n_columns</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>781</th>
-      <td>6</td>
-      <td>(1, 2, 3, 6, 8, 9)</td>
       <td>47.880858</td>
+      <td>(1, 2, 3, 6, 8, 9)</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>865</th>
-      <td>7</td>
-      <td>(0, 1, 2, 3, 6, 8, 9)</td>
       <td>47.889001</td>
+      <td>(0, 1, 2, 3, 6, 8, 9)</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>521</th>
-      <td>5</td>
-      <td>(1, 2, 3, 6, 8)</td>
       <td>48.020136</td>
+      <td>(1, 2, 3, 6, 8)</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>647</th>
-      <td>6</td>
-      <td>(0, 1, 2, 3, 6, 8)</td>
       <td>48.038394</td>
+      <td>(0, 1, 2, 3, 6, 8)</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>981</th>
-      <td>8</td>
-      <td>(0, 1, 2, 3, 6, 7, 8, 9)</td>
       <td>48.210301</td>
+      <td>(0, 1, 2, 3, 6, 7, 8, 9)</td>
+      <td>8</td>
     </tr>
   </tbody>
 </table>
@@ -321,39 +325,51 @@ So the best choice of columns are columns: `(1, 2, 3, 6, 8, 9)`. Let's see what 
 
 
 
+Let's see what are the parameters of this model.
+
 
 ```python
 best_reg = LinearRegression()
 best_reg.fit(X_train[:, (1, 2, 3, 6, 8, 9)], y_train)
 y_test_hat = best_reg.predict(X_test[:, (1, 2, 3, 6, 8, 9)])
-plt.scatter(y_test, y_test-y_test_hat, alpha = 0.3)
-plt.xlabel("Real values")
-plt.ylabel("Errors")
+print("Parameters a: ", best_reg.coef_)
+print("Parameter b: ", best_reg.intercept_)
 ```
 
+    Parameters a:  [-225.78647725  533.21599131  319.5160069  -293.65810211  491.19212091
+       35.45789137]
+    Parameter b:  153.00353416418773
 
 
+### Where we make largest mistakes
 
-    Text(0,0.5,'Errors')
+When we train the model we can do further analysis where we have made the largest mistake. It is almost imposible to plot and then understand the plot of a function that have that many variables. Therefore it is common to plot residuals that is the difference between the real value and the predicted one. That is
 
+$$e_i = y_i - \hat{y}_i$$
 
-
-
-![png](/assets/2019-01-26-How-to-choose-best-model_files/2019-01-26-How-to-choose-best-model_25_1.png)
-
+We plot it against the real value $y_i$. Here is the plot.
 
 
 ```python
-best_reg.coef_
+
+plt.scatter(y_test, y_test-y_test_hat, alpha = 0.3)
+plt.xlabel("Real values")
+plt.ylabel("Residuals")
+plt.title("Residual plot")
 ```
 
 
 
 
-    array([-225.78647725,  533.21599131,  319.5160069 , -293.65810211,
-            491.19212091,   35.45789137])
+    Text(0.5, 1.0, 'Residual plot')
 
 
+
+
+![png](2019-02-16-How-to-choose-best-model_files/2019-02-16-How-to-choose-best-model_28_1.png)
+
+
+One can see that we make the largest mistakes when real values are small.
 
 ## Hyperparameters and train-dev-test split
 
@@ -406,13 +422,13 @@ However, as we have said before we have also another kind of parameters that are
 X = diabetes.data
 y = diabetes.target
 # 2. Split data into train,  dev and test.
-X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, random_state=666, test_size=0.2)
-X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, random_state=667, test_size=0.25)
+X_train_dev, X_test, y_train_dev, y_test = train_test_split(X, y, random_state=666, test_size=0.2)
+X_train, X_dev, y_train, y_dev = train_test_split(X_train_dev, y_train_dev, random_state=667, test_size=0.25)
 ```
 
 
 ```python
-len(y_train), len(y_val), len(y_test)
+len(y_train), len(y_dev), len(y_test)
 ```
 
 
@@ -426,7 +442,7 @@ len(y_train), len(y_val), len(y_test)
 ```python
 # 3. Build models, fit them to train dataset and evaluate on dev dataset.
 
-performance = get_performance_on_combinations_of_columns(X_train, X_val, y_val) 
+performance = get_performance_on_combinations_of_columns(X_train, X_dev, y_dev) 
 performance.sort_values("RMSE").head()
 ```
 
@@ -451,41 +467,41 @@ performance.sort_values("RMSE").head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>n_columns</th>
-      <th>columns</th>
       <th>RMSE</th>
+      <th>columns</th>
+      <th>n_columns</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>765</th>
-      <td>6</td>
-      <td>(1, 2, 3, 4, 5, 8)</td>
       <td>56.184161</td>
+      <td>(1, 2, 3, 4, 5, 8)</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>932</th>
-      <td>7</td>
-      <td>(1, 2, 3, 4, 5, 6, 8)</td>
       <td>56.211273</td>
+      <td>(1, 2, 3, 4, 5, 6, 8)</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>849</th>
-      <td>7</td>
-      <td>(0, 1, 2, 3, 4, 5, 8)</td>
       <td>56.262737</td>
+      <td>(0, 1, 2, 3, 4, 5, 8)</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>968</th>
-      <td>8</td>
-      <td>(0, 1, 2, 3, 4, 5, 6, 8)</td>
       <td>56.297644</td>
+      <td>(0, 1, 2, 3, 4, 5, 6, 8)</td>
+      <td>8</td>
     </tr>
     <tr>
       <th>936</th>
-      <td>7</td>
-      <td>(1, 2, 3, 4, 5, 8, 9)</td>
       <td>56.301163</td>
+      <td>(1, 2, 3, 4, 5, 8, 9)</td>
+      <td>7</td>
     </tr>
   </tbody>
 </table>
@@ -500,7 +516,7 @@ best_columns = (1, 2, 3, 4, 5, 8)
 
 # 5. Build and fit the model with these hyperparameters to both train and dev datasets.
 c = LinearRegression()
-best_reg.fit(X_train[:, best_columns], y_train)
+best_reg.fit(X_train_dev[:, best_columns], y_train_dev)
 y_test_hat = best_reg.predict(X_test[:, best_columns])
 np.sqrt(mean_squared_error(y_test, y_test_hat))
 ```
@@ -508,7 +524,7 @@ np.sqrt(mean_squared_error(y_test, y_test_hat))
 
 
 
-    48.79549385587892
+    49.320937456254434
 
 
 
@@ -525,3 +541,7 @@ Here we have the data set.
 from sklearn.datasets import load_boston
 boston = load_boston()
 ```
+
+__To be countinued__
+
+_Updated: 2019-02-16_

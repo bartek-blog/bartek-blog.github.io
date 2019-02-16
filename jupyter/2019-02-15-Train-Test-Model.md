@@ -523,6 +523,8 @@ __Step 4__ Plot real values vs. predicted one.
 
 __Step 5__ Try repeat it with other variables. Are there other variables that performs better than `percentage of lower status of the population`. 
 
-__To be continued ...__
+__Next__ In the next part we will explain what Multiple Linear Regression is, and how to choose best model if we have many of them.
+See [Machine Learning Part 3: How to choose best multiple linear model]({% post_url 2019-02-16-How-to-choose-best-model %})
 
-_Updated: 2019-02-14_
+
+_Updated: 2019-02-15_

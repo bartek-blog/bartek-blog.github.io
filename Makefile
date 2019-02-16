@@ -19,7 +19,7 @@ markdowns_from_jupyter: _post/2018-09-11-AWS-CLI-And-S3.markdown\
 	_post/2018-10-06-Serving-Model.markdown\
 	_post/2018-11-12-install-pytorch-with-conda.markdown\
 	_post/2019-02-15-Train-Test-Model.markdown\
-	_post/2019-01-26-How-to-choose-best-model.markdown
+	_post/2019-02-16-How-to-choose-best-model.markdown
 
 _post/2018-09-11-AWS-CLI-And-S3.markdown:
 	jupyter nbconvert --to markdown jupyter/2018-09-11-AWS-CLI-And-S3.ipynb
@@ -39,9 +39,9 @@ _post/2019-02-15-Train-Test-Model.markdown:
 	jupyter nbconvert --to markdown jupyter/2019-02-15-Train-Test-Model.ipynb
 	python scripts/move_jupyter_md_to_posts.py 2019-02-15-Train-Test-Model
 
-_post/2019-01-26-How-to-choose-best-model.markdown:
-	jupyter nbconvert --to markdown jupyter/2019-01-26-How-to-choose-best-model.ipynb
-	python scripts/move_jupyter_md_to_posts.py 2019-01-26-How-to-choose-best-model
+_post/2019-02-16-How-to-choose-best-model.markdown:
+	jupyter nbconvert --to markdown jupyter/2019-02-16-How-to-choose-best-model.ipynb
+	python scripts/move_jupyter_md_to_posts.py 2019-02-16-How-to-choose-best-model
 
 clean: clean_rmd clean_jupyter
 
