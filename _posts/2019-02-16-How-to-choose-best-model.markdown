@@ -542,6 +542,7 @@ from sklearn.datasets import load_boston
 boston = load_boston()
 ```
 
-__To be countinued__
+__Next__ In the next part we will explain what Multiple Linear Regression is, and how to choose best model if we have many of them.
+See [Machine Learning Part 4: Bias–Variance Trade-Off in Polinomial Regression]({% post_url 2019-02-17-Bias-Variance-Trade-Off %})
 
-_Updated: 2019-02-16_
+_Updated: 2019-02-17_
