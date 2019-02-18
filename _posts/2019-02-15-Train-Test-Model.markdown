@@ -11,14 +11,18 @@ In this note we would like to explain two concepts.
 * What it means to build and train a model.
 * What __Linear Regression__ is. 
 
-For now, let us tell you that in order to __build and train a model__ we will do the following five steps:
+For now, let us tell you that in order to __build and train a model__ we do the following five steps:
 1. Prepare data.
 2. Split data into train and test.
 3. Build a model.
 4. Fit the model to train data.
 5. Evaluate model on test data.
 
-But first let's look at our dataset.
+But before we get there we will first:
+* take a closer look at our data, 
+* we explain how to train linear regression, 
+* we define metrics that are used to evaluate the model,
+* then discuss why we need split data.
 
 ## Diabetes dataset
 
@@ -155,11 +159,11 @@ from sklearn.linear_model import LinearRegression
 reg = LinearRegression()
 ```
 
-__Linear Regression__ is a method that try to find a linear function that best approximate data. This means that we try to find $a$ and $b$ such that $\hat{Y}$ given by the formula
+__Linear Regression__ is a method that tries to find a linear function that best approximate data. This means that we try to find $a$ and $b$ such that $\hat{Y}$ given by the formula
 
 $$\hat{Y} = a X + b$$
 
-is as close to our objecitve $Y$ as possible.
+is as close to our objective $Y$ as possible.
 
 Later we will explain what it means to __be close__, but now we will train it.
 
@@ -413,7 +417,7 @@ __Question__ Do we always split in two?
 No. When we do _hyperparameter tunnig_ we should have three sets. Here we are not doing it now, so do not worry.
 
 
-### Train of train, test on test
+### Train on train, test on test
 
 So now we are going to train our model only on test set. Then we will calculate predicted values for data from 
 test and see how big is error. So we are going to execute the following steps:

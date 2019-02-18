@@ -11,7 +11,7 @@ In this note we would like to explain two concepts.
 * How to choose best models.
 * What __Multiple Linear Regression__ is. 
 
-Here we will explain why spliting the dataset may not be enough and we introduce train-dev-test sliting.
+Here we will explain why splitting the dataset may not be enough and we introduce train-dev-test splitting.
 
 ## Diabetes dataset
 
@@ -406,7 +406,7 @@ best_reg.intercept_
 
 
 
-However, as we have said before we have also another kind of parameters that are actully our choice of colums. Those are called __hyperparameters__. In order to find them we have also done some fitting. We have taken 1023 combinations and see which one has performed best on our test dataset. This is not very scientific, since we use this set to report final performance of our fitted model. Therefore we introduce further spliting of train set into validation set. 
+However, as we have said before we have also another kind of parameters that are actually our choice of columns. Those are called __hyperparameters__. In order to find them we have also done some fitting. We have taken 1023 combinations and see which one has performed best on our test dataset. This is not very scientific, since we use this set to report final performance of our fitted model. Therefore we introduce further splitting of train set into validation set. 
 
 
 1. Prepare data. 
