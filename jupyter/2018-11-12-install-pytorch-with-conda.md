@@ -1,4 +1,10 @@
-
+---
+layout: post
+comments: true
+title:  "How to install pytorch with conda"
+date:   2018-11-12 23:00:00 +0200
+categories: python pytorch conda
+---
 # How to install pytorch with conda
 
 Here we will explain how to install pytorch with conda.
@@ -81,5 +87,5 @@ plt.show()
 ```
 
 
-![png](2018-11-12-install-pytorch-with-conda_files/2018-11-12-install-pytorch-with-conda_8_0.png)
+![png](2018-11-12-install-pytorch-with-conda_files/2018-11-12-install-pytorch-with-conda_9_0.png)
 

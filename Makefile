@@ -15,38 +15,20 @@ _posts/2018-08-14-install-sparkR.markdown: Rmd/2018-08-14-install-sparkR.Rmd
 sync_jupyter_imgs:
 	rsync -avu --delete "jupyter/jupyter_imgs/" "assets/jupyter_imgs/"
 
-markdowns_from_jupyter: _post/2018-09-11-AWS-CLI-And-S3.markdown\
-	_post/2018-10-06-Serving-Model.markdown\
-	_post/2018-11-12-install-pytorch-with-conda.markdown\
-	_post/2019-02-15-Train-Test-Model.markdown\
-	_post/2019-02-16-How-to-choose-best-model.markdown\
-	_post/2019-02-17-Bias-Variance-Trade-Off.markdown
+jupyter_notebooks = 2018-09-11-AWS-CLI-And-S3\
+	2018-10-06-Serving-Model\
+	2018-11-12-install-pytorch-with-conda\
+	2019-02-15-Train-Test-Model\
+	2019-02-16-How-to-choose-best-model\
+	2019-02-17-Bias-Variance-Trade-Off\
+	2019-02-19-Classification
 
-_post/2018-09-11-AWS-CLI-And-S3.markdown:
-	jupyter nbconvert --to markdown jupyter/2018-09-11-AWS-CLI-And-S3.ipynb
-	cp jupyter/2018-09-11-AWS-CLI-And-S3.header _posts/2018-09-11-AWS-CLI-And-S3.markdown
-	cat jupyter/2018-09-11-AWS-CLI-And-S3.md >> _posts/2018-09-11-AWS-CLI-And-S3.markdown
+jupyter2markdown: $(jupyter_notebooks)
 
-_post/2018-10-06-Serving-Model.markdown:
-	jupyter nbconvert --to markdown jupyter/2018-10-06-Serving-Model.ipynb
-	cp jupyter/2018-10-06-Serving-Model.header _posts/2018-10-06-Serving-Model.markdown
-	cat jupyter/2018-10-06-Serving-Model.md >> _posts/2018-10-06-Serving-Model.markdown
-
-_post/2018-11-12-install-pytorch-with-conda.markdown:
-	jupyter nbconvert --to markdown jupyter/2018-11-12-install-pytorch-with-conda.ipynb
-	python scripts/move_jupyter_md_to_posts.py 2018-11-12-install-pytorch-with-conda
-
-_post/2019-02-15-Train-Test-Model.markdown:
-	jupyter nbconvert --to markdown jupyter/2019-02-15-Train-Test-Model.ipynb
-	python scripts/move_jupyter_md_to_posts.py 2019-02-15-Train-Test-Model
-
-_post/2019-02-16-How-to-choose-best-model.markdown:
-	jupyter nbconvert --to markdown jupyter/2019-02-16-How-to-choose-best-model.ipynb
-	python scripts/move_jupyter_md_to_posts.py 2019-02-16-How-to-choose-best-model
-
-_post/2019-02-17-Bias-Variance-Trade-Off.markdown:
-	jupyter nbconvert --to markdown jupyter/2019-02-17-Bias-Variance-Trade-Off.ipynb
-	python scripts/move_jupyter_md_to_posts.py 2019-02-17-Bias-Variance-Trade-Off
+$(jupyter_notebooks):
+	echo notebook: "$@"
+	jupyter nbconvert --to markdown jupyter/$@.ipynb
+	python scripts/move_jupyter_md_to_posts.py $@
 
 clean: clean_rmd clean_jupyter
 

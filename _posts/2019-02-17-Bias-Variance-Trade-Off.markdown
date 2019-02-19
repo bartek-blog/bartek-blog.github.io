@@ -438,6 +438,7 @@ plt.show()
 
 There is a clear polinomial realtion. Could you find the best polinomial?
 
-__To be countinued__
+__Next__ In the next part we will explain how to evaluate classification models.
+See [Machine Learning Part 5: How we evaluate classification algorithms]({% post_url 2019-02-19-Classification %})
 
-_Updated: 2019-02-17_
+_Updated: 2019-02-19_
