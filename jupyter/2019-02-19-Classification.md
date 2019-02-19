@@ -82,6 +82,12 @@ Let's see how it works with an example.
 
 ## Dataset
 
+Here we will study data extracted from images of a breast mass. We are going to predict if a tumor observed there is malignant or not. First we will try to address the following problem.
+
+__Question__ Can we build a model that based on the radius of a tumor can classify if the tumor is malignant or not?
+
+For that let's load our data.
+
 
 ```python
 from sklearn.datasets import load_breast_cancer
@@ -221,11 +227,11 @@ print(data.DESCR)
          163-171.
 
 
-So if target is 1 the cancer is __malignant__. Otherwise, if the target is 0, the cancer is __benign__.
+So if target is 1 the tumor is __malignant__. Otherwise, if the target is 0, the tumor is __benign__.
 
 
 ```python
-y = data.target == 0 # if zero then we dedect malignant cancer.
+y = data.target == 0 # if zero then we dedect malignant tumor.
 
 plt.scatter(data.data[:, [0]], y, alpha=0.3, c=y)
 plt.show()
@@ -233,10 +239,6 @@ plt.show()
 
 
 ![png](2019-02-19-Classification_files/2019-02-19-Classification_10_0.png)
-
-
-__Question__ Does cancer type depend on radius?
-
 
 
 
@@ -306,7 +308,9 @@ accuracy_score(y_test, y_test_hat)
 
 
 
-We have said that the output of our model is not `1` or `0`, that is if the observation is respectively malignant or not malignant cancer. Our real output is a probability that the observation is malignant. So we have to choose with which probability implies that the cancer is malignant. The package `sklearn` does it for us and choose 50%. Hence output `y_test_hat` is already `True` or `False`. However we can get the probabilities. We can get them in `sklearn` using `predict_prob` method. It returns two columns, first is the probability of belonging to class `0` (benign cancer) and the second is the probability of belonging to class `1` (malignant cancer). They of course sum up to 1 and we only need the second column. 
+We have said that the output of our model is not `1` or `0`, that is if the observation is respectively malignant or not malignant tumor. Our real output is a probability that the observation is malignant. So we have to choose with which probability it implies that the tumor is malignant. The package `sklearn` does it for us and choose 50%. Hence output `y_test_hat` is already `True` or `False`. 
+
+However we can get also the probabilities. We can get them in `sklearn` using `predict_prob` method. It returns two columns, first is the probability of belonging to class `0` (benign cancer) and the second is the probability of belonging to class `1` (malignant cancer). They of course sum up to 1 and we only need the second column. 
 
 
 ```python
@@ -325,11 +329,11 @@ correct_prediction/n_sample
 
 
 
-Later when we will discuss _recall_ and _precision_ we will discuss a bit when we choose 50% as a __threshold__ for decision what class we choose. 
+Later when we discuss _recall_ and _precision_, we will discuss when we choose 50% as a __threshold__ for the decision and when not. 
 
 ## Evaluation 2: Confusion matrix
 
-Imagine that in our dataset there is only 5% of observation with malignant cancer. Then one can get 95% accuracy just by labeling all observations as benign. Is it a good model? Not at all.
+Imagine that in our dataset there is only 5% of observation with malignant tumor. Then one can get 95% accuracy just by labeling all observations as benign. Is it a good model? Not at all.
 
 One can address this problem using __confusion matrix__. Confusion matrix matrix shows us complete picture how many images were correctly and incorrectly classified. As columns we put what is actual class of the observation and on rows what we have predicted. The easiest way of understanding it is to look at our example.
 
@@ -495,7 +499,7 @@ plt.show()
 ```
 
 
-![png](2019-02-19-Classification_files/2019-02-19-Classification_30_0.png)
+![png](2019-02-19-Classification_files/2019-02-19-Classification_29_0.png)
 
 
 ## Evaluation 3: Precision and recall
@@ -550,9 +554,9 @@ Imagine that we work for on-line shop. We are building a model that detects if a
 
 __Example__
 
-Sometimes we rather prefer high recall. In the cancer detection, we would rather prefer to have benign cancer misclassified and then do some extra exams to confirm that, than malignant cancer misclassified and having a patient dead during next few years.
+Sometimes we rather prefer high recall. In the cancer detection, we would rather prefer to have benign tumor misclassified and then do some extra exams to confirm that, than malignant cancer misclassified and having a patient dead during next few years.
 
-In the case of Logistic Regression we can easily improve one of it by playing with threshold. Let me show it.
+In the case of Logistic Regression we can easily improve one of precision or recall by playing with threshold. Let me show it.
 
 First we set a decision threshold to 75% and see how precision and recall have changed.
 
@@ -725,7 +729,7 @@ plt.show()
 ```
 
 
-![png](2019-02-19-Classification_files/2019-02-19-Classification_45_0.png)
+![png](2019-02-19-Classification_files/2019-02-19-Classification_44_0.png)
 
 
 Package `sklearn` contains a function `precision_recall_curve` that calculate it for us. In order to use it, we need to provide `y_score` which are values of linear part of Logistic regression before applying _sigmoid_ function. They can be obtained using `decision_function` method.
@@ -741,7 +745,7 @@ plt.show()
 ```
 
 
-![png](2019-02-19-Classification_files/2019-02-19-Classification_47_0.png)
+![png](2019-02-19-Classification_files/2019-02-19-Classification_46_0.png)
 
 
 ### Evaluation 4: F-score
@@ -806,7 +810,7 @@ f1_score(y_test, y_test_hat)
 
 
 
-## Evaluation 5: AUC - Area under ROC curve
+### Evaluation 5: AUC - Area under ROC curve
 
 Let us finish with another very important evaluation. The problem is F-score is that, when we change threshold the F-score can also change. So what is a solution? One is to use the area under precision-recall curve we have seen before. And it is sometimes used. However, much more popular is the area under ROC curve. This metric is called __AUC__. 
 
@@ -841,7 +845,7 @@ plt.show()
 ```
 
 
-![png](2019-02-19-Classification_files/2019-02-19-Classification_55_0.png)
+![png](2019-02-19-Classification_files/2019-02-19-Classification_54_0.png)
 
 
 Again, package `sklearn` contains convenient function for calculating ROC curve.
@@ -859,7 +863,7 @@ plt.show()
 ```
 
 
-![png](2019-02-19-Classification_files/2019-02-19-Classification_57_0.png)
+![png](2019-02-19-Classification_files/2019-02-19-Classification_56_0.png)
 
 
 Finally the area under the ROC curve is __AUC__. Let's use a function from `sklearn` to calculate it.
@@ -900,15 +904,15 @@ clf.fit(X_train, y_train)
 # 5. Evaluate model on test data.
 y_test_hat = clf.predict(X_test)
 y_test_score = clf.decision_function(X_test)
-print("F1-score :", f1_score(y_test, y_test_hat))
 print("AUC :", roc_auc_score(y_test, y_test_score))
+print("F1-score :", f1_score(y_test, y_test_hat))
 print("Precision :", precision_score(y_test, y_test_hat))
 print("Recall :", recall_score(y_test, y_test_hat))
 print("Accuracy score :", accuracy_score(y_test, y_test_hat))
 ```
 
-    F1-score : 0.8717948717948718
     AUC : 0.9444444444444444
+    F1-score : 0.8717948717948718
     Precision : 0.9444444444444444
     Recall : 0.8095238095238095
     Accuracy score : 0.9122807017543859
@@ -918,9 +922,64 @@ print("Accuracy score :", accuracy_score(y_test, y_test_hat))
       FutureWarning)
 
 
+## Multiple Logistic Regression
+
+Now we can easily generalize Logistic Regression with one exploratory variable to many variables the same way we can generalize Linear Regression to Multiple Linear Regression. So __Multiple Logistic Regression__ is a model that have $n+1$ parameters $a_0$, $a_1$,... $a_n$ and $b$ and it is given by formula:
+
+$$\hat{y} = \sigma(a_0x_0 + a_1x_1 + \ldots + a_nx_n + b) = \frac{1}{1+\exp(a_0x_0 + a_1x_1 + \ldots + a_nx_n + b)}.$$
+
+Actually the code is very simple and almost the same as before. Let us solve the following problem?
+
+__Question__ Can we build a model that predict if tumor is malignant that depends on radius, texture and perimeter?
+
+
+```python
+# 1. Prepare data
+X = data.data[:, [0, 1, 2]]
+y = data.target == 0
+
+# 2. Split data into train and test.
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=666)
+
+# 3. Build a model
+from sklearn.linear_model import LogisticRegression
+clf = LogisticRegression()
+
+# 4. Fit model to train data.
+clf.fit(X_train, y_train)
+
+# 5. Evaluate model on test data.
+y_test_hat = clf.predict(X_test)
+y_test_score = clf.decision_function(X_test)
+print("AUC :", roc_auc_score(y_test, y_test_score))
+print("F1-score :", f1_score(y_test, y_test_hat))
+print("Precision :", precision_score(y_test, y_test_hat))
+print("Recall :", recall_score(y_test, y_test_hat))
+print("Accuracy score :", accuracy_score(y_test, y_test_hat))
+```
+
+    AUC : 0.9591416813639035
+    F1-score : 0.8571428571428571
+    Precision : 0.9107142857142857
+    Recall : 0.8095238095238095
+    Accuracy score : 0.9005847953216374
+
+
+    /home/bartek/Envs/py3.6/lib/python3.6/site-packages/sklearn/linear_model/logistic.py:433: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
+      FutureWarning)
+
+
+Observe that this model has slightly better AUC score, but its f-score is lower. It is not easy to decide what is better, however, once you make up your mind try to stick to it and do not change for one that is more convenient to you at the moment.
+
 ## Exercise
 
-Now it's your turn. There are much more variables than radius. Could you find if there is another one that makes better fit? Use __train-dev-test split__ and __AUC score__ as a criterion for selecting the best model.
+Now it's your turn. There are much more variables over there.
+
+1. Could you find if there is another one that makes better fit? 
+2. Or there is a combination of them that produce a better model?
+
+Use __train-dev-test split__ and __AUC score__ as a criterion for selecting the best model. Would you choose the same model if you have been using __f-score__?
 
 __To be continued__
 

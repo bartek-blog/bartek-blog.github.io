@@ -5,14 +5,6 @@ title:  "AWS CLI, S3 And Boto3"
 date:   2018-09-11 00:00:00 +0200
 categories: S3 CLI AWS python boto3
 ---
-
----
-layout: post
-comments: true
-title:  "AWS CLI, S3 And Boto3"
-date:   2018-09-11 00:00:00 +0200
-categories: S3 CLI AWS python boto3
----
 ## Amazon S3
 
 ### What it is S3
