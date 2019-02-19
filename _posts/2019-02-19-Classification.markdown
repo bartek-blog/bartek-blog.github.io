@@ -882,6 +882,32 @@ roc_auc_score(y_test, y_test_score)
 
 
 
+__Extra__ There is also another curious way of calculating __AUC__. What we do we form all possible pairs of observation $(y_i, y_j)$ where $y_i$ is an negative observation (labeled with 0) and $y_j$ is a positive example (labeled with 1). Then we calculate if the scores (or probabilities) are in the right order, that is if the score of the observation i is lower than the score for the observation j. Then we calculate the fractions of corrected pairs to the all possible pair. 
+
+The following code implement it. And as you see the value is very close to the value given by `roc_auc_score` method from `sklearn` package.
+
+
+```python
+total_count = 0
+corrects = 0
+for i in range(len(y_test)):
+    if y_test[i] == 1:
+        for j in range(len(y_test)):
+            if y_test[j] == 0:
+                total_count += 1
+                if y_test_score[i] > y_test_score[j]:
+                    corrects += 1
+                
+corrects/total_count
+```
+
+
+
+
+    0.9442974720752498
+
+
+
 ## Everything together
 
 
@@ -909,6 +935,8 @@ print("F1-score :", f1_score(y_test, y_test_hat))
 print("Precision :", precision_score(y_test, y_test_hat))
 print("Recall :", recall_score(y_test, y_test_hat))
 print("Accuracy score :", accuracy_score(y_test, y_test_hat))
+
+
 ```
 
     AUC : 0.9444444444444444
