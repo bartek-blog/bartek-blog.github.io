@@ -38,7 +38,7 @@ from sklearn import datasets, linear_model
 
 
 ```python
-matplotlib.rcParams['figure.figsize'] = [20, 10]
+matplotlib.rcParams['figure.figsize'] = [10, 5]
 ```
 
 
@@ -495,7 +495,7 @@ np.sqrt(mean_squared_error(y_test, y_test_hat)), r2_score(y_test, y_test_hat)
 
 
 
-## Exercises: Boston dataset
+## Exercise 1: Boston dataset
 
 In this exercise we will use Boston Dataset to answer the following question.
 

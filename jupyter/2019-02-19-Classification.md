@@ -231,7 +231,7 @@ So if target is 1 the tumor is __malignant__. Otherwise, if the target is 0, the
 
 
 ```python
-y = data.target == 0 # if zero then we dedect malignant tumor.
+y = data.target == 0 # if zero then we detect malignant tumor.
 
 plt.scatter(data.data[:, [0]], y, alpha=0.3, c=y)
 plt.show()
@@ -935,8 +935,6 @@ print("F1-score :", f1_score(y_test, y_test_hat))
 print("Precision :", precision_score(y_test, y_test_hat))
 print("Recall :", recall_score(y_test, y_test_hat))
 print("Accuracy score :", accuracy_score(y_test, y_test_hat))
-
-
 ```
 
     AUC : 0.9444444444444444

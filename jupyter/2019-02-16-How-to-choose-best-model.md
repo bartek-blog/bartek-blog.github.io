@@ -1,4 +1,4 @@
----
+query("dt > '1961'").---
 layout: post
 comments: true
 title:  "Machine Learning Part 3: How to choose best multiple linear model"
@@ -528,7 +528,7 @@ np.sqrt(mean_squared_error(y_test, y_test_hat))
 
 
 
-## Exercises: Boston dataset
+## Exercise 1: Boston dataset
 
 In this exercise we will use Boston Dataset to answer the following question.
 
@@ -541,6 +541,18 @@ Here we have the data set.
 from sklearn.datasets import load_boston
 boston = load_boston()
 ```
+
+## Exercise 2*: Step features selection 
+
+Here we have tried all the possible combination of columns. This often impossible or very expensive to do due to, for example, large number of features, or the algorithm we use is complicated and it takes lots of time to try them all. There is another way to do this and it leads to performance that is good enough. And in practice, good enough is great. 
+
+It goes as follows.
+1. Train models that depends only on one variable, validate the model on `dev` set and choose the best one.
+2. Now train models adding just one variable, that is still not used. 
+3. If one from the new models has better performance then the previous one, select the best one a repeat the step _2_, if there are still some variables left. Otherwise stop.
+
+Your objective is to implement it for Diabetes dataset.
+
 
 __Next__ In the next part we will explain what Multiple Linear Regression is, and how to choose best model if we have many of them.
 See [Machine Learning Part 4: Bias–Variance Trade-Off in Polinomial Regression]({% post_url 2019-02-17-Bias-Variance-Trade-Off %})
