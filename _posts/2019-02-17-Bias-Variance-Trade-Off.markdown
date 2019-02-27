@@ -65,7 +65,7 @@ plt.plot(x_sorted, f(x_sorted), c="green")
 
 
 
-    [<matplotlib.lines.Line2D at 0x7f09e9e64320>]
+    [<matplotlib.lines.Line2D at 0x7fa51e812668>]
 
 
 
@@ -142,7 +142,7 @@ plt.plot(x_sorted, reg.predict(create_dataset_with_powers(x_sorted)), c="orange"
 
 
 
-    [<matplotlib.lines.Line2D at 0x7f09e7594b00>]
+    [<matplotlib.lines.Line2D at 0x7fa51bec5630>]
 
 
 
@@ -406,7 +406,7 @@ plt.legend()
 
 
 
-    <matplotlib.legend.Legend at 0x7f09e50537f0>
+    <matplotlib.legend.Legend at 0x7fa519a03780>
 
 
 

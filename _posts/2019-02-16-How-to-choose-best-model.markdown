@@ -1,4 +1,4 @@
-query("dt > '1961'").---
+---
 layout: post
 comments: true
 title:  "Machine Learning Part 3: How to choose best multiple linear model"
