@@ -250,30 +250,27 @@ Now if we square we have something called __Root Mean Square Error__. This is so
 $$RMSE(\hat{Y}) = \sqrt{\frac{1}{N}\sum_i^N \left(y_i - \hat{y}_i\right)^2}$$
 
 __Why we prefer MSE?__ It depends on situtation. These are few important arguments for using MSE:
-1. First argument is a bit outside of scope, but let me expain it befley. If you have two normally distributed variables that are related to each other (out of scope how) them when we find a linear model that maximize likelihood 
-2. Square is a differentaible function and absolute value is not. This means that we can easly caclutate gradnients which is crucial especially for Deep Learning.
-3. It penalize a lot large error, since we square them. (this can be positive or not)
+
+1. Square is a differentiable function and absolute value is not. This means that we can easily calculate gradients. This is crucial especially for Deep Learning.
+2. It penalize a lot large error, since we square them. (this can be positive or not)
 
 __Why sometimes not?__ 
 1. MAE is more intuitive. It is just average error.
-2. It does not penalize a lot large error (this can be positive or not).
+2. It does not penalize a lot large error so outliers have lower impact.
 
 #### Python code
-Let's calculate MSE and RMSE then.
+Let's calculate MAE, MSE and RMSE then.
 
 
 ```python
 N = len(y)
+MAE = (1/N) * sum(np.abs(y-y_hat))
 MSE = (1/N) * sum((y-y_hat)**2)
 RMSE = MSE**0.5
-MSE, RMSE
+print(MAE, MSE, RMSE)
 ```
 
-
-
-
-    (3890.456585461273, 62.37352471570989)
-
+    51.79862763953365 3890.456585461273 62.37352471570989
 
 
 ### Is it good or bad?
@@ -313,14 +310,10 @@ Let's do this in python.
 muY = (1/N) * sum(y)
 D2Y = (1/N) * sum((y - muY)**2)
 R2 = 1 - MSE/D2Y
-R2
+print(R2)
 ```
 
-
-
-
     0.3439237602253802
-
 
 
 #### Sklearn convinient function
