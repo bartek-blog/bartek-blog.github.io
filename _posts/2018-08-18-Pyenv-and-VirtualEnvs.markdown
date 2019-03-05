@@ -19,12 +19,30 @@ sudo apt install make build-essential zlib1g-dev libffi-dev libssl-dev \
     libbz2-dev libreadline-dev libsqlite3-dev
 ```
 
+## Mac
+``` shell
+brew install zlib
+```
+
+Then in `~/.bash_profile` or `~/.zshenv` put
+
+``` shell
+
+#For compilers to find zlib you may need to set:
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
+#For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+```
+
 ``` shell
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 ```
+If using zshell, you have to change first two `~\.bashrc` for `.zshenv` and the last for `.zshrc`. 
 
 ## Pyenv usage
 
@@ -47,7 +65,7 @@ After installing at least one version of python we can set it as global by
 pyenv global 3.7.0
 ```
 
-and also can be added as default in `.bashrc` (or `.bash_profile`) in mac
+and also can be added as default in `.bashrc` (or `.bash_profile` in mac) or `.zshrc`.
 
 ``` shell
 echo 'pyenv global 3.7.0' >> ~/.bashrc
@@ -62,6 +80,8 @@ pyenv versions
 
 ## Installation of pyenv-virtualenvwrapper
 
+<https://github.com/pyenv/pyenv-virtualenvwrapper>
+
 Fist, we need to make sure we have set up a global python (see above).
 
 ``` shell
@@ -75,13 +95,15 @@ Now you should be able to execute:
 pyenv virtualenvwrapper
 ```
 
+
 This will make sure that packages like `virtualenv` are installed on your system.
 
 In order to have access to commands of `virtualenvwrapper` every time we run sell, we could add
-this line to `.bashrc` (`.bash_profile`) by
+this line to `.bashrc` (`.bash_profile`, `.zshrc`) by
 
 ``` shell
 echo "pyenv global 3.7.0" >> ~/.bashrc
+echo "pyenv virtualenvwrapper" >> ~/.bashrc
 ```
 
 ### Update of pyenv-virtualenvwrapper
