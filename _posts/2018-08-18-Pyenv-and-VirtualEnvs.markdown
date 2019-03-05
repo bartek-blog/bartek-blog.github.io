@@ -19,7 +19,7 @@ sudo apt install make build-essential zlib1g-dev libffi-dev libssl-dev \
     libbz2-dev libreadline-dev libsqlite3-dev
 ```
 
-## Mac
+### Mac
 ``` shell
 brew install zlib
 ```
@@ -34,6 +34,8 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include"
 #For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 ```
+
+## Linux/Mac
 
 ``` shell
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
