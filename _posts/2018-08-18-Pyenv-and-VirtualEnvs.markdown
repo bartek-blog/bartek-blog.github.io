@@ -78,7 +78,6 @@ echo 'pyenv global 3.7.0' >> ~/.bashrc
 pyenv versions
 ```
 
-
 ## Installation of pyenv-virtualenvwrapper
 
 <https://github.com/pyenv/pyenv-virtualenvwrapper>
@@ -95,7 +94,6 @@ Now you should be able to execute:
 ``` shell
 pyenv virtualenvwrapper
 ```
-
 
 This will make sure that packages like `virtualenv` are installed on your system.
 
