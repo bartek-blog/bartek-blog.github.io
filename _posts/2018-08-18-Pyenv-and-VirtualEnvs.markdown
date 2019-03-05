@@ -27,7 +27,6 @@ brew install zlib
 Then in `~/.bash_profile` or `~/.zshenv` put
 
 ``` shell
-
 #For compilers to find zlib you may need to set:
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
