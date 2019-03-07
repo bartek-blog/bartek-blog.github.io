@@ -35,15 +35,16 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include"
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 ```
 
-## Linux/Mac
+## Mac/Ubuntu
 
 ``` shell
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
 ```
-If using zshell, you have to change first two `~\.bashrc` for `.zshenv` and the last for `.zshrc`. 
+If using zshell, you have to change first two `~\.bash_profile` for `.zshenv` and the last for 
+`.zshrc` or to `.bashrc` on Ubuntu.
 
 ## Pyenv usage
 
@@ -56,6 +57,13 @@ pyenv install -l
 ### Install python version
 ``` shell
 pyenv install 3.7.0
+```
+
+#### Mac
+If you get into problems, on mac you may need to use the following command.
+
+``` shell
+CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 3.7.0
 ```
 
 ### Setting up global python 
