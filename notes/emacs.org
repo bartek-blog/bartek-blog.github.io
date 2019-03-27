@@ -1,6 +1,13 @@
 * Emacs
   
 ** Installing 
+
+*** Ubuntu
+#+BEGIN_SRC shell
+sudo add-apt-repository ppa:kelleyk/emacs
+sudo apt update
+sudo apt install emacs26
+#+END_SRC
 *** Mac
 **** ispell/aspell/hunspell
 #+BEGIN_SRC shell

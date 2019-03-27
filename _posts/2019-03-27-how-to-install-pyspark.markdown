@@ -16,7 +16,13 @@ to do (use `~/.zshrc` or `./.zshenv`).
 
 First you need to download spark from 
 <https://spark.apache.org/downloads.html>
-wherever you want. I'll download and unzip it to `~\programs`.
+wherever you want. I'll download it to `~\programs`. Then unpack it there. You can do this, for 
+example by calling:
+``` shell
+cd ~/programs
+tar zxvf spark-2.4.0-bin-hadoop2.7.tgz 
+rm spark-2.4.0-bin-hadoop2.7.tgz 
+```
 
 Then I will create symbolic link to it by calling 
 
@@ -31,6 +37,7 @@ export SPARK_HOME="$HOME/programs/spark"
 export PATH=$SPARK_HOME/bin:$PATH
 ```
 
+
 ## Pyspark
 
 We assume that you are using `pyenv`. Instruction to install it are here:
@@ -41,11 +48,26 @@ So let's create environment for pyspark.
 ``` shell
 pyenv shell 3.6.8
 mkvirtualenv py3.6-spark
-pip install pyspark intel-numpy	intel-scipy intel-scikit-learn jupyter pandas
+pip install pyspark jupyter
 ```
 
 Now, you can test if you can enter pyspark shell by simply running `pyspark`.
 
+### Mac
+
+On mac we can additionally install `numpy`, `scipy` and `sklearn` form intel.
+``` shell
+pip install intel-numpy intel-scipy intel-scikit-learn pandas
+```
+
+### Ubuntu
+Unfortunatelly they does not work well with Ubuntu and pyspark, so w should install:
+``` shell
+pip install pyspark jupyter pandas numpy scipy  scikit-learn jupyter_contrib_nbextensions
+```
+
+
+## Jupyter
 
 If you want directly launch jupyter directly when running `pyspark` you can add the following lines
 in `~/.bashrc`:
@@ -55,3 +77,22 @@ export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 ```
 
+<!-- ## Hadoop -->
+
+<!-- Download hadoop 2.8 from  -->
+<!-- <http://archive.apache.org/dist/hadoop/common/hadoop-2.8.0/hadoop-2.8.0.tar.gz> -->
+<!-- into `~/progrmas` directory. -->
+
+<!-- ``` shell -->
+<!-- cd ~/programs -->
+<!-- tar zxvf hadoop-2.8.0.tar.gz -->
+<!-- rm hadoop-2.8.0.tar.gz -->
+<!-- ln -s ~/programs/hadoop-2.8.0 ~/programs/hadoop -->
+<!-- ``` -->
+
+<!-- Then add -->
+
+<!-- ``` shell -->
+<!-- export HADOOP_HOME=~/programs/hadoop -->
+<!-- ``` -->
+<!-- into `~/.bashrc`. -->
