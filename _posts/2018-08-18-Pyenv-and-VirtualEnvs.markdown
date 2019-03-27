@@ -12,6 +12,11 @@ configurations on the same machine.
 
 ## Installation of pyenv
 
+__Note__ We will assume here that you are using Ubuntu with `bash`. Therefore default shell
+configuration file is `~/.bashrc`. If you are using Mac with standard configuration, then you would
+need to use `~/.bash_profile`. And finally if you are using `zshell` then you most likely know what
+to do (use `~/.zshrc` or `./.zshenv`).
+
 ### Ubuntu
 
 ``` shell
@@ -19,12 +24,13 @@ sudo apt install make build-essential zlib1g-dev libffi-dev libssl-dev \
     libbz2-dev libreadline-dev libsqlite3-dev
 ```
 
-### Mac
+### Mac only
+
 ``` shell
 brew install zlib
 ```
 
-Then in `~/.bash_profile` or `~/.zshenv` put
+Then in `~/.bash_profile` put
 
 ``` shell
 #For compilers to find zlib you may need to set:
@@ -39,12 +45,13 @@ export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 ``` shell
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
-echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
 ```
-If using zshell, you have to change first two `~\.bash_profile` for `.zshenv` and the last for 
-`.zshrc` or to `.bashrc` on Ubuntu.
+Then in `~/.bashrc` add the following lines:
+``` shell
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
 
 ## Pyenv usage
 
@@ -74,10 +81,10 @@ After installing at least one version of python we can set it as global by
 pyenv global 3.7.0
 ```
 
-and also can be added as default in `.bashrc` (or `.bash_profile` in mac) or `.zshrc`.
+and also can be added as default in `.bashrc`:
 
 ``` shell
-echo 'pyenv global 3.7.0' >> ~/.bashrc
+pyenv global 3.7.0
 ```
 
 ### List installed python's versions
@@ -106,12 +113,13 @@ pyenv virtualenvwrapper
 This will make sure that packages like `virtualenv` are installed on your system.
 
 In order to have access to commands of `virtualenvwrapper` every time we run sell, we could add
-this line to `.bashrc` (`.bash_profile`, `.zshrc`) by
+this lines to `.bashrc`:
 
 ``` shell
-echo "pyenv global 3.7.0" >> ~/.bashrc
-echo "pyenv virtualenvwrapper" >> ~/.bashrc
+pyenv virtualenvwrapper
 ```
+(make sure that you have `pyenv global 3.7.0` there already.
+)
 
 ### Update of pyenv-virtualenvwrapper
 
@@ -169,3 +177,4 @@ deactivate
 * virtualenvwrapper: <https://virtualenvwrapper.readthedocs.io/en/latest/>
 * <https://opencafe.readthedocs.io/en/latest/getting_started/pyenv/>
 
+_Updated: 2019-03-27_
