@@ -1,6 +1,13 @@
+## Create EC2
+
 From <https://lucacerone.net/2018/install-and-configure-jupyterhub-in-an-amazon-ec2-instance/>
 
-Choose `Ubuntu 16.04`
+Choose `Ubuntu 18.04`
+
+
+Add security group
+
+
 
 save `jupyterhub.pem` to `~/.ssh/`
 
@@ -28,3 +35,4 @@ jupyter notebook --generate-config
 emacs ~/.jupyter/jupyter_notebook_config.py
 ```
 
+<https://www.guru99.com/apache.html>
