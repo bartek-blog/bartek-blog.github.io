@@ -101,7 +101,7 @@ by `RESPOSITORY`
 docker image rm nginx
 ```
 
-## Docker file: Flask app
+## Dockerfile: Flask app
 
 First we create a directory `sample_flask_app`. Inside it we will create the following files:
 1. `Dockerfile`
@@ -112,7 +112,7 @@ First we create a directory `sample_flask_app`. Inside it we will create the fol
 
 ``` dockerfile
 # Use an official Python runtime as a parent image
-FROM python:2.7-slim
+FROM python:3.6-slim
 
 # Set the working directory to /app
 WORKDIR /app
@@ -126,11 +126,8 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
-# Define environment variable
-ENV NAME World
-
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["python", "hello_world_app.py"]
 ```
 
 ### hello_world_app.py
@@ -183,6 +180,28 @@ Now you can go to `http://localhost:4001` or simply
 ``` shell
 curl http://localhost:4001
 ```
+
+## Other useful commands
+
+#### Kill all dockers 
+
+``` shell
+docker kill $(docker ps -q)
+```
+
+#### Delete all containers 
+
+``` shell
+docker rm $(docker ps -a -q)
+```
+
+#### Delete all images
+
+``` shell
+docker rmi $(docker images -q)
+```
+
+
 
 <https://codingbee.net/docker/install-docker-for-mac-using-homebrew>
 <https://docs.docker.com/docker-for-mac/>
