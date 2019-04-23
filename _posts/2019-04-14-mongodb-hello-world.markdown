@@ -1,4 +1,11 @@
-<https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/>
+---
+layout: post
+comments: true
+title:  "MongoDB: Hello World"
+date:   2019-04-14 09:00:00 +0200
+categories: mongodb install
+---
+
 
 ## Install on mac
 
@@ -19,7 +26,8 @@ mongod --config /usr/local/etc/mongod.conf
 mongo
 ```
 
-You can connect to different host, using different port or connect directly to a database by using something like:
+You can connect to different host, using different port or connect directly to a database by using
+something like:
 
 ``` shell
 mongo 192.168.0.5:27018/shop
@@ -28,6 +36,7 @@ mongo 192.168.0.5:27018/shop
 ## Create database
 
 Creating a database is as easy as tell `mongodb` to use it and inserting something in it.
+So let's start with "using" database `objects`.
 
 ``` shell
 use objects
@@ -38,7 +47,7 @@ A command to list existing databases is the following:
 ``` shell
 show dbs
 ```
-As you see there no any database. So let's insert something.
+As you see there no any database. So let's insert something in `objects`.
 
 ## Insert and query data
 
@@ -55,6 +64,8 @@ You can change it for anything you want. You can see available collections by ca
 ``` shell
 show collections
 ```
+
+## Queries: sql vs mongo
 
 ``` shell
 db.shop.find({item: "phone"})
@@ -99,3 +110,7 @@ WHERE details.manufacturer = "Apple"
 db.shop.find({"details.manufacturer": "Apple"})
 ```
 
+## Links
+
+
+* <https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/>

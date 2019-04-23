@@ -30,16 +30,16 @@ sudo apt install make build-essential zlib1g-dev libffi-dev libssl-dev \
 brew install zlib
 ```
 
-Then in `~/.bash_profile` put
+<!-- Then in `~/.bash_profile` put -->
 
-``` shell
-#For compilers to find zlib you may need to set:
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
+<!-- ``` shell -->
+<!-- #For compilers to find zlib you may need to set: -->
+<!-- export LDFLAGS="-L/usr/local/opt/zlib/lib" -->
+<!-- export CPPFLAGS="-I/usr/local/opt/zlib/include" -->
 
-#For pkg-config to find zlib you may need to set:
-export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
-```
+<!-- #For pkg-config to find zlib you may need to set: -->
+<!-- export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig" -->
+<!-- ``` -->
 
 ## Mac/Ubuntu
 
@@ -67,10 +67,13 @@ pyenv install 3.7.0
 ```
 
 #### Mac
-If you get into problems, on mac you may need to use the following command.
+If you get into problems, on mac see: <https://github.com/pyenv/pyenv/wiki/Common-build-problems>
 
+
+You may try
 ``` shell
-CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 3.7.0
+brew install 'openssl@1.1'
+CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" pyenv install 3.7.3
 ```
 
 ### Setting up global python 
@@ -177,4 +180,4 @@ deactivate
 * virtualenvwrapper: <https://virtualenvwrapper.readthedocs.io/en/latest/>
 * <https://opencafe.readthedocs.io/en/latest/getting_started/pyenv/>
 
-_Updated: 2019-03-27_
+_Updated: 2019-04-10_
