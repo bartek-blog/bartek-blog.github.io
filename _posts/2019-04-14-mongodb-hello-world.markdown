@@ -33,6 +33,12 @@ something like:
 mongo 192.168.0.5:27018/shop
 ```
 
+### User name password
+
+``` shell
+mongo --username USERNAME --password PASSWORD 127.0.0.1:27018/shop
+```
+
 ## Create database
 
 Creating a database is as easy as tell `mongodb` to use it and inserting something in it.
