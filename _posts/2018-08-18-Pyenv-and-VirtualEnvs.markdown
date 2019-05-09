@@ -73,9 +73,11 @@ If you get into problems, on mac see: <https://github.com/pyenv/pyenv/wiki/Commo
 You may try
 ``` shell
 brew install 'openssl@1.1'
-export LDFLAGS="-L/usr/local/opt/zlib/lib"                                                                                                  ✔  2981  14:18:52
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
-CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" pyenv install 3.7.3
+LDFLAGS="-L/usr/local/opt/zlib/lib"  \
+    CPPFLAGS="-I/usr/local/opt/zlib/include" \
+    CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" \
+    CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" \
+    pyenv install 3.7.0
 ```
 
 ### Setting up global python 
