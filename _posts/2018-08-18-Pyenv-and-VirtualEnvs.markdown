@@ -24,6 +24,12 @@ sudo apt install make build-essential zlib1g-dev libffi-dev libssl-dev \
     libbz2-dev libreadline-dev libsqlite3-dev
 ```
 
+### CentOS
+
+``` shell
+yum install -y  gcc gcc-c++ make git patch openssl-devel zlib-devel readline-devel sqlite-devel bzip2-devel
+```
+
 ### Mac only
 
 ``` shell
