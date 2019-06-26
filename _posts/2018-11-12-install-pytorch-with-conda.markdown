@@ -11,17 +11,26 @@ Here we will explain how to install pytorch with conda.
 
 ## Downloading
 
+You can choose right version for your system from
+<https://docs.conda.io/en/latest/miniconda.html>. 
+
+__Windows__ users should follow the tutorial from 
+<https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html>.
+
+__Mac__ users can run the following script:
+
 In terminal execute the following line:
 
 ```
-wget https://repo.continuum.io/miniconda/Miniconda3-3.7.0-MacOSX-x86_64.sh\
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh \
     -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/miniconda
 ```
 
-You can choose right version for your system following <https://conda.io/docs/user-guide/install/index.html>. Just change the string: `Miniconda3-3.7.0-MacOSX-x86_64`.
+__Linux__ users can also run the same script changing  `Miniconda3-3.7.0-MacOSX-x86_64` into 
+`Miniconda3-latest-Linux-x86_64.sh`
 
-## Adding conda to PATH
+## Adding conda to PATH (Mac and Linux)
 
 Then add `conda` to `$PATH` by running
 
@@ -30,7 +39,7 @@ export PATH="$HOME/miniconda/bin:$PATH"
 ```
 If you do not want to run it each time you start the system you can add this line to `.bash_profile` (or `.bashrc`).
 
-## Update it
+## Update conda (all platforms)
 
 ```
 conda update conda

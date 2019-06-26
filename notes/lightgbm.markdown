@@ -4,7 +4,4 @@
 brew install libomp
 ```
 
-``` shell
-cd build
-```
 
