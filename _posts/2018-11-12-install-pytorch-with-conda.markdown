@@ -55,13 +55,20 @@ source activate conda3.6
 
 You can deactivate it with `source deactive`. More info on <https://conda.io/docs/user-guide/tasks/manage-environments.html>
 
-## Installing programs needed
+## Installing pytorch (with numpy, jupyter and matplotlib)
 
 ```
 conda install mkl
-conda install numpy pandas jupyter ipython scikit-learn plotly
+conda install numpy jupyter 
 conda install pytorch torchvision -c pytorch
-conda install -c conda-forge matplotlib opencv seaborn
+conda install -c conda-forge matplotlib 
+```
+
+## Install other useful packages
+
+``` shell
+conda install pandas scikit-learn plotly
+conda install -c conda-forge opencv seaborn
 ```
 
 ## Run jupyter and test it
@@ -98,3 +105,4 @@ plt.show()
 
 ![png](/assets/2018-11-12-install-pytorch-with-conda_files/2018-11-12-install-pytorch-with-conda_9_0.png)
 
+_Updated: 2019-07-07_
