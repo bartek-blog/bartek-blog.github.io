@@ -77,7 +77,7 @@ pyenv install 3.7.0
 If you get into problems, on mac see: <https://github.com/pyenv/pyenv/wiki/Common-build-problems>
 
 
-You may try 
+You may also try 
 ``` shell
 brew install 'openssl@1.1'
 SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk\
