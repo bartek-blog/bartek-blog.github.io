@@ -77,14 +77,11 @@ pyenv install 3.7.0
 If you get into problems, on mac see: <https://github.com/pyenv/pyenv/wiki/Common-build-problems>
 
 
-You may try
+You may try 
 ``` shell
 brew install 'openssl@1.1'
-LDFLAGS="-L/usr/local/opt/zlib/lib"  \
-    CPPFLAGS="-I/usr/local/opt/zlib/include" \
-    CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" \
-    CONFIGURE_OPTS="--with-openssl=$(brew --prefix openssl@1.1)" \
-    pyenv install 3.7.0
+SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk\
+    MACOSX_DEPLOYMENT_TARGET=10.15 pyenv install 3.7.4
 ```
 
 ### Setting up global python 
@@ -191,4 +188,4 @@ deactivate
 * virtualenvwrapper: <https://virtualenvwrapper.readthedocs.io/en/latest/>
 * <https://opencafe.readthedocs.io/en/latest/getting_started/pyenv/>
 
-_Updated: 2019-04-10_
+_Updated: 2019-10-18_
