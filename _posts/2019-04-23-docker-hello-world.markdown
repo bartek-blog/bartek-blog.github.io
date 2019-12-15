@@ -31,12 +31,6 @@ docker-compose version
 docker-machine --version
 ```
 
-A standalone Kubernetes server is also included.
-
-```
-kubectl version --client
-```
-
 ### Autocomplete
 
 see <https://docs.docker.com/compose/completion/>
@@ -170,7 +164,7 @@ docker image ls
 Well, as before
 
 ``` shell
-docker run  --detach --publish=4001:80 --name=flask_hw flaskhelloworld
+docker run  --detach --publish=4001:80 --name=flaskhelloworld flaskhelloworld
 ```
 
 ## Test it
@@ -179,6 +173,12 @@ Now you can go to `http://localhost:4001` or simply
 
 ``` shell
 curl http://localhost:4001
+```
+
+## Login into docker
+
+``` shell
+docker exec -it flaskhelloworld /bin/bash
 ```
 
 ## Other useful commands
