@@ -181,6 +181,26 @@ curl http://localhost:4001
 docker exec -it flaskhelloworld /bin/bash
 ```
 
+## Push docker to docker hub
+
+On <https://hub.docker.com/> create account if you do not have one. Note that, in what follows,
+`<username>` is your username from docker hub.
+
+``` shell
+docker tag flaskhelloworld <username>/flaskhelloworld:1.0.0
+docker push <username>/flaskhelloworld:1.0.0
+```
+
+This push refers then to repository `docker.io/<username>/helloworldflask`.
+You should be able to see the repo in your account on 
+<https://hub.docker.com/repositories>.
+Moreover you should be able to run the container without building it.
+
+``` shell
+docker run  --detach --publish=5000:80\
+    --name=flaskhelloworld <username>/flaskhelloworld
+```
+
 ## Other useful commands
 
 #### Kill all dockers 
