@@ -15,6 +15,7 @@ categories: kubernetes nginx
 On mac one can install it with 
 
 ``` shell
+brew install kubectl
 brew install kubernetes-cli
 ```
 
