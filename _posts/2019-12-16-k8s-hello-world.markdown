@@ -38,6 +38,11 @@ Check the status
 ``` shell
 minikube status
 ```
+or run a dashboard
+
+``` sh
+minikube dashboard
+```
 
 ## Run simple docker container instance with kubectl
 
@@ -98,11 +103,32 @@ kubectl expose deployment flaskhelloworld --port 80 --type LoadBalancer
 minikube service flaskhelloworld
 ```
 
+If your file is in github you can try"
+
+``` sh
+kubectl apply -f https://raw.githubusercontent.com/sbartek/sample_flask_app/master/flaskhelloworld/flaskhelloworld.yaml
+```
+
+
 ### Clean up
 
+You can see what is installed on you k8s custer by:
+
+``` sh
+kubectl get all
+```
+
+You can delete service/deployment etc by
 ``` sh
 kubectl delete service nginx
 kubectl delete deployment nginx
+```
+
+Then you can stop and delete minikube by:
+
+``` sh
 minikube stop
 minikube delete
 ```
+
+_Updated: 2019-12-18_
