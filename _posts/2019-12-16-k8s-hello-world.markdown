@@ -111,13 +111,24 @@ kubectl apply -f https://raw.githubusercontent.com/sbartek/sample_flask_app/mast
 ```
 
 
-### Clean up
+## Useful commands
+
+### Login to shell
+
+``` sh
+kubectl exec -it <pod_name> -- sh
+```
+
+### What is running 
 
 You can see what is installed on you k8s custer by:
 
 ``` sh
 kubectl get all
 ```
+
+### Clean up
+
 
 You can delete service/deployment etc by
 ``` sh
@@ -132,4 +143,4 @@ minikube stop
 minikube delete
 ```
 
-_Updated: 2019-12-18_
+_Updated: 2019-12-21_
