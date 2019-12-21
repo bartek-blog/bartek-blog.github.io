@@ -103,10 +103,11 @@ kubectl expose deployment flaskhelloworld --port 80 --type LoadBalancer
 minikube service flaskhelloworld
 ```
 
-If your file is in github you can try"
+If your file is in github you can try:
 
 ``` sh
 kubectl apply -f https://raw.githubusercontent.com/sbartek/sample_flask_app/master/flaskhelloworld/flaskhelloworld.yaml
+kubectl apply -f https://raw.githubusercontent.com/sbartek/sample_flask_app/master/flaskhelloworld/flaskhelloworld-service.yaml
 ```
 
 

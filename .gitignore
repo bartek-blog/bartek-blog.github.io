@@ -16,3 +16,6 @@ _site
 **/.ipynb_checkpoints/*
 jupyter/pickles/*
 **/.DS_Store
+
+#redis
+**/dump.rdb

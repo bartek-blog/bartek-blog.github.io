@@ -26,7 +26,7 @@ redis-server
 ### Testing
 
 ``` sh
-redis-cli piing
+redis-cli ping
 ```
 
 Should return `PONG`.
@@ -70,6 +70,14 @@ pipe.get('car')
 pipe.execute()
 ```
 
+### Counter
+
+``` sh
+r.set("price", 1)
+r.incr("price")
+r.get("price")
+```
+
 ## Docker
 
 ``` sh
@@ -90,4 +98,4 @@ docker exec -it redis ]redis-cli
 get car
 ```
 
-_Updated: 2019-12-19_
+_Updated: 2019-12-21_
