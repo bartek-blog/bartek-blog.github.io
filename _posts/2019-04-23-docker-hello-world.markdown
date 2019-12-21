@@ -7,6 +7,11 @@ categories: docker flask
 ---
 
 
+## Docker
+
+If you unfamiliar with Docker and containers, you can read the following article 
+<<https://www.cio.com/article/2924995/what-are-containers-and-why-do-you-need-t>
+
 ## Install docker on mac
 
 ### Docker
@@ -222,6 +227,9 @@ docker rmi $(docker images -q)
 ```
 
 
+Links
+* <https://www.cio.com/article/2924995/what-are-containers-and-why-do-you-need-them.html>
+* <https://codingbee.net/docker/install-docker-for-mac-using-homebrew>
+* <https://docs.docker.com/docker-for-mac/>
 
-<https://codingbee.net/docker/install-docker-for-mac-using-homebrew>
-<https://docs.docker.com/docker-for-mac/>
+_Updated: 2019-12-21_
