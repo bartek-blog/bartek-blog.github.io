@@ -208,28 +208,35 @@ docker run  --detach --publish=5000:80\
 
 ## Other useful commands
 
-#### Kill all dockers 
+### Docker inspect
+
+``` shell
+docker inspect flaskhelloworld
+```
+
+### Kill all dockers 
 
 ``` shell
 docker kill $(docker ps -q)
 ```
 
-#### Delete all containers 
+### Delete all containers 
 
 ``` shell
 docker rm $(docker ps -a -q)
 ```
 
-#### Delete all images
+### Delete all images
 
 ``` shell
 docker rmi $(docker images -q)
 ```
 
-
 Links
 * <https://www.cio.com/article/2924995/what-are-containers-and-why-do-you-need-them.html>
 * <https://codingbee.net/docker/install-docker-for-mac-using-homebrew>
 * <https://docs.docker.com/docker-for-mac/>
+* <https://hub.docker.com/_/alpine/>
+* <https://siliconangle.com/2016/02/09/docker-gets-minimalist-with-plan-to-migrate-images-to-alpine-linux/>
 
 _Updated: 2019-12-21_

@@ -49,8 +49,9 @@ minikube dashboard
 <https://kubernetes.io/docs/reference/kubectl/cheatsheet/>
 
 ``` shell
-kubectl run nginx --image=nginx --generator=run-pod/v1
+kubectl create deployment nginx --image=nginx 
 kubectl get pods
+kubectl describe pods nginx
 ```
 
 More about pods <https://kubernetes.io/docs/concepts/workloads/pods/pod/>.
@@ -143,4 +144,8 @@ minikube stop
 minikube delete
 ```
 
-_Updated: 2019-12-21_
+Links
+
+* More on pods <https://kubernetes.io/docs/concepts/workloads/pods/pod/>
+
+_Updated: 2019-12-21_xs
