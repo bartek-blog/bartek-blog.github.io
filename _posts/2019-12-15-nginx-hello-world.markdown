@@ -38,7 +38,7 @@ http {
 
 ## Simple index.html
 
-Create `www/data/index.html` file with, for example:
+Create `/www/data/index.html` file with, for example:
 
 ``` html
 <!doctype html>
@@ -82,3 +82,5 @@ docker run --detach --publish=5001:80\
 
 Your page is available at
 <http://localhost:5001/>
+
+_Updated: 2019-12-23_
