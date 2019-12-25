@@ -84,41 +84,77 @@ minikube service nginx
 If you have crated a docker container and push it docker hub you can run then in k8s,
 see [Docker: Hello World]({% post_url 2019-04-23-docker-hello-world %}) for instructions.
 
-Create a file `app.yaml`
-
-``` yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: flaskhelloworld-deployment
-spec:
-  selector:
-    matchLabels:
-      app: flaskhelloworld
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: flaskhelloworld
-    spec:
-      containers:
-      - name: flaskhelloworld
-        image: barteks/flaskhelloworld:1.0.0
-        ports:
-        - containerPort: 80
+You can run it in the same imperative way as before:
+``` shell
+kubectl run flaskhelloworld --image=barteks/flaskhelloworld\
+    --generator=run-pod/v1
+kubectl expose pod flaskhelloworld --port 80 --type LoadBalancer
 ```
 
+There is also declarative way to do this. First create create a file 
+`flaskhelloworld-pod.yaml`
+
+``` yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: flaskhelloworld
+  name: flaskhelloworld
+  namespace: default
+spec:
+  containers:
+  - name: flaskhelloworld
+    image: barteks/flaskhelloworld:latest
+    ports:
+    - containerPort: 80
+```
+
+Now you can create pod with:
+
+``` sh
+kubectl apply -f flaskhelloworld-pod.yaml
+```
+
+Then for service, create file `flaskhelloworld-svc.yaml`:
+
+``` yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: flaskhelloworld
+  name: flaskhelloworld
+  namespace: default
+spec:
+  ports:
+  - nodePort: 31182
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: flaskhelloworld
+  type: LoadBalancer
+```
+
+And for creating service you can run:
+
+``` sh
+kubectl apply -f flaskhelloworld-svc.yaml
+```
+
+Now run service and open port for minikube:
+
+
 ``` shell
-kubectl apply -f app.yaml
-kubectl expose deployment flaskhelloworld --port 80 --type LoadBalancer
 minikube service flaskhelloworld
 ```
 
 If your file is in github you can try:
 
 ``` sh
-kubectl apply -f https://raw.githubusercontent.com/sbartek/sample_flask_app/master/flaskhelloworld/flaskhelloworld.yaml
-kubectl apply -f https://raw.githubusercontent.com/sbartek/sample_flask_app/master/flaskhelloworld/flaskhelloworld-service.yaml
+kubectl apply -f https://raw.githubusercontent.com/sbartek/sample_flask_app/master/flaskhelloworld/flaskhelloworld-pod.yaml
+kubectl apply -f https://raw.githubusercontent.com/sbartek/sample_flask_app/master/flaskhelloworld/flaskhelloworld-svc.yaml
 ```
 
 
