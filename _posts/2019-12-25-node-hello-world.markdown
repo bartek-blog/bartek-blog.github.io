@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Node.js Hello World with Docker
+title:  "Node.js Hello World with Docker and k8s
 date:   2019-12-25 09:00:00 +0200
 categories: javascript node docker
 ---
