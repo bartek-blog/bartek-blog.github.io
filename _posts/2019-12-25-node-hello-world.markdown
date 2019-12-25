@@ -92,7 +92,20 @@ You can push built docker to Docker Hub by:
 docker push barteks/simple_node
 ```
 
+## Run with k8s
+
+See [Kubernetes hello world]({% post_url 2019-12-16-k8s-hello-world %}) for details how to install
+minikube.
+
+Running docker on kubernetes cluster as simple as:
+
+``` shell
+kubectl run simplenode --image=barteks/simple_node --port=3000 --generator=run/v1
+```
+
 NOT FINISHED
+
+
 
 
 ## Links

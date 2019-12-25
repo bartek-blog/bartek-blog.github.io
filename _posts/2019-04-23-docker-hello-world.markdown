@@ -32,7 +32,6 @@ docker version
 
 docker-compose version
 
-
 docker-machine --version
 ```
 
@@ -44,6 +43,11 @@ In particular for `.zshrc` with oh-my-zsh:
 ```
 plugins=(... docker docker-compose
 )
+```
+You may need to remove `.zcompdump-(...)` files by
+
+``` shell
+rm ~/.zcompdump*
 ```
 
 ### Test it
