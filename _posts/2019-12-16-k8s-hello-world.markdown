@@ -59,8 +59,8 @@ minikube dashboard
 <https://kubernetes.io/docs/reference/kubectl/cheatsheet/>
 
 ``` shell
-kubectl create deployment nginx --image=nginx 
-kubectl get pods
+kubectl run nginx --image=nginx --generator=run-pod/v1
+kubectl get pods -o wide
 kubectl describe pods nginx
 ```
 
@@ -69,7 +69,7 @@ More about pods <https://kubernetes.io/docs/concepts/workloads/pods/pod/>.
 ### Create service
 
 ``` shell
-kubectl expose deployment nginx --port 80 --type LoadBalancer
+kubectl expose pod nginx --port 80 --type LoadBalancer
 kubectl get services
 ```
 

@@ -97,16 +97,24 @@ docker push barteks/simple_node
 See [Kubernetes hello world]({% post_url 2019-12-16-k8s-hello-world %}) for details how to install
 minikube.
 
-Running docker on kubernetes cluster as simple as:
+Running docker on kubernetes cluster as simple as creating pod by:
 
 ``` shell
-kubectl run simplenode --image=barteks/simple_node --port=3000 --generator=run/v1
+kubectl run simplenode --image=barteks/simple_node\
+    --port=3000 --generator=run-pod/v1
 ```
 
-NOT FINISHED
+Then you need to create service in order to expose your pod:
 
+``` shell
+kubectl expose pod simplenode --type=LoadBalancer --name simplenode-http
+```
 
+In minikube you have get access to local port by running
 
+``` shell
+minikube service simplenode-http
+```
 
 ## Links
 * https://nodejs.org/en/docs/guides/getting-started-guide/
