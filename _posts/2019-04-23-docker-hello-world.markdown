@@ -10,7 +10,7 @@ categories: docker flask
 ## Docker
 
 If you unfamiliar with Docker and containers, you can read the following article 
-<<https://www.cio.com/article/2924995/what-are-containers-and-why-do-you-need-t>
+<https://www.cio.com/article/2924995/what-are-containers-and-why-do-you-need-t>
 
 ## Install docker on mac
 

@@ -19,6 +19,16 @@ brew install kubectl
 brew install kubernetes-cli
 ```
 
+It is recommended to add aliases to shell. For example, for `zshell` with `ohmyzsh` you can do this
+by adding `kubectl` to `plugins` in `.zshrc`:
+
+``` sh
+plugins=(... kubectl)
+```
+ Then you can simply write `k` instead of `kubectl` in what follows. See 
+ <https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/kubectl> 
+ for more aliases.
+
 ## minikube
 
 We are going to use [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/).
