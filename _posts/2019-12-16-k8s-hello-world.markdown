@@ -68,6 +68,13 @@ More about pods <https://kubernetes.io/docs/concepts/workloads/pods/pod/>.
 
 ### Create service
 
+You can get to pod by forwarding the port by
+
+``` sh
+kubectl port-forward nginx 8081:80
+```
+
+However, the best way is to create a service:
 ``` shell
 kubectl expose pod nginx --port 80 --type LoadBalancer
 kubectl get services
@@ -91,7 +98,7 @@ kubectl run flaskhelloworld --image=barteks/flaskhelloworld\
 kubectl expose pod flaskhelloworld --port 80 --type LoadBalancer
 ```
 
-There is also declarative way to do this. First create create a file 
+There is also declarative way to do this. First create a file 
 `flaskhelloworld-pod.yaml`
 
 ``` yaml
@@ -101,7 +108,6 @@ metadata:
   labels:
     run: flaskhelloworld
   name: flaskhelloworld
-  namespace: default
 spec:
   containers:
   - name: flaskhelloworld
@@ -109,6 +115,8 @@ spec:
     ports:
     - containerPort: 80
 ```
+Run `kubectl explain pod` for more info.
+
 
 Now you can create pod with:
 
