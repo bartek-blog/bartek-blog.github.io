@@ -1,0 +1,125 @@
+---
+layout: post
+comments: true
+title:  "Google Kubernetes Engine Set Up""
+date:   2019-12-26 09:00:00 +0200
+categories: gke kubernetes
+---
+
+[Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/) is production-ready
+environment for deploying containerized applications.
+
+## Quick start
+
+The following document gives fast introduction how to set up kubernetes project.
+https://cloud.google.com/kubernetes-engine/docs/quickstart
+
+
+### Mac install of Cloud SDK 
+
+``` shell
+brew cask install google-cloud-sdk
+```
+
+## Init GKE
+
+Then initialize it with
+
+``` shell
+gcloud init
+```
+
+or you can set project by
+
+``` shell
+gcloud config set project <project-name>
+```
+See existing project at <https://console.cloud.google.com/cloud-resource-manager>.
+
+### Install kubectl
+
+In [Kubernetes hello world]({% post_url 2019-12-16-k8s-hello-world %}) we have explained how to
+install kubernetes with minikube for local experiments. You can also install the version that
+corresponds to the server one (see below for instructions).
+
+``` shell
+kubectl config get-contexts
+```
+
+
+``` shell
+kubectl config use-context <context NAME>
+```
+
+After setting up a project and choosing a default one you have to choose the compute zone for it, 
+for example:
+``` shell
+gcloud config set compute/zone us-east1
+gcloud config set compute/region us-east1
+```
+
+GKE is available in <https://console.cloud.google.com/kubernetes>
+
+## Create cluster
+
+Then you can create a cluster
+
+``` shell
+gcloud container clusters create <cluster-name> \
+    --num-nodes 3 --machine-type f1-micro
+```
+
+You may need to enable Kubernetes and increase `In-use IP addresses` quotas to 9 on
+<https://console.cloud.google.com/iam-admin/quotas>.
+
+## Test it
+
+Create simple pod and service
+
+``` shell
+kubectl create deployment flaskhelloworld --image=barteks/flaskhelloworld
+kubectl expose deployment flaskhelloworld --type LoadBalancer --port 80
+```
+
+Now when you run 
+
+``` shell
+kubectl get svc flaskhelloworld
+```
+
+You should get `EXTERNAL-IP` to connect to pod. So you can run something like that
+
+``` shell
+curl 34.73.187.87
+```
+
+And see `Hello World`
+
+## Delete kluster
+
+``` shell
+gcloud container clusters delete <cluster-name>
+```
+
+### Alternative install without brew
+
+You can also install `kubectl` with
+
+``` shell
+gcloud components install kubectl
+```
+You may need to change to python 2.7 by deactivating pyenv (`pyenv local system`).
+
+Update `PATH`:
+
+``` shell
+export PATH=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/:$PATH
+```
+
+Check if it works:
+
+``` shell
+kubectl version
+```
+
+_Updated: 2019-12-26_
