@@ -130,8 +130,6 @@ Then for service, create file `flaskhelloworld-svc.yaml`:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    run: flaskhelloworld
   name: flaskhelloworld
   namespace: default
 spec:
