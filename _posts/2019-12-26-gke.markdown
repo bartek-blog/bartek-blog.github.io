@@ -15,11 +15,28 @@ The following document gives fast introduction how to set up kubernetes project.
 https://cloud.google.com/kubernetes-engine/docs/quickstart
 
 
-### Mac install of Cloud SDK 
+## Mac install of Cloud SDK 
 
 ``` shell
 brew cask install google-cloud-sdk
 ```
+
+### Autocomplete in zshell
+
+First check where `google-cloud-sdk` by
+
+``` shell
+ls -la $(which gcloud)
+```
+You should probably see that is linked to `bin/gcloud` in 
+`/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/`
+So to `.zshrc` add
+
+``` shell
+export GCLOUD_PATH=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+source $GCLOUD_PATH/*.zsh.inc
+```
+
 
 ## Init GKE
 
@@ -54,8 +71,8 @@ kubectl config use-context <context NAME>
 After setting up a project and choosing a default one you have to choose the compute zone for it, 
 for example:
 ``` shell
-gcloud config set compute/zone us-east1
 gcloud config set compute/region us-east1
+gcloud config set compute/zone us-east1b
 ```
 
 GKE is available in <https://console.cloud.google.com/kubernetes>
@@ -65,11 +82,10 @@ GKE is available in <https://console.cloud.google.com/kubernetes>
 Then you can create a cluster
 
 ``` shell
-gcloud container clusters create <cluster-name> \
-    --num-nodes 3 --machine-type f1-micro
+gcloud container clusters create <cluster-name> --num-nodes 3 
 ```
 
-You may need to enable Kubernetes and increase `In-use IP addresses` quotas to 9 on
+You may need to enable Kubernetes and increase `In-use IP addresses` quotas on
 <https://console.cloud.google.com/iam-admin/quotas>.
 
 ## Test it

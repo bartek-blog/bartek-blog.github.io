@@ -117,6 +117,6 @@ minikube service simplenode-http
 ```
 
 ## Links
-* https://nodejs.org/en/docs/guides/getting-started-guide/
+* <https://nodejs.org/en/docs/guides/getting-started-guide/>
 
 _Updated: 2019-12-25_
