@@ -75,5 +75,12 @@ spec:
   type: LoadBalancer
 ```
 
+## Replication Controller
+
+In [Kubernetes hello world]({% post_url 2019-12-16-k8s-hello-world.markdown %}) we have created pods
+manually. Here we create something called `Replication Controller` that will be responsible for
+making sure that declared number of replicas of pod are always alive.
+
+
 _Updated: 2019-12-27_
 
