@@ -9,7 +9,7 @@ categories: kubernetes
 
 # Simple node app
 
-In [Node.js Hello World with Docker and k8s]({% post_url 2019-12-25-node-hello-world.markdown %}) 
+In [Node.js Hello World with Docker and k8s]({% post_url 2019-12-25-node-hello-world %}) 
 we have explained how to create docker with simple node app and how to deploy it kubernetes.
 Here we will show how to make kubernetes to automatically control the deployment. 
 
@@ -114,7 +114,7 @@ spec:
 
 ## Replication Controller
 
-In [Kubernetes hello world]({% post_url 2019-12-16-k8s-hello-world.markdown %}) we have created pods
+In [Kubernetes hello world]({% post_url 2019-12-16-k8s-hello-world %}) we have created pods
 manually. Here we create something called `Replication Controller` that will be responsible for
 making sure that declared number of replicas of pod are always alive.
 
