@@ -212,6 +212,8 @@ curl localhost
 ```
 and see that from is changing since it is hitting different pods.
 
+
+
 ## Health Check
 
 Independently on Replication Controller you can add health check to pods. It works the way that k8s
