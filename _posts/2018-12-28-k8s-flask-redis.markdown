@@ -3,16 +3,15 @@ layout: post
 comments: true
 title:  "Kubernetes: Flask with redis"
 date:   2019-12-28 09:00:00 +0200
-categories: kubernetes flask redis
+categories: kubernetes 
 ---
-
 
 # Flask with redis
 
 In [Docker Compose: Flask with Redis]({% post_url 2019-12-21-docker-compose %}) we have created two
 dockers that can communicate with each others using `docker-compose`. The same can be easily
 achieved with kubernetes. We will do this using declarative style with `yaml` files. Please refer to
-[Kubernetes: Namespace and Replication Controller]({% post url 2019-12-27-k8s-namespace-rc %}).
+[Kubernetes: Namespace and Replication Controller]({% post_url 2019-12-27-k8s-namespace-rc %}).
 
 We have also modified the code of the app. You can find everything in 
 <https://github.com/sbartek/sample_flask_with_redis>.
@@ -32,7 +31,7 @@ metadata:
 
 Then let's declare how to create docker with flask using `ReplicaSet` which is very similar to
 `ReplicationController` described in 
-[Kubernetes: Namespace and Replication Controller]({% post url 2019-12-27-k8s-namespace-rc %}).
+[Kubernetes: Namespace and Replication Controller]({% post_url 2019-12-27-k8s-namespace-rc %}).
 The only difference in definition of `selector`. This is done in the following `flaskapp-rs.yaml`
 file:
 
@@ -66,7 +65,7 @@ Next we define a service for serving the flask app. This is done in
 `flaskapp-svc.yaml`:
 
 ``` yaml
-apiVersion: v1	
+apiVersion: v1
 kind: Service
 metadata:
   labels:
@@ -119,7 +118,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:	
+  labels:
     app: redis
   name: redis
   namespace: flaskapp-dev
@@ -128,20 +127,19 @@ spec:
   - name: redis
     port: 6379
     targetPort: redisport
-  selector:	
+  selector:
     app: redis
 ```
 
 ## Apply it
 
 ``` shell
-kubectl apply -f flaskappwithredis/app-ns.yaml
-kubectl apply -f flaskappwithredis/flaskapp-svc.yaml
-kubectl apply -f flaskappwithredis/flaskapp-rs.yaml
-kubectl apply -f flaskappwithredis/redis-svc.yaml
-kubectl apply -f flaskappwithredis/redis-rs.yaml
+kubectl apply -f app-ns.yaml
+kubectl apply -f flaskapp-svc.yaml
+kubectl apply -f flaskapp-rs.yaml
+kubectl apply -f redis-svc.yaml
+kubectl apply -f redis-rs.yaml
 ```
 
-
-_Updated: 2019-12-28_
+_Updated: 2019-12-29_
 
