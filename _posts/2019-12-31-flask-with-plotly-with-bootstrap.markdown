@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Flask with bootstrap and plotly"
 date:   2019-12-31 09:00:00 +0200
-categories: [python, bootstrap, plotly]
+categories: [python, bootstrap, plotly flask]
 ---
 
 In <https://github.com/sbartek/flask-with-plotly/tree/d364f1fcf0673a25750f035422e27b7f220bafd1>

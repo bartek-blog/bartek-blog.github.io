@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "AWS CLI, S3 And Boto3"
 date:   2018-09-11 00:00:00 +0200
-categories: python storage cloud
+categories: python storage cloud aws
 tags: S3 cli
 ---
 ## Amazon S3

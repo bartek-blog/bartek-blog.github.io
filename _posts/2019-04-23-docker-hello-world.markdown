@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Docker: Hello World"
 date:   2019-04-23 09:00:00 +0200
-categories: docker flask 
+categories: docker flask travis
 ---
 
 
@@ -208,6 +208,24 @@ Moreover you should be able to run the container without building it.
 ``` shell
 docker run  --detach --publish=5000:80\
     --name=flaskhelloworld <username>/flaskhelloworld
+```
+
+### Travis
+
+You can add `.travis` file to automatically build docker and push it docker hub. Remember to add credential to travis.
+
+``` yaml
+language: python
+python:
+  - 3.6.8
+services:
+  - docker
+before_install:
+  - docker build --tag $DOCKER_USERNAME/flaskhelloworld .
+  - docker images
+script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push $DOCKER_USERNAME/flaskhelloworld
 ```
 
 ## Other useful commands
