@@ -3,7 +3,8 @@ layout: post
 comments: true
 title:  "Serving Model"
 date:   2018-10-06 00:00:00 +0200
-categories: python ml aiohttp sklearn nlp
+categories: [python, machine learning] 
+tags: aiohttp sklearn nlp
 ---
 # How to serve a model
 

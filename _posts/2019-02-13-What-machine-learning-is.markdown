@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Machine Learning Part 1: What Is Machine Learing?"
 date:   2019-02-13 18:00:00 +0200
-categories: ml introduction
+categories: [machine learning] 
 ---
 
 In this short note we try to explain what is Machine Learning and what are the most important types

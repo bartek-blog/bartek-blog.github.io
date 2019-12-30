@@ -3,7 +3,8 @@ layout: post
 comments: true
 title:  "C++ Hello World"
 date:   2018-12-24 18:00:00 +0200
-categories: c++ helloworld
+categories: c++ 
+tags: helloworld
 ---
 
 

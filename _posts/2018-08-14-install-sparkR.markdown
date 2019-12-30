@@ -3,7 +3,8 @@ layout: post
 comments: true
 title: "Install and Run SparkR - easy way"
 date:   2018-08-14 00:00:00 +0200
-categories: sparkR
+categories: spark r
+tags: sparkr
 ---
 
 ## Requirements

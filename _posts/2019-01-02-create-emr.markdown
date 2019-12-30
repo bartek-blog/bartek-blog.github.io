@@ -3,7 +3,8 @@ layout: post
 comments: true
 title:  "How to deploy Amazon EMR"
 date:   2019-01-02 12:00:00 +0200
-categories: emr
+categories: aws cloud spark
+tags: emr
 ---
 
 ## What is EMR?

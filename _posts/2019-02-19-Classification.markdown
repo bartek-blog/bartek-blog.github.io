@@ -3,7 +3,8 @@ layout: post
 comments: true
 title:  "Machine Learning Part 5: How we evaluate classification algorithms"
 date:   2019-02-19 08:00:00 +0200
-categories: ml python sklearn classification
+categories: [machine learning, python, sklearn]
+tags: classification
 ---
 
 ```python

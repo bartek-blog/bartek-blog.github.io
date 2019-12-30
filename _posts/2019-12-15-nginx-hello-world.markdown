@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "nginx http server hello world"
 date:   2019-12-15 09:00:00 +0200
-categories: nginx
+categories: nginx node javascript
 ---
 
 

@@ -3,7 +3,8 @@ layout: post
 comments: true
 title:  "Unity 'Hello World'"
 date:   2018-07-21 10:00:00 +0200
-categories: ruby
+categories: [unity, c#]
+tag: [games, helloworld]
 ---
 
 ## Printing to console

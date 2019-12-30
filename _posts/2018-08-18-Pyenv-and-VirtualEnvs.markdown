@@ -3,7 +3,8 @@ layout: post
 comments: true
 title:  "Pyenv and VirtualEnvs"
 date:   2018-08-18 12:00:00 +0200
-categories: python virtualenv
+categories: python 
+tags: virtualenv
 ---
 
 Program `pyenv` together with `virtualenvwrapper` is possibly the coolest, most practical and

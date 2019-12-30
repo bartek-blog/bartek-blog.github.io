@@ -3,7 +3,8 @@ layout: post
 comments: true
 title:  "How to access S3 from pyspark"
 date:   2019-04-22 11:00:00 +0200
-categories: python spark pyspark
+categories: python spark 
+tags: pyspark
 ---
 ## Running pyspark
 

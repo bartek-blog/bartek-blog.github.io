@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Machine Learning Part 4: Bias–Variance Trade-Off in Polinomial Regression"
 date:   2019-02-17 08:00:00 +0200
-categories: ml python sklearn
+categories: [machine learning, python, sklearn]
 ---
 In this note we would like to explain two concepts.
 * What is Bias–Variance Tradeoff

@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Machine Learning Part 2: How to train linear model and then test its performance"
 date:   2019-02-15 12:00:00 +0200
-categories: ml python sklearn
+categories: [machine learning, python, sklearn]
 ---
 ## Introduction
 

@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "How to install multiple java versions"
 date:   2019-03-28 11:00:00 +0200
-categories: python spark pyspark
+categories: java
 ---
 
 

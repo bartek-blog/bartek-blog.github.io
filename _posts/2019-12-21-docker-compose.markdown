@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Docker Compose: Flask with Redis"
 date:   2019-12-21 09:00:00 +0200
-categories: go
+categories: docker flask redis
 ---
 
 ## App

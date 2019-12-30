@@ -2,8 +2,9 @@
 layout: post
 comments: true
 title:  "Google Storage"
-date:   2019-12-28 09:00:00 +0200
-categories: gstorage cloud google gcloud
+date:   2019-12-29 09:00:00 +0200
+categories: [storage, cloud, gcloud]
+tags: [google, gcloud]
 ---
 
 ## IAM Roles

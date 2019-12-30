@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Machine Learning Part 3: How to choose best multiple linear model"
 date:   2019-02-16 08:00:00 +0200
-categories: ml python sklearn
+categories: [machine learning, python, sklearn]
 ---
 ## Introduction
 
