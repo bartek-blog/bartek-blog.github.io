@@ -1,0 +1,100 @@
+---
+layout: post
+comments: true
+title:  "Google Storage"
+date:   2019-12-28 09:00:00 +0200
+categories: gstorage cloud google gcloud
+---
+
+## IAM Roles
+
+In [Google Kubernetes Engine Set Up]({% post_url 2019-12-26-gke %}) we have explained how to install
+`google-cloud-sdk` and configure a project. Here we explain how to use google storage.
+
+First let's create a role. For example:
+
+``` shell
+gcloud iam service-accounts create <user_name>
+```
+
+Then
+
+``` shell
+gcloud projects add-iam-policy-binding <project_name>\
+    --member "serviceAccount:<user_name>@<project_name>.iam.gserviceaccount.com"\
+    --role "roles/owner"
+```
+
+Then
+
+``` shell
+mkdir ~/.gcloud
+gcloud iam service-accounts keys create ~/.gcloud/<user_name>_<project_name>.json\
+    --iam-account <user_name>@<project_name>.iam.gserviceaccount.com
+```
+
+and add to `.zshrc`:
+
+``` shell
+export GOOGLE_APPLICATION_CREDENTIALS="~/.gcloud/<user_name>_<project_name>.json"
+```
+
+## Install Google Cloud Storage Client Library
+
+
+``` shell
+pip install google-cloud-storage
+```
+
+## Operation with gsutil
+
+### List buckets
+
+``` shell
+gsutil ls
+```
+
+### Creating bucket
+
+``` shell
+gsutil mb gs://bartek-test-bucket/
+```
+
+### Deleting buckets
+
+``` shell
+gsutil rm -r gs://bartek-test-bucket/
+```
+
+### Uploading buckets
+
+``` shell
+gsutil cp <file_name> gs://<bucket_name>/<destination>
+```
+
+### Listing objects
+
+``` shell
+gsutil ls -r gs://<bucket_name>/path
+```
+
+### Deleting objects
+
+``` shell
+gsutil rm gs://<bucket_name>/<object_name>
+```
+
+## Operation with python 
+
+See python notebook: 
+
+<https://github.com/bartek-blog/bartek-blog.github.io/blob/master/jupyter/2019-12-29-gstorage.ipynb>
+
+## Links
+* <https://cloud.google.com/docs/authentication/production>
+* <https://cloud.google.com/storage/docs/reference/libraries>
+* <https://cloud.google.com/storage/docs/how-to>
+
+
+_Updated: 2019-12-30_
+
