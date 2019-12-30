@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "How to create Scala script"
 date:   2018-07-22 08:00:00 +0200
-categories: scala 
+categories: [scala, scripting]
 ---
 
 ## Hello World 
