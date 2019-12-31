@@ -6,8 +6,9 @@ date:   2019-12-31 09:00:00 +0200
 categories: [python, bootstrap, plotly flask]
 ---
 
-In <https://github.com/sbartek/flask-with-plotly/tree/d364f1fcf0673a25750f035422e27b7f220bafd1>
-we have created an app that generate random data and then plot it. Please clone this repo.
+In <https://github.com/sbartek/flask-with-plotly/tree/d364f1fcf0673a25750f035422e27b7f220bafd1> we
+have created an app that generate random data and then plot it. Please clone this version of the
+repo.
 
 ## Generate data
 
