@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Python pathlib"
-date:   2019-12-31 11:00:00 +0200
+date:   2020-01-01 09:00:00 +0200
 categories: [python]
 ---
 
@@ -24,5 +24,5 @@ with open (path, 'w') as f:
 ```
 
 
-_Updated: 2019-12-31_
+_Updated: 2020-01-10_
 
