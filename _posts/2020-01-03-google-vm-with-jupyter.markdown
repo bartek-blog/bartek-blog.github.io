@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Creating Ubuntu VM with Jupyter on GCP"
-date:   2020-01-03 09:00:00 +0200
+date:   2020-01-03 01:00:00 +0200
 categories: [python, gcloud, jupyter]
 ---
 
@@ -79,7 +79,7 @@ gcloud compute ssh bartek-machine
 
 ## Install jupyter on the machine
 
-Follow [How to install pytorch with conda]({% post_url 2018-06-16-how-to-use-rvm.markdown %})
+Follow [How to install pytorch with conda]({% post_url 2018-11-12-install-pytorch-with-conda %})
 (ubuntu part) in order to install jupyter.
 
 Then create jupyter configuration by calling:
