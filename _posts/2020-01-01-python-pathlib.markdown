@@ -24,5 +24,5 @@ with open (path, 'w') as f:
 ```
 
 
-_Updated: 2020-01-10_
+_Updated: 2020-01-01_
 
