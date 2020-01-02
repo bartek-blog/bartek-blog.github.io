@@ -93,7 +93,7 @@ sdf = spark\
 ```
 
 Now you can easily modify the code 
-from [How to access S3 from pyspark]({% post_url2019-04-22-how-to-access-s3-from-pyspark %}).
+from [How to access S3 from pyspark]({% post_url 2019-04-22-how-to-access-s3-from-pyspark %}).
 
 At the end do not forget to delete cluster. You will be charged.
 
