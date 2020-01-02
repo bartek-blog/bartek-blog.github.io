@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "How to install pyspark"
 date:   2019-03-27 11:00:00 +0200
-categories: python spark 
+categories: python spark jupyter
 tags: pyspark
 ---
 

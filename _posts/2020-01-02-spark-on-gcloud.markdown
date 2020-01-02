@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Spark on gcloud with jupyter"
 date:   2020-01-02 09:00:00 +0200
-categories: [python spark gcloud google]
+categories: [python, spark, gcloud, google]
 ---
 
 In [Google Kubernetes Engine Set Up]({% post_url 2019-12-26-gke %}) we have explained how to install
@@ -52,7 +52,7 @@ gcloud dataproc clusters delete spark-cluster
 
 ## Create cluster with jupyter notebook
 
-In [Google Storage]({% post_url 2019-12-29-gstorage.markdown %}) 
+In [Google Storage]({% post_url 2019-12-29-gstorage %}) 
 we have explained how to configure google storage. Here we create a bucket for storing notebooks.
 
 One can do this with:
