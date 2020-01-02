@@ -1,9 +1,9 @@
 ---
 layout: post
 comments: true
-title:  "HelloWorld in Java"
+title:  "Hello World in Java"
 date:   2018-08-16 23:00:00 +0200
-categories: scala 
+categories: java 
 ---
 
 ## Hello World 

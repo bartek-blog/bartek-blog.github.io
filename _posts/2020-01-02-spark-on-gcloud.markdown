@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Spark on gcloud with jupyter"
 date:   2020-01-02 09:00:00 +0200
-categories: [python, spark, gcloud, google]
+categories: [python, spark, gcloud]
 ---
 
 In [Google Kubernetes Engine Set Up]({% post_url 2019-12-26-gke %}) we have explained how to install

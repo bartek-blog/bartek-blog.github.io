@@ -17,18 +17,19 @@ You can choose right version for your system from
 __Windows__ users should follow the tutorial from 
 <https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html>.
 
-__Mac__ users can run the following script:
+__Linux__ users can run the following script:
 
 In terminal execute the following line:
 
 ```
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh \
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh\
     -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/miniconda
 ```
 
-__Linux__ users can also run the same script changing  `Miniconda3-3.7.0-MacOSX-x86_64` into 
-`Miniconda3-latest-Linux-x86_64.sh`
+__Mac__ users can also run the same script changing  
+`Miniconda3-latest-Linux-x86_64.sh` into
+`Miniconda3-latest-MacOSX-x86_64.sh`. 
 
 ## Adding conda to PATH (Mac and Linux)
 
@@ -37,11 +38,24 @@ Then add `conda` to `$PATH` by running
 ```
 export PATH="$HOME/miniconda/bin:$PATH"
 ```
-If you do not want to run it each time you start the system you can add this line to `.bash_profile` (or `.bashrc`).
+
+If you do not want to run it each time you start the system you can add this line to `~/.bashrc`
+(or `.zshrc`). For example by calling
+
+``` shell
+nano ~/.bashrc
+```
+
+(_Mac_ `.zshrc`) and adding these lines at the end of the file. Then run 
+
+``` shell
+source ~/.bashrc
+```
 
 ## Update conda (all platforms)
 
-```
+``` shell
+conda init
 conda update conda
 ```
 
@@ -58,8 +72,7 @@ You can deactivate it with `source deactive`. More info on <https://conda.io/doc
 ## Installing pytorch (with numpy, jupyter and matplotlib)
 
 ```
-conda install mkl
-conda install numpy jupyter 
+conda install numpy jupyter
 conda install pytorch torchvision -c pytorch
 conda install -c conda-forge matplotlib 
 ```
@@ -105,4 +118,4 @@ plt.show()
 
 ![png](/assets/2018-11-12-install-pytorch-with-conda_files/2018-11-12-install-pytorch-with-conda_9_0.png)
 
-_Updated: 2019-07-07_
+_Updated: 2020-02-02_
