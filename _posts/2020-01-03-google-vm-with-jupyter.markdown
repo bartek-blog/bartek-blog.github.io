@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Creating Ubuntu VM with Jupyter on GCP"
-date:   2020-01-03 01:00:00 +0200
+date:   2020-01-03 09:00:00 +0200
 categories: [python, gcloud, jupyter]
 ---
 
