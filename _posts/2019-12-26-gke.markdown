@@ -63,7 +63,6 @@ corresponds to the server one (see below for instructions).
 kubectl config get-contexts
 ```
 
-
 ``` shell
 kubectl config use-context <context NAME>
 ```
@@ -72,7 +71,7 @@ After setting up a project and choosing a default one you have to choose the com
 for example:
 ``` shell
 gcloud config set compute/region us-east1
-gcloud config set compute/zone us-east1b
+gcloud config set compute/zone us-east1-b
 ```
 
 GKE is available in <https://console.cloud.google.com/kubernetes>

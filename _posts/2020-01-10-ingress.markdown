@@ -1,0 +1,141 @@
+---
+layout: post
+comments: true
+title:  "Kubernetes: ingress"
+date:   2020-01-11 09:00:00 +0200
+categories: [kubernetes]
+---
+
+## Adding ingress to minikube
+
+Let's check if minikube has ingress add-ons enabled:
+
+``` shell
+minikube addons list
+```
+
+If not run:
+
+``` shell
+minikube addons enable ingress
+```
+
+Now if you run:
+
+``` shell
+kubectl get pods --all-namespaces
+```
+
+You should see a line like:
+
+``` shell
+kube-system nginx-ingress-controller-6fc5bcc8c9-bvwtf 1/1 Running 0 3m8s
+```
+
+## Creating ingress service
+
+We will add ingress service to flask app created in 
+<https://github.com/sbartek/flask-with-plotly/tree/96177e051b1f35425ea16de7c3f90221173e64f5>
+
+
+Let's review our pods' declaration in `datageneratordash-pod.yaml`:
+
+``` yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: datageneratordash
+  labels:
+    app: datageneratordash
+spec:
+  containers:
+  - image: barteks/datageneratorapp
+    name: datagenerator
+    args: ["--data_path=/var/datasink/data.json"]
+    volumeMounts:
+    - name: datasource
+      mountPath: /var/datasink
+  - name: dashboard
+    image: barteks/datagenerateddashboard
+    args: ["--data_path=/var/datasource/data.json"]
+    ports:
+    - name: httpflask
+      containerPort: 80
+      protocol: TCP
+    volumeMounts:
+    - name: datasource
+      mountPath: /var/datasource
+      readOnly: true
+  volumes:
+  - name: datasource
+    emptyDir: {}
+```
+
+The access to app is through port called `httpflask`. Therefore we define the following service in 
+`datageneratordash-svc-nodeport.yaml`:
+
+``` yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: datageneratordash-nodeport
+spec:
+  type: NodePort
+  ports:
+  - name: serviceflask
+    port: 80
+    targetPort: httpflask
+  selector:
+    app: datageneratordash
+```
+
+Then we define ingress service in `datageneratordash-ingress.yaml`:
+
+``` yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: datageneratordashboard
+spec:
+  rules:
+  - host: datageneratordashboard.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: datageneratordash-nodeport
+          servicePort: serviceflask
+```
+
+Then declare your app with:
+
+``` shell
+kubectl apply -f datageneratordash-k8s/datageneratordash-pod.yaml
+kubectl apply -f datageneratordash-k8s/datageneratordash-svc-nodeport.yaml
+kubectl apply -f datageneratordash-k8s/datageneratordash-ingress.yaml
+```
+
+## Checking if ingress works and configure DNS
+
+``` shell
+kubec
+```
+
+You should see ingress :
+
+``` shell
+NAME                     HOSTS                        ADDRESS        PORTS   AGE
+datageneratordashboard   datageneratordashboard.com   192.168.64.9   80      22s
+```
+
+So add the following line to `/etc/hosts`
+
+``` shell
+192.168.64.9 datageneratordashboard.com
+```
+
+You should be able to access the dashboard from <http://datageneratordashboard.com>.
+
+
+_Updated: 2020-01-12_
+
