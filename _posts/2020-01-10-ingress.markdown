@@ -118,7 +118,7 @@ kubectl apply -f datageneratordash-k8s/datageneratordash-ingress.yaml
 ## Checking if ingress works and configure DNS
 
 ``` shell
-kubec
+kubectl get ingresses
 ```
 
 You should see ingress :
@@ -137,5 +137,5 @@ So add the following line to `/etc/hosts`
 You should be able to access the dashboard from <http://datageneratordashboard.com>.
 
 
-_Updated: 2020-01-12_
+_Updated: 2020-01-13_
 
