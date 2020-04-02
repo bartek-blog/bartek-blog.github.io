@@ -13,10 +13,20 @@ configurations on the same machine.
 
 ## Installation of pyenv
 
-__Note__ We will assume here that you are using Ubuntu with `bash`. Therefore default shell
-configuration file is `~/.bashrc`. If you are using Mac with standard configuration, then you would
-need to use `~/.bash_profile`. And finally if you are using `zshell` then you most likely know what
-to do (use `~/.zshrc` or `./.zshenv`).
+__Note__ Here we assume here that you are using Ubuntu with `bash`. Therefore default shell
+configuration file is `~/.bashrc`. On the other hand, if you are using `zshell` then you can use
+`~/.zshrc`.
+
+__Mac Users__ If you are using Mac you need to check which shell you are using. You can do this by
+running
+
+``` shell
+echo $0
+```
+
+If you see `bash` then your configuration file is most likely to be `~/.bash_profile`.
+On the other hand, if it's `zsh` you can use `~/.zshrc`.
+
 
 ### Ubuntu
 
