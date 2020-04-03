@@ -187,6 +187,15 @@ flake8
 
 You should see some errors. In particular, it tells that lines are too long. We would rather allow
 to have lines a bit longer (100 characters). For this we create file `setup.cfg` with the following:
+
+``` python
+[flake8]
+exclude =
+        setup.py,
+        .eggs/
+max-line-length = 100
+```
+
 If there are more errors please remove them.
 
 ## Coverage
