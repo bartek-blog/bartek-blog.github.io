@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Python packages"
-date:   2020-04-14 12:00:00 +0200
+date:   2020-04-02 12:00:00 +0200
 categories: python 
 tags: packages
 ---
@@ -242,3 +242,9 @@ make init
 ```
 
 Do not forget to add `README.md` with instructions how to install the package.
+
+## Code
+
+Code is available at <https://github.com/sbartek/sample-package>
+
+_Updated: 2020-04-12_
