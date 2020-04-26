@@ -1,0 +1,332 @@
+---
+layout: post
+comments: true
+title:  "DynamoDB with python"
+date:   2020-04-16 12:00:00 +0200
+categories: python 
+tags: python dynamodb
+---
+
+In 
+[AWS CLI, S3 And Boto3]({% post_url 2018-09-11-AWS-CLI-And-S3 %}#installing-aws-command-line-interface-and-boto)
+we have explained how to configure 
+[AWS Command Line Interface (__CLI__)](https://aws.amazon.com/cli/).
+
+
+[Amazon DynamoDB](https://aws.amazon.com/dynamodb/) is a key-value and document NoSQL database.
+
+Dynamodb can be managed through console, see <https://aws.amazon.com/getting-started/hands-on/create-nosql-table/>.
+But we will focus here how to use it with python.
+
+## Using CLI
+
+We are following <https://docs.aws.amazon.com/cli/latest/userguide/cli-services-dynamodb.html>
+
+### Create table
+
+``` shell
+aws dynamodb create-table \
+    --table-name Books \
+    --attribute-definitions AttributeName=Author,AttributeType=S AttributeName=Title,AttributeType=S \
+    --key-schema AttributeName=Author,KeyType=HASH AttributeName=Title,KeyType=RANGE \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+```
+
+### Insert
+
+``` shell
+aws dynamodb put-item \
+    --table-name Books \
+    --item '{
+        "Author": {"S": "Olga Tokarczuk"},
+        "Title": {"S": "Dom dzinny, dom nocny"} ,
+        "Language": {"S": "Polish"} 
+      }' \
+    --return-consumed-capacity TOTAL
+```
+
+### Query
+
+Create file `expression-attributes.json`
+``` shell
+{
+  ":v1": {"S": "Olga Tokarczuk"},
+  ":v2": {"S": "Dom dzinny, dom nocny"}
+}
+```
+
+Then query with:
+
+``` shell
+aws dynamodb query --table-name Books \
+    --key-condition-expression "Author = :v1 AND Title = :v2" \
+    --expression-attribute-values file://expression-attributes.json
+```
+
+## Testing dynamobd on local machine
+
+See <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html>
+
+Create directory `~/programs/dynamodb`
+
+``` shell
+export DYNAMODB_PATH=~/programs/dynamodb
+mkdir -p $DYNAMODB_PATH
+```
+
+``` shell
+curl -sL --retry 3 \
+  "https://s3.eu-central-1.amazonaws.com/dynamodb-local-frankfurt/dynamodb_local_latest.tar.gz" \
+  | gunzip \
+  | tar -x -C $DYNAMODB_PATH
+```
+
+Then you can run it with
+
+``` shell
+java -Djava.library.path=$DYNAMODB_PATH/DynamoDBLocal_lib \
+    -jar $DYNAMODB_PATH/DynamoDBLocal.jar -sharedDb
+```
+
+Then you can run the commands from the previous sections adding 
+`--endpoint-url http://localhost:8000`. So you can run
+
+``` shell
+aws dynamodb create-table \
+    --table-name Books \
+    --attribute-definitions AttributeName=Author,AttributeType=S AttributeName=Title,AttributeType=S \
+    --key-schema AttributeName=Author,KeyType=HASH AttributeName=Title,KeyType=RANGE \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+    --endpoint-url http://localhost:8000
+```
+
+### List tables
+
+
+``` shell
+aws dynamodb list-tables --endpoint-url http://localhost:8000
+```
+
+## Quering with python 
+
+### Create table
+
+Create file `create_table_books2.py`
+
+``` shell
+import boto3
+
+dynamodb = boto3.resource('dynamodb', region_name='us-west-1', endpoint_url="http://localhost:8000")
+
+
+table = dynamodb.create_table(
+    TableName='Books2',
+    KeySchema=[
+        {
+            'AttributeName': 'author',
+            'KeyType': 'HASH'  #Partition key
+        },
+        {
+            'AttributeName': 'title',
+            'KeyType': 'RANGE'  #Sort key
+        }
+    ],
+    AttributeDefinitions=[
+        {
+            'AttributeName': 'author',
+            'AttributeType': 'S'
+        },
+        {
+            'AttributeName': 'title',
+            'AttributeType': 'S'
+        },
+
+    ],
+    ProvisionedThroughput={
+        'ReadCapacityUnits': 10,
+        'WriteCapacityUnits': 10
+    }
+)
+print("Table status:", table.table_status)
+```
+
+Then you can run it:
+
+``` python
+python create_table_books2.py
+```
+
+### Put and get data
+
+Create file `put_one_item.py` with:
+
+``` python
+import boto3
+
+dynamodb = boto3.resource('dynamodb', region_name='us-west-1', endpoint_url="http://localhost:8000")
+
+table = dynamodb.Table('Books2')
+    
+response = table.put_item(
+    Item={
+        'author': 'Mariusz Szczygieł',
+        'title': "Nie ma"
+    }
+)
+
+print(response)
+
+response = table.get_item(
+    Key={
+        'author': 'Mariusz Szczygieł',
+        'title': "Nie ma"
+    }
+)
+print(response)
+
+```
+
+Then run it with 
+
+``` python
+python put_one_item.py
+```
+
+#### Load from json and quering
+
+Create json file `books2.json` with:
+
+``` json
+[
+    {
+        "author": "Olga Tokarczuk",
+        "title": "Dom dzienny, dom nocny"
+    },
+    {
+        "author": "Anna Bikont",
+        "title": "Sendlerowa w ukryciu"
+    },
+    {
+        "author": "Mariusz Szczygieł",
+        "title": "Kaprysik"
+    }
+]
+```
+
+And then `load_books2.py`
+
+``` python
+import json
+import boto3
+from boto3.dynamodb.conditions import Key
+
+dynamodb = boto3.resource('dynamodb', region_name='us-west-1', endpoint_url="http://localhost:8000")
+
+table = dynamodb.Table('Books2')
+    
+    
+with open("books2.json") as json_file:
+    books = json.load(json_file)
+    for book in books:
+        author = book['author']
+        title = book['title']
+
+        print("Adding book:",author, title)
+
+        table.put_item(
+            Item={
+                'author': author,
+                'title': title
+            }
+        )
+
+response = table.query(
+    KeyConditionExpression=Key('author').eq('Mariusz Szczygieł')
+)
+
+print(response)
+```
+
+More on queries: <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.04.html>
+
+### Delete table
+
+You can delete the table with method `table.delete`.
+
+
+## PynamoDB
+
+[PynamoDB](<https://github.com/pynamodb/PynamoDB>) provides simple API for dynamobd.
+
+### Install
+
+``` shell
+pip install pynamodb
+```
+
+### Model
+
+``` python
+from pynamodb.models import Model
+from pynamodb.attributes import UnicodeAttribute
+
+class BookModel(Model):
+    """
+    A DynamoDB User
+    """
+    class Meta:
+        table_name = "books3"
+        host = "http://localhost:8000"
+    author = UnicodeAttribute(hash_key=True)
+    title = UnicodeAttribute(range_key=True)
+```
+
+### Create table
+
+``` python
+BookModel.create_table(read_capacity_units=1, write_capacity_units=1)
+```
+
+### Put
+
+``` python
+book = BookModel("Dorota Masłowska", "Inni ludzie")
+book.save()
+book = BookModel("Dorota Masłowska", "Wojna polsko-ruska pod flagą biało-czerwoną")
+book.save()
+```
+
+### Query
+
+``` python3
+for book in BookModel.query("Dorota Masłowska"):
+    print(f"Author: {book.author}")
+    print(f"Title: {book.title}")
+```
+
+### Backup the table
+BookModel.dump("bookmodel_backup.json")
+
+### Restore the table
+BookModel.load("bookmodel_backup.json")
+
+### Running on AWS using profiles
+
+Solution from <https://github.com/pynamodb/PynamoDB/issues/204>
+
+``` python
+class BookModel(Model):
+    """
+    A DynamoDB User
+    """
+    class Meta:
+        table_name = "books3"
+        region = 'us-west-1'
+    author = UnicodeAttribute(hash_key=True)
+    title = UnicodeAttribute(range_key=True)
+```
+
+_Updated: 2020-04-26_
+
+
+    
