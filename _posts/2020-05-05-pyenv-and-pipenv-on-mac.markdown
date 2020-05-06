@@ -9,6 +9,8 @@ tags: python pyenv pipenv mac ohmyzsh
 
 ## Install pyenv
 
+<https://github.com/pyenv/pyenv>
+
 ``` shell
 brew install pyenv
 ```
@@ -81,7 +83,3 @@ plugins=(... pipenv virtualenv ...)
 ```
 
 _Updated: 2020-05-06_
-
-
-    
-    
