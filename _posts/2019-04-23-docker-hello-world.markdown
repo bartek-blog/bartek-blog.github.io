@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Docker: Hello World"
 date:   2019-04-23 09:00:00 +0200
-categories: docker flask travis
+categories: docker flask travis ohmyzsh
 ---
 
 
@@ -41,8 +41,7 @@ see <https://docs.docker.com/compose/completion/>
 
 In particular for `.zshrc` with oh-my-zsh:
 ```
-plugins=(... docker docker-compose
-)
+plugins=(... docker docker-compose )
 ```
 You may need to remove `.zcompdump-(...)` files by
 

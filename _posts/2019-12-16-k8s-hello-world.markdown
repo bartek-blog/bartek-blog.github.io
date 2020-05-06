@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Kubernetes hello world"
 date:   2019-12-16 09:00:00 +0200
-categories: kubernetes nginx node javascript
+categories: kubernetes nginx node javascript ohmyzsh
 ---
 
 ## Kubernetes
