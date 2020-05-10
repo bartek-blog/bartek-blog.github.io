@@ -25,7 +25,9 @@ brew cask install iterm2
 
 ### Color schemas
 
-You can download color schema from <https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/schemes>
+You can download color schema from 
+<https://iterm2colorschemes.com/>
+
 
 ## Oh My Zsh
 <https://github.com/ohmyzsh/ohmyzsh>
