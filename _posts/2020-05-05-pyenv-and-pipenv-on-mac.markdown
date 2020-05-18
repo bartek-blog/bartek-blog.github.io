@@ -61,18 +61,13 @@ after `eval "$(pyenv init -)"`
 brew install pipenv
 ```
 
-Then simply enter your project and type:
-
-``` shell
-pipenv install requests
-```
-
-Then you can use venv with
+Then, inside a project, you can use venv with
 
 ``` shell
 pipenv shell
 ```
 
+It will create virtualenv if does not exists specific for a project.
 
 ## ohmyzsh
 

@@ -1,0 +1,22 @@
+---
+layout: post
+comments: true
+title:  "Postman Hello World"
+date:   2020-05-11 12:00:00 +0200
+categories: postman
+tags: postam
+---
+
+## Install on mac
+
+``` shell
+brew cask install postman
+```
+
+Then run it from `Applications`.
+
+If you are using it first time you would need to create an account.
+_Updated: 2020-05-11_
+
+
+    
