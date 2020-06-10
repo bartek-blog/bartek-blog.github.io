@@ -11,8 +11,9 @@ categories: java
 
 ``` shell
 brew update
+brew tap homebrew/cask-versions
+brew cask install java
 brew tap caskroom/cask
-brew cask install java8
 ```
 
 ### jenv
@@ -21,7 +22,7 @@ brew cask install java8
 brew install jenv
 ```
 
-Then in `~/.bash_profile` add
+Then in `~/.zshrc` add
 
 ``` shell
 export PATH="$HOME/.jenv/bin:$PATH"
@@ -33,10 +34,11 @@ And unfortunately you have to add them manually to available versions. You can s
 ``` shell
 ls /Library/Java/JavaVirtualMachines/
 ```
-And then add them by calling something like
+And then add them by calling __something like__ (you may need to change
+`adoptopenjdk-8.jdk` and `openjdk-14.0.1.jdk` to results of `ls /Library/Java/JavaVirtualMachines/`.
 ``` shell
-jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
-jenv add /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home
 ```
 
 Then when you call
@@ -85,3 +87,5 @@ sudo apt-get install oracle-java8-installer
 java -version
 update-alternatives --config java
 ```
+
+_Updated: 2020-06-10_
