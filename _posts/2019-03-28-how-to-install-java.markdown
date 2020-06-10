@@ -28,8 +28,11 @@ Then in `~/.zshrc` add
 export PATH="$HOME/.jenv/bin:$PATH"
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 ```
+Then run `source ~/.zshrc`.
 
-And unfortunately you have to add them manually to available versions. You can see them by calling
+
+Unfortunately you have to manually add installed javas to available versions. You can see them by
+calling
 
 ``` shell
 ls /Library/Java/JavaVirtualMachines/
