@@ -18,6 +18,8 @@ brew cask install adoptopenjdk/openjdk/adoptopenjdk8
 
 ### jenv
 
+[jEnv](https://www.jenv.be/) is a tool for managing different java's version from command line.
+
 ``` shell
 brew install jenv
 ```
@@ -31,8 +33,8 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 Then run `source ~/.zshrc`.
 
 
-Unfortunately you have to manually add installed javas to available versions. You can see them by
-calling
+Unfortunately you have to manually add installed java's version to available versions in `jenv`.
+You can see them by calling
 
 ``` shell
 ls /Library/Java/JavaVirtualMachines/
