@@ -13,7 +13,7 @@ categories: java
 brew update
 brew tap homebrew/cask-versions
 brew cask install java
-brew tap caskroom/cask
+brew cask install adoptopenjdk/openjdk/adoptopenjdk8
 ```
 
 ### jenv
