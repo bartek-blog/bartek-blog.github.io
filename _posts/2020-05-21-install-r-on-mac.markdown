@@ -47,7 +47,7 @@ source ~/.zshrc
 
 
 
-_Updated: 2020-05-22_
+_Updated: 2020-06-19_
 
 
     
