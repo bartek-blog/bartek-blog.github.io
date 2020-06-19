@@ -25,6 +25,13 @@ Then
 brew install r
 ```
 
+In `~/.zshrc` add:
+
+``` shell
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+```
+
 ## Installing Rstudio
 
 ``` shell
@@ -37,6 +44,8 @@ Then, in order to be able to execute it from command line:
 echo "alias rstudio='open -a RStudio'" >> ~/.zshrc
 source ~/.zshrc
 ```
+
+
 
 _Updated: 2020-05-22_
 
