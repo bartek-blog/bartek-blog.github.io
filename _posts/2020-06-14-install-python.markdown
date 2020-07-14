@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "How to install python for data science with conda"
-date:   2018-11-12 23:00:00 +0200
+date:   2020-06-13 23:00:00 +0200
 categories: python conda
 ---
 # How to install python for data science with conda
