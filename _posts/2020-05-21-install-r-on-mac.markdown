@@ -3,8 +3,8 @@ layout: post
 comments: true
 title:  "Installing R on mac with brew"
 date:   2020-05-21 12:00:00 +0200
-categories: R Rstudio
-tags: R
+categories: r rstudio
+tags: r
 ---
 
 

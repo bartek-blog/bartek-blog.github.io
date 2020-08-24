@@ -6,7 +6,8 @@ permalink: /about/
 
 I am Data Scientist and PhD in Dynamical System. 
 
-Here I have collected simple notes that I mostly use for educational proposes.
+Here I have collected simple notes that I mostly use for educational proposes. Most of things here
+are about installing and configuring software.
 
 ## Categories 
 
