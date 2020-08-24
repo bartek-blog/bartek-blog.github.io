@@ -79,7 +79,7 @@ conda install -c conda-forge matplotlib
 
 ``` shell
 conda install pandas scikit-learn plotly
-conda install -c conda-forge opencv seaborn
+conda install -c conda-forge seaborn
 ```
 
 ## Run jupyter and test it

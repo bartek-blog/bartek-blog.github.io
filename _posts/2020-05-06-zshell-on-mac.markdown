@@ -154,7 +154,39 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv pyenv dir newline os_icon vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time ram battery)
 ```
 
-_Updated: 2020-05-06_
+Finally you `~/.zshrc` would look like:
+
+``` shell
+export ZSH="/Users/bartekskorulski/.oh-my-zsh"
+plugins=(
+  git
+  bundler
+  kubectl
+  pipenv
+  docker
+  docker-compose
+  virtualenv
+  zsh-autosuggestions
+  z
+)
+
+source $ZSH/oh-my-zsh.sh
+
+POWERLEVEL9K_VIRTUALENV_BACKGROUND=107
+POWERLEVEL9K_VIRTUALENV_FOREGROUND='white'
+POWERLEVEL9K_PYENV_BACKGROUND=110
+POWERLEVEL9K_PYENV_FOREGROUND='white'
+
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv pyenv dir newline os_icon vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time ram battery)
+
+POWERLEVEL9K_MODE='nerdfont-complete'
+ZSH_THEME="powerlevel9k/powerlevel9k"
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+```
+
+_Updated: 2020-07-27_
 
 
     
