@@ -61,7 +61,13 @@ after `eval "$(pyenv init -)"`
 brew install pipenv
 ```
 
-Then, inside a project, you can use venv with
+Then, inside a project, you can start using `pipenv` with
+
+``` shell
+pipenv install
+```
+
+and use it with
 
 ``` shell
 pipenv shell
