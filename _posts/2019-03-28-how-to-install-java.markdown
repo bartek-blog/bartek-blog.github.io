@@ -16,7 +16,7 @@ brew cask install java
 brew cask install adoptopenjdk/openjdk/adoptopenjdk8
 ```
 
-### jenv
+## Install jenv
 
 [jEnv](https://www.jenv.be/) is a tool for managing different java's version from command line.
 
@@ -32,6 +32,37 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 ```
 Then run `source ~/.zshrc`.
 
+## Install java
+
+
+``` shell
+brew update
+brew tap homebrew/cask-versions
+brew cask install java
+```
+
+### Adoptenjdk
+
+Update brew and add `adoptopenjdk/openjdk`
+
+``` shell
+brew update
+brew tap adoptopenjdk/openjdk
+```
+
+Now you can check available version with
+
+``` shell
+brew search jdk
+```
+
+And then you can install it with:
+
+``` shell
+brew install adoptopenjdk14
+```
+
+## Add it to jenv
 
 Unfortunately you have to manually add installed java's version to available versions in `jenv`.
 You can see them by calling
@@ -53,24 +84,24 @@ jenv versions
 you should see:
 
 ``` shell
-* system (set by /Users/bartek/.jenv/version)
-  1.8
-  1.8.0.202
-  11.0
-  11.0.1
-  oracle64-1.8.0.202
-  oracle64-11.0.1
+* 1.8 (set by /Users/bartekskorulski/.jenv/version)
+  1.8.0.275
+  14
+  14.0
+  14.0.2
+  openjdk64-1.8.0.275
+  openjdk64-14.0.2
 ```
 
 And finally you can set your global or local (directory) version by calling
 
 ``` shell
-jenv global 1.8
+jenv global 14
 ```
 or
 
 ``` shell
-jenv local 1.8
+jenv local 14
 ```
 
 Then restart your terminal. You can double check your java version by calling
@@ -93,4 +124,4 @@ java -version
 update-alternatives --config java
 ```
 
-_Updated: 2020-06-10_
+_Updated: 2020-12-10_
