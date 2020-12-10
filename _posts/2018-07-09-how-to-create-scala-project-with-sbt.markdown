@@ -7,29 +7,51 @@ categories: scala
 tags: sbt
 ---
 
+## Creating package structure
+
 Command to create package structure:
 
 ``` shell
 sbt new scala/scalatest-example.g8
 ```
 
-Then we have series of sbt's commands:
+Then you have to `cd` into the directory and run tests by
 
 ``` shell
-$ sbt
-> compile
-> test
-> run
-> package
+sbt test
 ```
 
-Package is located in `target/scala-X.XX/`.
+This will run the test suite `CubeCalculatorTest` with a single test called `CubeCalculator.cube`.
+Then you can transform the code to your need.
+
+## sbt commands
+
+### Compile
+
+``` shell
+sbt compile
+```
+
+### Run
+
+``` shell
+sbt run
+```
+
+### Package
+
+``` shell
+sbt package
+```
+
+
+The jar is located in `target/scala-X.XX/`.
 
 ## Setting up sbt version
 
 In `project/build.properties` change line into, for example,
 ``` scala
-sbt.version=1.1.6
+sbt.version= 1.4.4
 ```
 
 ## Setting up scala version
@@ -37,7 +59,7 @@ sbt.version=1.1.6
 In `build.sbt` set up 
 
 ``` scala
-scalaVersion := "2.12.6"
+scalaVersion := "2.13.4"
 ```
 
 ## Links
@@ -45,4 +67,4 @@ scalaVersion := "2.12.6"
 * <https://docs.scala-lang.org/getting-started-sbt-track/testing-scala-with-sbt-on-the-command-line.html>
 
 
-_Updated: 2018-07-22_
+_Updated: 2020-12-10_

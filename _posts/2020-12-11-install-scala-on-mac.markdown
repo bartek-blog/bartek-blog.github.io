@@ -21,4 +21,12 @@ You can follow
 [How to create scala project with sbt]({% post_url 2019-03-28-how-to-install-java %})
 for setting up first project.
 
+## Scala
+
+You can also install scala  by
+``` shell
+brew install scala
+```
+
+
 _Updated: 2020-12-11_
