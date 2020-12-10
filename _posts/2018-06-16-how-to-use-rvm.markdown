@@ -26,7 +26,7 @@ and for Ubuntu:
 sudo apt install gnupg2
 {% endhighlight %}
 
-Then add the following lines to `.bash_profile` (or `.bashrc`):
+Then add the following lines to `.zshrc` (or `.bash_profile` or  `.bashrc`):
 ``` shell
 export PATH="$PATH:$HOME/.rvm/bin"
 # Load RVM into a shell session *as a function*
@@ -83,3 +83,4 @@ rvm --ruby-version use  ruby-2.6.1@bartek_blog
 This will create files `.ruby-gemset` and `.ruby-version`. Now each time ones enter the directory 
 `rvm` with switch to the desired version of ruby automatically.
 
+_Updated: 2020-12-10_

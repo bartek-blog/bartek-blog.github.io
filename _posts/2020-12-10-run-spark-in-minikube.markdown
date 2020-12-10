@@ -13,14 +13,14 @@ in minikube.
 
 We assume the you have installed:
 * Spark locally [How to install pyspark locally]({% post_url 2020-12-09-install-spark-locally %})
-* Install minikube [Kubernetes hello world]({% 2019-12-16-k8s-hello-world %})
-* Also java 14 [How to install multiple java versions]({% 2019-03-28-how-to-install-java %})
+* Install minikube [Kubernetes hello world]({% post_url 2019-12-16-k8s-hello-world %})
+* Also java 14 [How to install multiple java versions]({% post_url 2019-03-28-how-to-install-java %})
 
 
 ## Java
 
 Now spark support Java 14, so we are going to use it. If you followed the tutorial 
-[How to install multiple java versions]({% 2019-03-28-how-to-install-java %})
+[How to install multiple java versions]({% post_url 2019-03-28-how-to-install-java %})
 you can set it up by
 
 ``` shell
