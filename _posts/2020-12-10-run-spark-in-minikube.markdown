@@ -2,11 +2,9 @@
 layout: post
 comments: true
 title:  "How to run spark in minikube"
-date:   2020-12-09 23:00:00 +0200
+date:   2020-12-10 23:00:00 +0200
 categories: [pyspark, python]
 ---
-
-# How to run spark in minikube
 
 Here we will explain how to run the example from <https://spark.apache.org/docs/3.0.1/running-on-kubernetes.html>
 in minikube.
