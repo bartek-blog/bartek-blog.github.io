@@ -1,0 +1,28 @@
+---
+layout: post
+comments: true
+title:  "How to install IntelliJ Community Edition"
+date:   2020-12-11 23:30:00 +0200
+categories: [intelij, scala]
+---
+
+## Brew install
+
+``` shell
+brew cask install intellij-idea-ce
+```
+
+## Scala plugin
+
+You need to install scala plugin. you can install it from plugins tab.
+
+## Create new project
+
+Remember to choose adequate version of JDK. 
+
+## Git
+
+From menu VCS choose enable a version control integration (GIT).
+
+
+_Updated: 2020-12-11_
