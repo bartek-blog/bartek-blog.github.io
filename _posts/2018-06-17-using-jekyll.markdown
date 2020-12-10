@@ -8,12 +8,12 @@ categories: ruby
 [Jekyll](https://jekyllrb.com/) is a static web site generator. It is written in Ruby. Here 
 we will show you how to create sample project. 
 
-# Installation
+## Installation
 
 If you use RVM 
 (see [my post]({% post_url 2018-06-16-how-to-use-rvm %})), first choose ruby version calling:
 {% highlight shell %}
-rvm use 2.6
+rvm use 2.7
 {% endhighlight %}
 Then as in documentation:
 {% highlight shell %}
@@ -22,7 +22,7 @@ jekyll new my-awesome-site
 cd my-awesome-site
 {% endhighlight %}
 
-# Usage
+## Usage
 
 In order to generate file:
 {% highlight shell %}
@@ -37,3 +37,13 @@ bundle exec jekyll serve
 
 Follow
 <https://medium.com/@balogic/adding-comments-part-to-your-jekyll-blog-6a8fccb7e634>
+
+
+## Update
+
+``` shell
+bundle update jekyll
+```
+
+
+_Updated: 2020-12-10_
