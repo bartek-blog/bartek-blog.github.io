@@ -200,4 +200,4 @@ Links
 
 * More on pods <https://kubernetes.io/docs/concepts/workloads/pods/pod/>
 
-_Updated: 2019-12-21_xs
+_Updated: 2019-12-21_
