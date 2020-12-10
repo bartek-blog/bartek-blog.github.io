@@ -44,8 +44,20 @@ sbt run
 sbt package
 ```
 
-
 The jar is located in `target/scala-X.XX/`.
+
+### Assembly
+
+This will create a fat JAR of your project with all of its dependencies 
+(<https://github.com/sbt/sbt-assembly>).
+
+In `project/plugins.sbt` add
+
+``` shell
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.15.0")
+```
+
+
 
 ## Setting up sbt version
 

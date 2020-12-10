@@ -28,5 +28,15 @@ You can also install scala  by
 brew install scala
 ```
 
+## ZSH Plugin
+
+``` shell
+plugin=(
+    ...
+    sbt
+    ...
+)
+```
+
 
 _Updated: 2020-12-11_
