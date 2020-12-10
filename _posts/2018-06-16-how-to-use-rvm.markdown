@@ -20,6 +20,7 @@ For Mac additionally we have to install `gnupg` by calling:
 {% highlight shell %}
 brew install gnupg
 {% endhighlight %}
+(then use `gpg` insted of `gpg2`)
 and for Ubuntu:
 {% highlight shell %}
 sudo apt install gnupg2
