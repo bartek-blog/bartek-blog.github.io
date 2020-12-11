@@ -1,0 +1,15 @@
+---
+layout: post
+comments: true
+title:  "How to install Pycharm Community Edition on mac"
+date:   2020-12-12 23:00:00 +0200
+categories: [python, ide]
+---
+
+## Brew install
+
+``` shell
+brew install --cask pycharm-ce
+```
+
+_Updated: 2020-12-11_
