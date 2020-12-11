@@ -12,4 +12,13 @@ categories: [python, ide]
 brew install --cask pycharm-ce
 ```
 
+## Command line integration
+
+In `~/.zshrc` add
+
+``` shell
+alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
+```
+
+
 _Updated: 2020-12-11_
