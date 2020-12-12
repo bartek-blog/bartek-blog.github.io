@@ -18,7 +18,13 @@ You need to install scala plugin. you can install it from plugins tab.
 
 ## Create new scala project
 
-Remember to choose adequate version of JDK. 
+Choose `scala`  and then `sbt`. After pressing `next` remember to choose choose adequate version of JDK. See
+<https://docs.scala-lang.org/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html>
+
+
+
+In order to add tests follow 
+<https://docs.scala-lang.org/getting-started/intellij-track/testing-scala-in-intellij-with-scalatest.html>.
 
 ## Git
 
