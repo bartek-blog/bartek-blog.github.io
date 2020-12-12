@@ -7,7 +7,7 @@ categories: [scala, sbt]
 ---
 
 We assume the you have installed Java version 1.8 or 11, for example `doptopenjdk11`, see
-[How to install multiple java versions]({% post_url 2018-07-09-how-to-create-scala-project-with-sbt %})
+[How to install multiple java versions]({% post_url 2019-03-28-how-to-install-java %})
 
 ## Sbt
 
@@ -18,7 +18,7 @@ brew install sbt
 ## First project
 
 You can follow 
-[How to create scala project with sbt]({% post_url 2019-03-28-how-to-install-java %})
+[How to create scala project with sbt]({% post_url 2018-07-09-how-to-create-scala-project-with-sbt %})
 for setting up first project.
 
 ## Scala

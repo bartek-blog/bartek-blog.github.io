@@ -20,5 +20,15 @@ In `~/.zshrc` add
 alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
 ```
 
+### Open existing projects 
+
+You can go to the project directory and call
+``` shell
+pycharm .
+```
+
+## Makefile
+
+It's recommended to install `Makefile support` extension.
 
 _Updated: 2020-12-11_
