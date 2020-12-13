@@ -1,0 +1,128 @@
+---
+layout: post
+comments: true
+title:  "How to build simple chart with helm
+date:   2020-12-13 23:00:00 +0200
+categories: [kubernetes, helm, python, fastapi]
+---
+
+## Install
+
+``` shell
+brew install helm
+```
+
+## Create simple app
+
+Create `app.py` files:
+
+``` python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+```
+
+`requirements.txt`:
+
+``` python
+fastapi==0.62.0
+```
+ 
+and `Dockerfile`:
+
+``` Dockerfile
+FROM python:3.8.6
+EXPOSE 8008
+ADD requirements.txt .
+RUN pip install -r requirements.txt
+ADD app.py .
+CMD uvicorn app:app --reload --port 8080 --host 0.0.0.0
+```
+
+Run docker:
+
+``` shell
+docker build -t barteks/simple-helm .
+```
+
+Change `barteks` into your Docker Hub username.
+
+Then you can check your docker with:
+
+``` shell
+docker run -p 8080:8080 --rm -it barteks/simple-helm
+```
+
+Now push the docker to Docker Hub
+
+``` shell
+docker push barteks/simple-helm
+```
+
+## Helm
+
+``` shell
+helm create simple-helm-chart
+```
+
+``` helm
+image:
+  repository: barteks/simple-helm
+  pullPolicy: IfNotPresent
+  tag: latest
+
+service:
+  name: simple-helm
+  type: LoadBalancer
+  externalPort: 8080
+  internalPort: 8008
+  port: 8080
+```
+
+You can check your helm files with (run it from `simple-helm-chart` directory)
+``` shell
+helm lint
+```
+Now you are ready to package (run it from root directory):
+
+``` helm
+helm package simple-helm-chart
+```
+
+You should have `simple-helm-chart-0.1.0.tgz` file.
+
+
+## Run it
+
+Let's test it in minkube. Run minikube:
+
+``` shell
+minikube start
+```
+
+
+In k8s cluster run:
+
+``` shell
+helm install simple-helm simple-helm-chart-0.1.0.tgz
+```
+
+
+Get status:
+
+``` shell
+helm status simple-helm
+```
+
+Uninstall
+
+``` shell
+helm uninstall simple-helm
+```
+
+_Updated: 2020-12-13_

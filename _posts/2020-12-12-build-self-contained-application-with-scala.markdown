@@ -2,8 +2,8 @@
 layout: post
 comments: true
 title:  "How to build self-contained spark application with scala"
-date:   2020-12-11 23:30:00 +0200
-categories: [intelij, scala]
+date:   2020-12-12 23:30:00 +0200
+categories: [spark, scala]
 ---
 
 ## Create scala aplication
