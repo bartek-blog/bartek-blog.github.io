@@ -25,7 +25,6 @@ version := "0.1"
 scalaVersion := "2.12.10"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % Test
-libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.0.1"
 ```
 
 ## Define new class
@@ -87,4 +86,4 @@ $SPARK_HOME/bin/spark-submit \
   target/scala-2.12/hello-spark_2.12-0.1.jar
 ```
 
-_Updated: 2020-12-12_
+_Updated: 2020-12-13_
