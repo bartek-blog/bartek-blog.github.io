@@ -31,4 +31,20 @@ In order to add tests follow
 From menu VCS choose `Enable a version control integration (GIT)`.
 
 
+## Command line launcher
+
+Create script `/usr/local/bin/idea`:
+
+``` shel
+#!/bin/sh
+
+open -na "IntelliJ IDEA CE.app" --args "$@"
+```
+
+Change permission:
+
+``` shell
+chmod a+x /usr/local/bin/idea
+```
+
 _Updated: 2020-12-11_
