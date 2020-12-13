@@ -64,14 +64,87 @@ Now push the docker to Docker Hub
 docker push barteks/simple-helm
 ```
 
+## Run it in Kubernetes
+
+Let's test it in minkube. Run minikube:
+
+``` shell
+minikube start
+```
+
+``` shell
+kubectl create deployment simple-helm --image=barteks/simple-helm
+```
+
+``` shell
+kubectl expose deployment simple-helm --type=LoadBalancer --port=8080
+```
+
+``` shell
+minikube service simple-helm
+```
+
+### With yaml
+
+Create `deployment.yaml` with
+
+``` yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: simple-helm
+  template:
+    metadata:
+      name: simple-helm
+      labels:
+        app.kubernetes.io/name: simple-helm
+    spec:
+      containers:
+      - image: barteks/simple-helm
+        name: simple-helm
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-helm
+spec:
+  selector:
+    app.kubernetes.io/name: simple-helm
+  ports:
+    - protocol: TCP
+      port: 8080
+```
+
+Then 
+
+``` shell
+kubectl apply -f deployment.yaml
+```
+
+### Clean
+
+``` shell
+kubectl delete service simple-helm
+kubectl delete deployment simple-helm
+```
+
 ## Helm
 
 ``` shell
 helm create simple-helm-chart
 ```
 
-``` helm
-image:
+``` yaml
+image
   repository: barteks/simple-helm
   pullPolicy: IfNotPresent
   tag: latest
@@ -82,6 +155,13 @@ service:
   externalPort: 8080
   internalPort: 8008
   port: 8080
+```
+
+Also in `templates/deployment.yaml` correct the port of the container:
+
+
+``` yaml
+  containerPort: 8080
 ```
 
 You can check your helm files with (run it from `simple-helm-chart` directory)
@@ -97,14 +177,7 @@ helm package simple-helm-chart
 You should have `simple-helm-chart-0.1.0.tgz` file.
 
 
-## Run it
-
-Let's test it in minkube. Run minikube:
-
-``` shell
-minikube start
-```
-
+## Run helm in Kubernetes
 
 In k8s cluster run:
 
@@ -112,6 +185,10 @@ In k8s cluster run:
 helm install simple-helm simple-helm-chart-0.1.0.tgz
 ```
 
+Then, in minikube:
+``` shell
+minikube service simple-helm-simple-helm-chart
+```
 
 Get status:
 
