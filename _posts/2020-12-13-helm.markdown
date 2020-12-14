@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "How to build simple chart with helm
+title:  "How to build simple chart with helm"
 date:   2020-12-13 23:00:00 +0200
 categories: [kubernetes, helm, python, fastapi]
 ---
