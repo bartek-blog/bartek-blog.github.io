@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "How to run spark in minikube"
+title:  "Spark in minikube"
 date:   2020-12-10 23:00:00 +0200
 categories: [pyspak, python, spark, scala, minikube]
 ---

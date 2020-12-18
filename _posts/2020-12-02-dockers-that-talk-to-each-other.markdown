@@ -1,11 +1,10 @@
 ---
 layout: post
 comments: true
-title:  "How to make dockers to talk to each other"
+title:  "Dockers that talk to each other"
 date:   2020-12-02 23:00:00 +0200
 categories: docker 
 ---
-# How to make dockers to talk to each other
 
 ## Bridge networks
 

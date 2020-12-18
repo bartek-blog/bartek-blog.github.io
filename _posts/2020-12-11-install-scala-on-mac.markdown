@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "How to install scala on mac"
+title:  "Installing scala on mac"
 date:   2020-12-11 23:00:00 +0200
 categories: [scala, sbt]
 ---
