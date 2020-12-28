@@ -64,6 +64,30 @@ kubectl create clusterrolebinding spark-role \
     --namespace=default
 ```
 
+This corresponds to:
+
+``` yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name:  spark-job
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: spark-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: edit
+subjects:
+  - kind: ServiceAccount
+    name: spark-job
+    namespace: default
+
+```
+
 ## Submit example job
 
 From
@@ -100,4 +124,4 @@ The check logs of the corresponding pod:
 kubectl logs spark-pi-1751c5764c6efff5-driver
 ```
 
-_Updated: 2020-12-10_
+_Updated: 2020-12-28_
