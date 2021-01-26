@@ -106,4 +106,4 @@ java -version
 update-alternatives --config java
 ```
 
-_Updated: 2020-12-10_
+_Updated: 2021-01-26_
