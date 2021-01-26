@@ -7,13 +7,13 @@ categories: java
 ---
 
 
-## Mac
+## Inastall java on Mac
 
 ``` shell
 brew update
 brew tap homebrew/cask-versions
 brew install java
-brew install adoptopenjdk/openjdk/adoptopenjdk8
+brew install adoptopenjdk/openjdk/adoptopenjdk11
 ```
 
 ## Install jenv
@@ -32,25 +32,7 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 ```
 Then run `source ~/.zshrc`.
 
-## Install java
-
-
-``` shell
-brew update
-brew tap homebrew/cask-versions
-brew cask install java
-```
-
-### Adoptenjdk
-
-Update brew and add `adoptopenjdk/openjdk`
-
-``` shell
-brew update
-brew tap adoptopenjdk/openjdk
-```
-
-Now you can check available version with
+Now you can check available java version with
 
 ``` shell
 brew search jdk
