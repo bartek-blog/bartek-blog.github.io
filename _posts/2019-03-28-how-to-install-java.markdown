@@ -12,8 +12,8 @@ categories: java
 ``` shell
 brew update
 brew tap homebrew/cask-versions
-brew cask install java
-brew cask install adoptopenjdk/openjdk/adoptopenjdk8
+brew install java
+brew git install adoptopenjdk/openjdk/adoptopenjdk8
 ```
 
 ## Install jenv
