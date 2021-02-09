@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Visual Studio Code on mac"
 date:   2020-12-16 23:00:00 +0200
-categories: [python, ide]
+categories: [python, ide, zshell]
 ---
 
 ## Brew install
@@ -23,4 +23,20 @@ code
 
 Go to marketplace and search for python. Install `Python` extension from Microsoft.
 
-_Updated: 2020-12-16_
+## OhMyZsh
+
+See [Zshell on mac]({% post_url 2020-05-06-zshell-on-mac %}) for instructions how to install zshell on mac.
+
+Press `cmd+shift+p` and look for settings.json (Preferences: Open Settings (JSON).
+
+Then add:
+
+``` json
+"terminal.external.osxExec": "iTerm.app",
+"terminal.integrated.shell.osx": "/bin/zsh",
+"terminal.integrated.fontFamily": "Hack Nerd Font"
+```
+
+Save, and that's it.
+
+_Updated: 2021-02-09_
