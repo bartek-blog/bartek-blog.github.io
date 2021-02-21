@@ -24,6 +24,18 @@ After that check if it works with:
 node -v
 ```
 
+## Quick script
+
+Create file `hello.js` with:
+``` javascript
+console.log('Hello');
+```
+
+Then run it with
+``` shell
+node hello.js
+```
+
 ## Hello world app
 
 Create `app.js` with the following code
@@ -119,4 +131,4 @@ minikube service simplenode-http
 ## Links
 * <https://nodejs.org/en/docs/guides/getting-started-guide/>
 
-_Updated: 2019-12-25_
+_Updated: 2021-02-11_

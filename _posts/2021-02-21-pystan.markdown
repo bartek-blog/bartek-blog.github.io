@@ -1,0 +1,80 @@
+---
+layout: post
+comments: true
+title:  "Installing pystan on Mac"
+date:   2021-02-21 23:00:00 +0200
+categories: [python, stan, bayesian statistics]
+---
+
+## Install
+
+There is a problem with installing stan on Mac using pip. The easiest way of doing it is to use anaconda. If you use pyenv, see
+[Pyenv and pipenv on mac]({% post_url 2020-05-05-pyenv-and-pipenv-on-mac %}), you can find the latest anaconnda by
+
+``` shell
+pyenv install -l|more
+```
+
+Then you can find latest anaconda and install it with
+
+``` shell
+pyenv install anaconda3-2020.11
+```
+
+Next, you have to switch to the python provided by anaconda and create conda environment with
+
+
+``` shell
+pyenv shell anaconda3-2020.11
+conda create -n stan-3.8 python=3.8
+```
+
+Finally you can install pystan with 
+
+``` shell
+conda install -c conda-forge pystan
+```
+
+## School example
+
+Open jupyter with
+
+``` shell
+jupyter notebook
+```
+
+and write:
+
+``` python
+import pystan
+
+schools_code = """
+data {
+  int<lower=0> J;         // number of schools
+  real y[J];              // estimated treatment effects
+  real<lower=0> sigma[J]; // standard error of effect estimates
+}
+parameters {
+  real mu;                // population treatment effect
+  real<lower=0> tau;      // standard deviation in treatment effects
+  vector[J] eta;          // unscaled deviation from mu by school
+}
+transformed parameters {
+  vector[J] theta = mu + tau * eta;        // school treatment effects
+}
+model {
+  target += normal_lpdf(eta | 0, 1);       // prior log-density
+  target += normal_lpdf(y | theta, sigma); // log-likelihood
+}
+"""
+
+schools_data = {"J": 8,
+                "y": [28,  8, -3,  7, -1,  1, 18, 12],
+                "sigma": [15, 10, 16, 11,  9, 11, 10, 18]}
+
+sm = pystan.StanModel(model_code=schools_code)
+fit = sm.sampling(data=schools_data, iter=1000, chains=4, seed=1)
+fit.extract()["eta"]
+```
+
+_Updated: 2021-02-21_
