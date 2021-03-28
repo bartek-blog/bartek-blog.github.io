@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Installing pystan on Mac"
 date:   2021-02-21 23:00:00 +0200
-categories: [python, stan, bayesian statistics]
+categories: [python, stan, bayes]
 ---
 
 ## Install
@@ -27,6 +27,7 @@ Next, you have to switch to the python provided by anaconda and create conda env
 ``` shell
 pyenv shell anaconda3-2020.11
 conda create -n stan-3.8 python=3.8
+conda activate stan-3.8
 ```
 
 Finally you can install pystan with 
@@ -46,6 +47,9 @@ jupyter notebook
 and write:
 
 ``` python
+import multiprocessing
+multiprocessing.set_start_method("fork")
+
 import pystan
 
 schools_code = """
