@@ -20,7 +20,7 @@ echo $0
 <https://www.iterm2.com/>
 
 ``` shell
-brew cask install iterm2
+brew install iterm2
 ```
 
 ### Color schemas
@@ -186,7 +186,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 ```
 
-_Updated: 2020-07-27_
+_Updated: 2021-10-21_
 
 
     
