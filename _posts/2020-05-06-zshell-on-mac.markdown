@@ -129,7 +129,7 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 
 ``` shell
 brew tap homebrew/cask-fonts
-brew cask install font-hack-nerd-font
+brew install font-hack-nerd-font
 ```
 
 Then change theme in `~/.zshrc` by
