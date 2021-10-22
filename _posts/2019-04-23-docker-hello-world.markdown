@@ -16,13 +16,7 @@ If you unfamiliar with Docker and containers, you can read the following article
 
 ### Docker
 ```
-brew cask install docker
-```
-
-### Virtual Box
-
-```
-brew cask install virtualbox
+brew install docker
 ```
 
 ### Check versions
