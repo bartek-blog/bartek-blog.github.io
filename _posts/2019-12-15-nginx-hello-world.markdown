@@ -38,7 +38,7 @@ http {
 
 ## Simple index.html
 
-Create `/www/data/index.html` file with, for example:
+Create `./www/data/index.html` file with, for example:
 
 ``` html
 <!doctype html>
