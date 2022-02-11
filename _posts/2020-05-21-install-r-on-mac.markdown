@@ -22,7 +22,7 @@ brew tap brewsci/science
 Then
 
 ``` shell
-brew install r
+brew install r --cask
 ```
 
 In `~/.zshrc` add:
@@ -35,7 +35,7 @@ export LC_ALL=en_US.UTF-8
 ## Installing Rstudio
 
 ``` shell
-brew cask install rstudio
+brew install rstudio --cask
 ```
 
 Then, in order to be able to execute it from command line:
@@ -47,7 +47,7 @@ source ~/.zshrc
 
 
 
-_Updated: 2020-06-19_
+_Updated: 2021-10-08_
 
 
     
