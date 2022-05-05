@@ -28,6 +28,13 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+# plugins:
+#   - jekyll-paginate
+#   - jekyll-sitemap
+#   - jekyll-gist
+#   - jekyll-feed
+#   - jemoji
+#   - jekyll-include-cache
 
 google:
   tag_manager:
