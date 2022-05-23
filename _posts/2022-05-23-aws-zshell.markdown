@@ -29,7 +29,10 @@ Next call:
 ```shell
 aws configure sso
 ```
-and put your url to SSO and region. (see <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html>)
+and put your url to SSO and region. You should also choose a convinent name.
+Here we assume that it is `AdminAccount`
+
+( see <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html>)
 
 ## POWERLEVEL9K prompt
 
@@ -38,5 +41,12 @@ Just add `aws` to `POWERLEVEL9K_LEFT_PROMPT_ELEMENTS`:
 ```shell
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(... aws)
 ```
+
+## Assuming role
+
+```shell
+asp AdminAccount
+```
+`AdminAccount` is the name of the role.
 
 _Updated: 2022-05-23_
