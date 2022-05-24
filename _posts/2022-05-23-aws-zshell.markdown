@@ -53,6 +53,7 @@ Then you can switch between roles by:
 ```shell
 asp AdminAccount
 ```
+`AdminAccount` is the name of the role.
 
 In order to logout just call
 ```shell
@@ -60,6 +61,5 @@ aws sso logout
 ```
 
 
-`AdminAccount` is the name of the role.
 
 _Updated: 2022-05-23_
