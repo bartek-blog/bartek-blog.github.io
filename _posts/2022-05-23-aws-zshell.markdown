@@ -42,11 +42,24 @@ Just add `aws` to `POWERLEVEL9K_LEFT_PROMPT_ELEMENTS`:
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(... aws)
 ```
 
-## Assuming role
+## SSO and Assuming role
 
+Now you can login with
+```shell
+aws sso login
+```
+
+Then you can switch between roles by:
 ```shell
 asp AdminAccount
 ```
+
+In order to logout just call
+```shell
+aws sso logout
+```
+
+
 `AdminAccount` is the name of the role.
 
 _Updated: 2022-05-23_
