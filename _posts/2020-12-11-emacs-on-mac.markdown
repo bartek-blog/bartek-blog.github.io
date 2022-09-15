@@ -9,8 +9,8 @@ categories: emacs
 ## Brew install
 
 ``` shell
-brew cask install emacs
+brew install emacs --cask
 ```
 
 
-_Updated: 2020-12-10_
+_Updated: 2022-10-15_
